@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { AnimatePresence, motion } from "motion/react";
+import { motion } from "motion/react";
 import JsonLd from "@/components/JsonLd";
 import { faqPageJsonLd } from "@/lib/structured-data";
 
@@ -45,23 +45,17 @@ export default function FaqAccordion({
                 +
               </motion.span>
             </button>
-            <AnimatePresence initial={false}>
-              {open && (
-                <motion.div
-                  key="panel"
-                  id={panelId}
-                  role="region"
-                  aria-labelledby={buttonId}
-                  initial={{ height: 0, opacity: 0 }}
-                  animate={{ height: "auto", opacity: 1 }}
-                  exit={{ height: 0, opacity: 0 }}
-                  transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                  className="overflow-hidden"
-                >
-                  <p className="max-w-[70ch] pb-6 font-serif text-[18px] leading-[1.6] text-muted-2">{item.a}</p>
-                </motion.div>
-              )}
-            </AnimatePresence>
+            <div
+              id={panelId}
+              role="region"
+              aria-labelledby={buttonId}
+              className="grid transition-[grid-template-rows] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]"
+              style={{ gridTemplateRows: open ? "1fr" : "0fr" }}
+            >
+              <div className="overflow-hidden">
+                <p className="max-w-[70ch] pb-6 font-serif text-[18px] leading-[1.6] text-muted-2">{item.a}</p>
+              </div>
+            </div>
           </div>
         );
       })}
