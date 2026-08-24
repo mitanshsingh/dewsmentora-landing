@@ -4,6 +4,7 @@ import Reveal from "@/components/motion/Reveal";
 
 export const metadata: Metadata = {
   title: "Terms of Service",
+  description: "The terms governing use of the DEWS Mentora marketing site and the four Maps offered through the application.",
   alternates: { canonical: "/terms" },
 };
 

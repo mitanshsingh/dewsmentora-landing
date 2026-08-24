@@ -10,6 +10,7 @@ import Reveal from "@/components/motion/Reveal";
 import { StaggerGrid, StaggerItem } from "@/components/motion/StaggerGrid";
 import { COUNTRIES, getCountry } from "@/lib/study-destinations";
 import { articleJsonLd } from "@/lib/structured-data";
+import { openGraph } from "@/lib/seo";
 
 export function generateStaticParams() {
   return COUNTRIES.map((c) => ({ country: c.slug }));
@@ -27,17 +28,12 @@ export async function generateMetadata({
     title: c.metaTitle,
     description: c.metaDescription,
     alternates: { canonical: `/study-abroad/${c.slug}` },
-    keywords: [
-      `study in ${c.shortName}`,
-      `best university for masters in ${c.shortName}`,
-      `${c.shortName} student visa`,
-      `paperwork required to study in ${c.shortName}`,
-      "study abroad",
-    ],
-    openGraph: {
+    openGraph: openGraph({
       title: c.metaTitle,
       description: c.metaDescription,
-    },
+      type: "article",
+      path: `/study-abroad/${c.slug}`,
+    }),
   };
 }
 

@@ -9,6 +9,7 @@ import GuideBody from "@/components/guide/GuideBody";
 import Reveal from "@/components/motion/Reveal";
 import { GUIDES, getGuide } from "@/lib/guides";
 import { articleJsonLd, howToJsonLd } from "@/lib/structured-data";
+import { openGraph } from "@/lib/seo";
 
 export function generateStaticParams() {
   return GUIDES.map((g) => ({ slug: g.slug }));
@@ -26,14 +27,14 @@ export async function generateMetadata({
     title: guide.metaTitle,
     description: guide.metaDescription,
     alternates: { canonical: `/resources/guides/${guide.slug}` },
-    keywords: guide.keywords,
-    openGraph: {
+    openGraph: openGraph({
       title: guide.metaTitle,
       description: guide.metaDescription,
       type: "article",
+      path: `/resources/guides/${guide.slug}`,
       publishedTime: guide.publishedISO,
       modifiedTime: guide.updatedISO,
-    },
+    }),
   };
 }
 

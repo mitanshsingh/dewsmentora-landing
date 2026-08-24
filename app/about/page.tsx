@@ -3,17 +3,16 @@ import Breadcrumb from "@/components/ui/Breadcrumb";
 import Reveal from "@/components/motion/Reveal";
 import { StaggerGrid, StaggerItem } from "@/components/motion/StaggerGrid";
 import { PRINCIPLES } from "@/lib/site-content";
+import { openGraph } from "@/lib/seo";
+
+const DESCRIPTION =
+  "About DEWS Mentora: structured study abroad and university decision support for Indian students and families, built on evaluation frameworks, not opinion.";
 
 export const metadata: Metadata = {
   title: "About",
-  description:
-    "Education decisions are made once and lived with for years. DEWSMENTORA exists to make those decisions evaluable before they are committed to.",
+  description: DESCRIPTION,
   alternates: { canonical: "/about" },
-  openGraph: {
-    title: "About DEWS Mentora",
-    description:
-      "Education decisions are made once and lived with for years. DEWSMENTORA exists to make those decisions evaluable before they are committed to.",
-  },
+  openGraph: openGraph({ title: "About DEWS Mentora", description: DESCRIPTION, path: "/about" }),
 };
 
 export default function AboutPage() {

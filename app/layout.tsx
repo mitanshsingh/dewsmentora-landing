@@ -4,7 +4,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import JsonLd from "@/components/JsonLd";
 import { organizationJsonLd, websiteJsonLd } from "@/lib/structured-data";
-import { SITE_URL, SITE_NAME, ORG_DESCRIPTION } from "@/lib/seo";
+import { SITE_URL, SITE_NAME, ORG_DESCRIPTION, openGraph } from "@/lib/seo";
 import "./globals.css";
 
 const anton = Anton({
@@ -33,28 +33,13 @@ export const metadata: Metadata = {
     template: "%s — DEWS Mentora",
   },
   description: ORG_DESCRIPTION,
-  keywords: [
-    "study abroad",
-    "study in usa",
-    "study in uk",
-    "study in germany",
-    "study in ireland",
-    "best university for masters",
-    "how to choose a university",
-    "how to apply for masters abroad",
-    "career guidance",
-    "student visa paperwork",
-  ],
   authors: [{ name: SITE_NAME, url: SITE_URL }],
-  openGraph: {
-    siteName: SITE_NAME,
+  openGraph: openGraph({
     title: "DEWS Mentora — Structured clarity before high-stakes education decisions",
     description:
       "Four specialised Maps that evaluate identity, universities, application narrative and execution.",
-    type: "website",
-    url: SITE_URL,
-    locale: "en_US",
-  },
+    path: "/",
+  }),
   twitter: {
     card: "summary_large_image",
   },

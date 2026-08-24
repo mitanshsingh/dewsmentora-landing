@@ -4,17 +4,17 @@ import { ProductListingCard } from "@/components/ui/ProductLinkCard";
 import Reveal from "@/components/motion/Reveal";
 import { StaggerGrid, StaggerItem } from "@/components/motion/StaggerGrid";
 import { PRODUCTS } from "@/lib/products";
+import { openGraph } from "@/lib/seo";
+
+const TITLE = "Products — The Four Maps for Study Abroad Decisions";
+const DESCRIPTION =
+  "Four specialised Maps for study abroad and university decisions: Identity, University Intelligence, Story and Execution Mapping. Pick the one you need.";
 
 export const metadata: Metadata = {
-  title: "Products — The four Maps",
-  description:
-    "DEWSMENTORA uses specialised Maps to evaluate different stages of an aspirant's education and admission journey. Start with the question you need answered.",
+  title: TITLE,
+  description: DESCRIPTION,
   alternates: { canonical: "/products" },
-  openGraph: {
-    title: "Products — The four Maps",
-    description:
-      "DEWSMENTORA uses specialised Maps to evaluate different stages of an aspirant's education and admission journey.",
-  },
+  openGraph: openGraph({ title: TITLE, description: DESCRIPTION, path: "/products" }),
 };
 
 export default function ProductsPage() {

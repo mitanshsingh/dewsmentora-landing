@@ -5,17 +5,16 @@ import Button from "@/components/ui/Button";
 import Reveal from "@/components/motion/Reveal";
 import { StaggerGrid, StaggerItem } from "@/components/motion/StaggerGrid";
 import { HOME_STEPS, APP_REGISTER_URL } from "@/lib/site-content";
+import { openGraph } from "@/lib/seo";
+
+const DESCRIPTION =
+  "How DEWS Mentora works: four steps from profile to a study abroad or university decision report, delivered in your dashboard at app.dewsmentora.com.";
 
 export const metadata: Metadata = {
   title: "How It Works",
-  description:
-    "Four steps, from profile to result. Everything after registration happens inside the application at app.dewsmentora.com.",
+  description: DESCRIPTION,
   alternates: { canonical: "/how-it-works" },
-  openGraph: {
-    title: "How It Works",
-    description:
-      "Four steps, from profile to result. Everything after registration happens inside the application.",
-  },
+  openGraph: openGraph({ title: "How It Works", description: DESCRIPTION, path: "/how-it-works" }),
 };
 
 export default function HowItWorksPage() {
@@ -60,6 +59,7 @@ export default function HowItWorksPage() {
                 alt="Your admission journey: register, personal onboarding and planning, application preparation and submission, application management and offer tracking, university selection and visa preparation, pre-departure and beyond"
                 width={1536}
                 height={1024}
+                sizes="(min-width: 1280px) 1280px, 100vw"
                 className="w-full h-auto border border-line"
               />
               <figcaption className="mt-3 font-sans text-sm leading-[1.5] text-muted">

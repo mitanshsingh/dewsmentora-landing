@@ -8,6 +8,7 @@ import { PRODUCTS } from "@/lib/products";
 
 export const metadata: Metadata = {
   title: "FAQs",
+  description: "Answers about DEWS Mentora's four Maps, study abroad decision support, pricing and how to get started.",
   alternates: { canonical: "/resources/faqs" },
 };
 

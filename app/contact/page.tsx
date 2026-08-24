@@ -3,16 +3,16 @@ import Breadcrumb from "@/components/ui/Breadcrumb";
 import ContactForm from "@/components/ContactForm";
 import Reveal from "@/components/motion/Reveal";
 import { APP_LOGIN_URL } from "@/lib/site-content";
+import { openGraph } from "@/lib/seo";
+
+const DESCRIPTION =
+  "Contact DEWS Mentora for study abroad and university decision support — email support, or sign in to your dashboard for account questions.";
 
 export const metadata: Metadata = {
   title: "Contact",
-  description:
-    "Send a message and we will reply by email. For anything inside your account, sign in to the application.",
+  description: DESCRIPTION,
   alternates: { canonical: "/contact" },
-  openGraph: {
-    title: "Contact DEWS Mentora",
-    description: "Send a message and we will reply by email.",
-  },
+  openGraph: openGraph({ title: "Contact DEWS Mentora", description: DESCRIPTION, path: "/contact" }),
 };
 
 export default function ContactPage() {

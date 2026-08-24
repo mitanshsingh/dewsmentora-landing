@@ -7,17 +7,16 @@ import Reveal from "@/components/motion/Reveal";
 import { StaggerGrid, StaggerItem } from "@/components/motion/StaggerGrid";
 import { PRODUCTS } from "@/lib/products";
 import { APP_REGISTER_URL } from "@/lib/site-content";
+import { openGraph } from "@/lib/seo";
+
+const DESCRIPTION =
+  "For students planning study abroad or university applications: a structured way to evaluate direction, university, application and execution before you commit.";
 
 export const metadata: Metadata = {
   title: "For Students",
-  description:
-    "You are being asked to make decisions worth years of effort and significant money. DEWSMENTORA gives you a structured way to evaluate those decisions before you commit.",
+  description: DESCRIPTION,
   alternates: { canonical: "/for-students" },
-  openGraph: {
-    title: "For Students",
-    description:
-      "You are being asked to make decisions worth years of effort and significant money. Here's a structured way to evaluate them before you commit.",
-  },
+  openGraph: openGraph({ title: "For Students", description: DESCRIPTION, path: "/for-students" }),
 };
 
 const CHALLENGE_CARDS = [
@@ -58,6 +57,7 @@ export default function ForStudentsPage() {
               alt="You don't need everything, and we don't believe in selling everything — each Map addresses a specific decision problem"
               width={1744}
               height={902}
+              sizes="(min-width: 1080px) 600px, 100vw"
               className="w-full h-auto"
             />
           </Reveal>

@@ -7,26 +7,17 @@ import Reveal from "@/components/motion/Reveal";
 import { StaggerGrid, StaggerItem } from "@/components/motion/StaggerGrid";
 import { COUNTRIES } from "@/lib/study-destinations";
 import { APP_REGISTER_URL } from "@/lib/site-content";
+import { openGraph } from "@/lib/seo";
+
+const TITLE = "Study Abroad: Complete Guide to Studying Overseas";
+const DESCRIPTION =
+  "How to choose a country and university, visa and paperwork basics, costs, and application timelines for studying in the USA, UK, Germany and Ireland.";
 
 export const metadata: Metadata = {
-  title: "Study Abroad: Complete Guide to Studying Overseas",
-  description:
-    "How to choose a country and university, visa and paperwork basics, costs, and application timelines for studying in the USA, UK, Germany and Ireland.",
+  title: TITLE,
+  description: DESCRIPTION,
   alternates: { canonical: "/study-abroad" },
-  keywords: [
-    "study abroad",
-    "study in usa",
-    "study in uk",
-    "study in germany",
-    "study in ireland",
-    "best university for masters",
-    "how to choose a university",
-  ],
-  openGraph: {
-    title: "Study Abroad: Complete Guide to Studying Overseas",
-    description:
-      "How to choose a country and university, visa and paperwork basics, costs, and application timelines — USA, UK, Germany and Ireland.",
-  },
+  openGraph: openGraph({ title: TITLE, description: DESCRIPTION, path: "/study-abroad" }),
 };
 
 const HUB_FAQS = [

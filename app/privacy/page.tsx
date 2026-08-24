@@ -4,6 +4,7 @@ import Reveal from "@/components/motion/Reveal";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
+  description: "How DEWS Mentora collects, uses and protects personal, academic and payment information across the marketing site and the application.",
   alternates: { canonical: "/privacy" },
 };
 
