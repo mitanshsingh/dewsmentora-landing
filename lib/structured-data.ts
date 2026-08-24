@@ -1,5 +1,8 @@
 import { SITE_URL, SITE_NAME, ORG_DESCRIPTION } from "./seo";
 
+// TODO(human): sameAs is empty pending real, live social profile URLs — do not
+// populate with guessed or placeholder links. Same for contactPoint.telephone
+// below, which is omitted until a published support number exists.
 export function organizationJsonLd() {
   return {
     "@context": "https://schema.org",
@@ -10,6 +13,12 @@ export function organizationJsonLd() {
     logo: `${SITE_URL}/images/logo.png`,
     description: ORG_DESCRIPTION,
     sameAs: [],
+    contactPoint: {
+      "@type": "ContactPoint",
+      email: "hello@dewsmentora.com",
+      contactType: "customer service",
+      areaServed: "IN",
+    },
   };
 }
 
@@ -102,23 +111,48 @@ export function howToJsonLd({
   };
 }
 
-export function serviceJsonLd({
-  name,
-  description,
-  path,
-}: {
+const PRODUCT_OFFERS: Record<string, Record<string, unknown>> = {
+  "university-intelligence-mapping": {
+    "@type": "Offer",
+    price: "3999",
+    priceCurrency: "INR",
+    availability: "https://schema.org/InStock",
+    url: `${SITE_URL}/products/university-intelligence-mapping`,
+  },
+  "story-mapping": {
+    "@type": "Offer",
+    price: "12999",
+    priceCurrency: "INR",
+    availability: "https://schema.org/InStock",
+    url: `${SITE_URL}/products/story-mapping`,
+  },
+  "execution-mapping": {
+    "@type": "AggregateOffer",
+    lowPrice: "2500",
+    priceCurrency: "INR",
+    offerCount: "1",
+    availability: "https://schema.org/InStock",
+    url: `${SITE_URL}/products/execution-mapping`,
+  },
+};
+
+export function productJsonLd(product: {
+  slug: string;
   name: string;
-  description: string;
-  path: string;
+  tagline: string;
+  figure: string;
+  figureAlt: string;
 }) {
+  const offers = PRODUCT_OFFERS[product.slug];
   return {
     "@context": "https://schema.org",
-    "@type": "Service",
-    name,
-    description,
-    url: `${SITE_URL}${path}`,
-    provider: { "@id": `${SITE_URL}/#organization` },
-    areaServed: "Worldwide",
-    serviceType: "Education consulting",
+    "@type": "Product",
+    "@id": `${SITE_URL}/products/${product.slug}#product`,
+    name: product.name,
+    description: product.tagline,
+    image: `${SITE_URL}${product.figure}`,
+    url: `${SITE_URL}/products/${product.slug}`,
+    brand: { "@id": `${SITE_URL}/#organization` },
+    ...(offers ? { offers } : {}),
   };
 }

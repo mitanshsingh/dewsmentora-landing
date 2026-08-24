@@ -25,10 +25,33 @@ export const HOME_STEPS = [
 ];
 
 export const WHY_POINTS = [
-  "One Map per decision problem — no bundled services you do not need.",
-  "Structured evaluation frameworks rather than opinion or anecdote.",
-  "Independent second opinions on shortlists, offers and recommendations.",
-  "Transparent process, visible milestones and one accountable point of contact.",
+  { t: "No bundling", d: "One Map per decision problem — no bundled services you do not need." },
+  { t: "Structured, not anecdotal", d: "Structured evaluation frameworks rather than opinion or anecdote." },
+  { t: "Independent view", d: "Independent second opinions on shortlists, offers and recommendations." },
+  { t: "Full transparency", d: "Transparent process, visible milestones and one accountable point of contact." },
+];
+
+export const INTAKE_MILESTONES = [
+  {
+    window: "Now – Dec 2026",
+    t: "Research & test prep",
+    d: "Shortlist programs by fit, not just ranking. Sit the GRE/GMAT or IELTS/TOEFL where required.",
+  },
+  {
+    window: "Dec 2026 – Mar 2027",
+    t: "Submit applications",
+    d: "Most Fall-intake deadlines for US, UK and Irish master's programs fall in this window.",
+  },
+  {
+    window: "Mar 2027 – May 2027",
+    t: "Compare & accept offers",
+    d: "Weigh offers on program fit, total cost and post-study work rights — not just which arrived first.",
+  },
+  {
+    window: "Jun 2027 – Aug 2027",
+    t: "Visa & pre-departure",
+    d: "Apply for your student visa once your university issues the required document (I-20, CAS, and so on).",
+  },
 ];
 
 export const PRINCIPLES = [

@@ -7,15 +7,28 @@ import FaqAccordion from "@/components/ui/FaqAccordion";
 import SectionCta from "@/components/ui/SectionCta";
 import { ProductPickerCard } from "@/components/ui/ProductLinkCard";
 import JsonLd from "@/components/JsonLd";
+import MappingJourneyPanel from "@/components/MappingJourneyPanel";
 import Reveal from "@/components/motion/Reveal";
 import { StaggerGrid, StaggerItem } from "@/components/motion/StaggerGrid";
 import { PRODUCTS, getProduct } from "@/lib/products";
 import { APP_REGISTER_URL } from "@/lib/site-content";
-import { serviceJsonLd } from "@/lib/structured-data";
+import { productJsonLd } from "@/lib/structured-data";
+import { openGraph } from "@/lib/seo";
 
 export function generateStaticParams() {
   return PRODUCTS.map((p) => ({ slug: p.slug }));
 }
+
+const META_DESCRIPTIONS: Record<string, string> = {
+  "identity-mapping":
+    "Identity Mapping evaluates strengths, thinking patterns and direction before an Indian student commits to a stream, course or career — structured, not another career test.",
+  "university-intelligence-mapping":
+    "University Intelligence Mapping evaluates course, career, cost, location and outcomes before you choose a university abroad — for Rs. 3,999, not rankings alone.",
+  "story-mapping":
+    "Story Mapping turns achievements, experience and goals into one coherent application narrative for master's, MBA and undergraduate applications abroad — Rs. 12,999.",
+  "execution-mapping":
+    "Execution Mapping manages applications, documents, deadlines and visa paperwork for study abroad admissions end to end — from Rs. 2,500.",
+};
 
 export async function generateMetadata({
   params,
@@ -25,14 +38,16 @@ export async function generateMetadata({
   const { slug } = await params;
   const product = getProduct(slug);
   if (!product) return {};
+  const description = META_DESCRIPTIONS[product.slug] ?? product.tagline;
   return {
-    title: `${product.name} — ${product.question}`,
-    description: product.tagline,
+    title: `${product.name}: ${product.question}`,
+    description,
     alternates: { canonical: `/products/${product.slug}` },
-    openGraph: {
-      title: `${product.name} — ${product.question}`,
-      description: product.tagline,
-    },
+    openGraph: openGraph({
+      title: `${product.name}: ${product.question}`,
+      description,
+      path: `/products/${product.slug}`,
+    }),
   };
 }
 
@@ -57,13 +72,7 @@ export default async function ProductPage({
 
   return (
     <article>
-      <JsonLd
-        data={serviceJsonLd({
-          name: product.name,
-          description: product.tagline,
-          path: `/products/${product.slug}`,
-        })}
-      />
+      <JsonLd data={productJsonLd(product)} />
       <section className="bg-[#EFEFEF] px-6 pb-14 pt-16">
         <div className="mx-auto grid max-w-[1280px] items-center gap-12" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))" }}>
           <Reveal>
@@ -83,14 +92,19 @@ export default async function ProductPage({
             </div>
           </Reveal>
           <Reveal delay={0.15}>
-            <Image
-              src={product.hero}
-              alt={product.heroAlt}
-              width={dims.hero[0]}
-              height={dims.hero[1]}
-              priority
-              className="w-full h-auto bg-white"
-            />
+            {product.slug === "identity-mapping" ? (
+              <MappingJourneyPanel />
+            ) : (
+              <Image
+                src={product.hero}
+                alt={product.heroAlt}
+                width={dims.hero[0]}
+                height={dims.hero[1]}
+                priority
+                sizes="(min-width: 1080px) 600px, 100vw"
+                className="w-full h-auto bg-white"
+              />
+            )}
           </Reveal>
         </div>
       </section>
@@ -162,6 +176,7 @@ export default async function ProductPage({
                 alt={product.figureAlt}
                 width={dims.figure[0]}
                 height={dims.figure[1]}
+                sizes="(min-width: 1280px) 1280px, 100vw"
                 className="w-full h-auto bg-white"
               />
               <figcaption className="mt-3.5 font-sans text-sm leading-[1.5] text-[#9A9A9A]">{product.figureAlt}</figcaption>
