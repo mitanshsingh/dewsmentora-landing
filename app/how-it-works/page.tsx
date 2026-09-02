@@ -51,20 +51,24 @@ export default function HowItWorksPage() {
         </div>
       </section>
 
-      <section className="px-6 pb-[88px]">
+      <section className="px-6 pb-14 nav:pb-[88px]">
         <div className="mx-auto max-w-[1280px]">
           <Reveal>
-            <h2 className="m-0 mb-6 font-display text-[clamp(28px,2.8vw,42px)] uppercase leading-none">
+            <h2 className="m-0 mb-3.5 font-display text-[clamp(28px,2.8vw,42px)] uppercase leading-none nav:mb-6">
               Inside a managed admission journey
             </h2>
-            <p className="m-0 mb-11 max-w-[62ch] font-serif text-[17px] leading-[1.55] text-muted">
+            <p className="m-0 mb-7 max-w-[62ch] font-serif text-[17px] leading-[1.55] text-muted nav:mb-11">
               The execution sequence applies when Execution Mapping is part of your journey.
             </p>
             {/* The serpentine needs all six stages side by side; below `nav`
-                the vertical timeline carries the same content. */}
+                the vertical timeline carries the same content, with each stage
+                folded away so the six titles fit one screen. */}
             <AdmissionJourneyMap framework={ADMISSION_JOURNEY} />
             <div className="max-w-[1000px] nav:hidden">
-              <StageTimeline stages={ADMISSION_JOURNEY.stages} tone="light" />
+              <p className="m-0 mb-5 font-sans text-[13px] font-bold uppercase tracking-[0.14em] text-ochre">
+                Six stages — tap to expand
+              </p>
+              <StageTimeline stages={ADMISSION_JOURNEY.stages} tone="light" collapsible />
               <FrameworkExtras framework={ADMISSION_JOURNEY} tone="light" />
             </div>
           </Reveal>
