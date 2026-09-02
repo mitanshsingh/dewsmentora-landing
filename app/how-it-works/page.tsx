@@ -5,6 +5,7 @@ import Reveal from "@/components/motion/Reveal";
 import { StaggerGrid, StaggerItem } from "@/components/motion/StaggerGrid";
 import StageTimeline from "@/components/ui/StageTimeline";
 import FrameworkExtras from "@/components/ui/FrameworkExtras";
+import AdmissionJourneyMap from "@/components/ui/AdmissionJourneyMap";
 import { ADMISSION_JOURNEY } from "@/lib/frameworks";
 import { HOME_STEPS, APP_REGISTER_URL } from "@/lib/site-content";
 
@@ -59,7 +60,10 @@ export default function HowItWorksPage() {
             <p className="m-0 mb-11 max-w-[62ch] font-serif text-[17px] leading-[1.55] text-muted">
               The execution sequence applies when Execution Mapping is part of your journey.
             </p>
-            <div className="max-w-[1000px]">
+            {/* The serpentine needs all six stages side by side; below `nav`
+                the vertical timeline carries the same content. */}
+            <AdmissionJourneyMap framework={ADMISSION_JOURNEY} />
+            <div className="max-w-[1000px] nav:hidden">
               <StageTimeline stages={ADMISSION_JOURNEY.stages} tone="light" />
               <FrameworkExtras framework={ADMISSION_JOURNEY} tone="light" />
             </div>
