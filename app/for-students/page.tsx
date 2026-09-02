@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Breadcrumb from "@/components/ui/Breadcrumb";
 import Button from "@/components/ui/Button";
 import { ProductSummaryCard } from "@/components/ui/ProductLinkCard";
 import Reveal from "@/components/motion/Reveal";
 import { StaggerGrid, StaggerItem } from "@/components/motion/StaggerGrid";
 import MapFitPanel from "@/components/ui/MapFitPanel";
+import ArtFigure from "@/components/ui/ArtFigure";
 import { PRODUCTS } from "@/lib/products";
 import { APP_REGISTER_URL } from "@/lib/site-content";
 
@@ -54,14 +54,15 @@ export default function ForStudentsPage() {
             </Button>
           </Reveal>
           <Reveal delay={0.15}>
-            <Image
+            <ArtFigure
               src="/images/identity-figure.webp"
               alt="A student thinking through her options at a desk"
-              width={263}
+              width={557}
               height={560}
               priority
-              sizes="(max-width: 1080px) 60vw, 320px"
-              className="mx-auto h-auto w-full max-w-[320px]"
+              surface="bg-paper-warm nav:bg-paper"
+              sizes="(max-width: 1080px) 92vw, 540px"
+              className="mx-auto w-full max-w-[540px]"
             />
           </Reveal>
         </div>

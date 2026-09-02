@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import { notFound } from "next/navigation";
 import Breadcrumb from "@/components/ui/Breadcrumb";
 import Button from "@/components/ui/Button";
@@ -13,6 +12,7 @@ import StageTimeline from "@/components/ui/StageTimeline";
 import PillarGrid from "@/components/ui/PillarGrid";
 import StoryContrast from "@/components/ui/StoryContrast";
 import MapFitPanel from "@/components/ui/MapFitPanel";
+import ArtFigure from "@/components/ui/ArtFigure";
 import FrameworkExtras from "@/components/ui/FrameworkExtras";
 import { getProductVisual } from "@/lib/frameworks";
 import { PRODUCTS, getProduct } from "@/lib/products";
@@ -84,14 +84,17 @@ export default async function ProductPage({
           </Reveal>
           {visual?.hero && (
             <Reveal delay={0.15}>
-              <Image
+              <ArtFigure
                 src={visual.hero.src}
                 alt={visual.hero.alt}
                 width={visual.hero.width}
                 height={visual.hero.height}
                 priority
-                sizes="(max-width: 1080px) 100vw, 460px"
-                className="mx-auto h-auto w-full max-w-[460px]"
+                blend={!visual.hero.dark}
+                fade={!visual.hero.dark}
+                surface="bg-[#EFEFEF]"
+                sizes="(max-width: 1080px) 100vw, 520px"
+                className="mx-auto w-full max-w-[520px]"
               />
             </Reveal>
           )}

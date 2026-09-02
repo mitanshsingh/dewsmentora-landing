@@ -6,6 +6,7 @@ import Button from "@/components/ui/Button";
 import FaqAccordion from "@/components/ui/FaqAccordion";
 import StickyCta from "@/components/ui/StickyCta";
 import PillarGrid from "@/components/ui/PillarGrid";
+import ArtFigure from "@/components/ui/ArtFigure";
 import Reveal from "@/components/motion/Reveal";
 import { StaggerGrid, StaggerItem } from "@/components/motion/StaggerGrid";
 import { WHY_DEWS_PILLARS } from "@/lib/frameworks";
@@ -276,13 +277,13 @@ export default function HomePage() {
             </ul>
           </Reveal>
           <Reveal delay={0.15} className="hidden nav:block">
-            <Image
+            <ArtFigure
               src="/images/why-dews.webp"
               alt="A student working at a laptop"
               width={792}
               height={525}
+              surface="bg-cream"
               sizes="(max-width: 1080px) 0px, 560px"
-              className="h-auto w-full"
             />
           </Reveal>
         </div>

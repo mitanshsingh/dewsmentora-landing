@@ -68,6 +68,11 @@ export type HeroVisual = {
   width: number;
   height: number;
   alt: string;
+  /**
+   * Artwork that is already edge-to-edge dark. It must not be multiplied or
+   * masked — it sits on a dark section and has no white ground to dissolve.
+   */
+  dark?: boolean;
 };
 
 export type ProductVisual = {
@@ -311,6 +316,7 @@ export const PRODUCT_VISUALS: Record<string, ProductVisual> = {
       width: 720,
       height: 900,
       alt: "A student considering education and career directions",
+      dark: true,
     },
     pillars: {
       heading: "What Identity Mapping clarifies",
