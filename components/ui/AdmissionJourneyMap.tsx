@@ -77,12 +77,23 @@ const ABOVE = [
   { i: 3, left: 840, width: 270 },
   { i: 5, left: 1232, width: 268 },
 ];
+/**
+ * `top` is the numeral's y in the original, and the below blocks are staggered
+ * rather than flush: 549, 572, 574. The nodes sit at different heights along
+ * the curve, so a single flat top runs the lower stages into their own circle —
+ * stage 5's title was crossing node 5 by 17px.
+ *
+ * `titleWidth` caps the heading so it wraps where the original wraps. Without
+ * it stage 3's title sets on two long lines instead of three and reaches under
+ * node 4.
+ */
+const BELOW_BASE = 549;
 const BELOW = [
-  { i: 0, left: 68, width: 232 },
-  { i: 2, left: 648, width: 252 },
-  { i: 4, left: 1022, width: 278 },
+  { i: 0, left: 68, width: 250, top: 549, titleWidth: 180 },
+  { i: 2, left: 632, width: 258, top: 572, titleWidth: 165 },
+  { i: 4, left: 1022, width: 330, top: 574, titleWidth: 250 },
 ];
-const OPTIONS_BLOCK = { left: 332, width: 293 };
+const OPTIONS_BLOCK = { left: 332, width: 293, top: 549 };
 
 const NUMBER = "shrink-0 font-sans font-bold leading-[0.85] text-[4.05cqw] text-[#FEDD02]";
 const TITLE = "m-0 font-sans text-[1.32cqw] font-bold uppercase leading-[1.16] tracking-[0.005em] text-[#1A1A1A]";
@@ -104,14 +115,33 @@ function Bullets({ items }: { items: string[] }) {
   );
 }
 
-function StageBlock({ n, title, items }: { n: string; title: string; items: string[] }) {
+function StageBlock({
+  n,
+  title,
+  items,
+  titleWidth,
+}: {
+  n: string;
+  title: string;
+  items: string[];
+  titleWidth?: number;
+}) {
   return (
     <div className="flex gap-[0.85cqw]">
       <span aria-hidden="true" className={NUMBER}>
         {Number(n)}
       </span>
       <div className="min-w-0">
-        <h3 className={TITLE}>{title}</h3>
+        {/* cqw, not %: a percentage max-width resolves against this flex
+            child, not the canvas, which caps the heading far narrower than
+            intended. The root sets `container-type: inline-size`, so 1cqw is
+            1% of the canvas. */}
+        <h3
+          className={TITLE}
+          style={titleWidth ? { maxWidth: `${(titleWidth / CANVAS) * 100}cqw` } : undefined}
+        >
+          {title}
+        </h3>
         <Bullets items={items} />
       </div>
     </div>
@@ -217,20 +247,30 @@ export default function AdmissionJourneyMap({ framework }: { framework: Framewor
       </div>
 
       {/* ---------- below-the-path stages (1, 3, 5) + the option branch ----------
-          In the original these titles start at y=545, i.e. level with the lower
-          half of the circles rather than clear of them, so the row is pulled
-          back up into the band by the difference. */}
+          The row is pulled back up into the band so the first block starts at
+          BELOW_BASE; each block then drops by its own offset to clear the node
+          above it. */}
       <div
         className="grid w-full"
-        style={{ marginTop: pct(-(BAND_TOP + BAND_H - 545)) }}
+        style={{ marginTop: pct(-(BAND_TOP + BAND_H - BELOW_BASE)) }}
       >
-        {BELOW.map(({ i, left, width }) => (
+        {BELOW.map(({ i, left, width, top, titleWidth }) => (
           <div
             key={stages[i].n}
             className="self-start"
-            style={{ gridArea: "1 / 1", marginLeft: pct(left), width: pct(width) }}
+            style={{
+              gridArea: "1 / 1",
+              marginLeft: pct(left),
+              width: pct(width),
+              marginTop: pct(top - BELOW_BASE),
+            }}
           >
-            <StageBlock n={stages[i].n} title={stages[i].title} items={stages[i].items} />
+            <StageBlock
+              n={stages[i].n}
+              title={stages[i].title}
+              items={stages[i].items}
+              titleWidth={titleWidth}
+            />
           </div>
         ))}
 
@@ -241,6 +281,7 @@ export default function AdmissionJourneyMap({ framework }: { framework: Framewor
               gridArea: "1 / 1",
               marginLeft: pct(OPTIONS_BLOCK.left),
               width: pct(OPTIONS_BLOCK.width),
+              marginTop: pct(OPTIONS_BLOCK.top - BELOW_BASE),
             }}
           >
             <div className="flex-1">
