@@ -9,6 +9,8 @@ import { ProductPickerCard } from "@/components/ui/ProductLinkCard";
 import JsonLd from "@/components/JsonLd";
 import Reveal from "@/components/motion/Reveal";
 import { StaggerGrid, StaggerItem } from "@/components/motion/StaggerGrid";
+import StageTimeline from "@/components/ui/StageTimeline";
+import { getFramework } from "@/lib/frameworks";
 import { PRODUCTS, getProduct } from "@/lib/products";
 import { APP_REGISTER_URL } from "@/lib/site-content";
 import { serviceJsonLd } from "@/lib/structured-data";
@@ -54,6 +56,7 @@ export default async function ProductPage({
 
   const otherProducts = PRODUCTS.filter((p) => p.slug !== product.slug);
   const dims = IMAGE_DIMS[product.slug];
+  const framework = getFramework(product.slug);
 
   return (
     <article>
@@ -156,16 +159,28 @@ export default async function ProductPage({
             ))}
           </StaggerGrid>
           <Reveal delay={0.1}>
-            <figure className="m-0">
-              <Image
-                src={product.figure}
-                alt={product.figureAlt}
-                width={dims.figure[0]}
-                height={dims.figure[1]}
-                className="w-full h-auto bg-white"
-              />
-              <figcaption className="mt-3.5 font-sans text-sm leading-[1.5] text-[#9A9A9A]">{product.figureAlt}</figcaption>
-            </figure>
+            {framework ? (
+              <div className="max-w-[1000px]">
+                <h3 className="m-0 mb-3 font-display text-[clamp(22px,2.4vw,34px)] uppercase leading-[1.05]">
+                  {framework.heading}
+                </h3>
+                <p className="m-0 mb-12 max-w-[62ch] font-serif text-[18px] leading-[1.55] text-[#C9C9C9]">
+                  {framework.intro}
+                </p>
+                <StageTimeline stages={framework.stages} />
+              </div>
+            ) : (
+              <figure className="m-0">
+                <Image
+                  src={product.figure}
+                  alt={product.figureAlt}
+                  width={dims.figure[0]}
+                  height={dims.figure[1]}
+                  className="w-full h-auto bg-white"
+                />
+                <figcaption className="mt-3.5 font-sans text-sm leading-[1.5] text-[#9A9A9A]">{product.figureAlt}</figcaption>
+              </figure>
+            )}
           </Reveal>
         </div>
       </section>
