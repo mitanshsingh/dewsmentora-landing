@@ -106,7 +106,11 @@ export default function StageTimeline({
             {!isLast && (
               <span
                 aria-hidden="true"
-                className={`absolute top-[60px] bottom-0 left-[25px] w-px sm:top-[72px] sm:left-[31px] ${rail}`}
+                // Half-pixel offsets, not round numbers: the node columns are
+                // 52px and 64px, so their centres are 26 and 32. A 1px rail
+                // centres on those at 25.5 and 31.5 — at 25/31 the hairline
+                // lands half a pixel left of every node.
+                className={`absolute top-[60px] bottom-0 left-[25.5px] w-px sm:top-[72px] sm:left-[31.5px] ${rail}`}
               />
             )}
 

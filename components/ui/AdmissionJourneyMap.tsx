@@ -142,13 +142,19 @@ export default function AdmissionJourneyMap({ framework }: { framework: Framewor
         A Structured Process. Professionally Managed.
       </p>
 
-      {/* ---------- above-the-path stages (2, 4, 6) ---------- */}
-      <div className="relative w-full" style={{ aspectRatio: `${CANVAS} / 235` }}>
+      {/* ---------- above-the-path stages (2, 4, 6) ----------
+          The blocks share one grid cell rather than being absolutely placed in
+          a fixed-height row: the row then sizes to the tallest of them, their
+          tops line up as they do in the original (ragged bottoms, aligned tops), and none can overflow. Bottom
+          anchoring in a fixed row pushed the taller blocks to negative offsets,
+          which ran stages 4 and 6 back through the subtitle. Horizontal
+          placement is still the measured `left`/`width`. */}
+      <div className="grid w-full">
         {ABOVE.map(({ i, left, width }) => (
           <div
             key={stages[i].n}
-            className="absolute bottom-0"
-            style={{ left: pct(left), width: pct(width) }}
+            className="self-start"
+            style={{ gridArea: "1 / 1", marginLeft: pct(left), width: pct(width) }}
           >
             <StageBlock n={stages[i].n} title={stages[i].title} items={stages[i].items} />
           </div>
@@ -215,17 +221,14 @@ export default function AdmissionJourneyMap({ framework }: { framework: Framewor
           half of the circles rather than clear of them, so the row is pulled
           back up into the band by the difference. */}
       <div
-        className="relative w-full"
-        style={{
-          aspectRatio: `${CANVAS} / 285`,
-          marginTop: pct(-(BAND_TOP + BAND_H - 545)),
-        }}
+        className="grid w-full"
+        style={{ marginTop: pct(-(BAND_TOP + BAND_H - 545)) }}
       >
         {BELOW.map(({ i, left, width }) => (
           <div
             key={stages[i].n}
-            className="absolute top-0"
-            style={{ left: pct(left), width: pct(width) }}
+            className="self-start"
+            style={{ gridArea: "1 / 1", marginLeft: pct(left), width: pct(width) }}
           >
             <StageBlock n={stages[i].n} title={stages[i].title} items={stages[i].items} />
           </div>
@@ -233,8 +236,12 @@ export default function AdmissionJourneyMap({ framework }: { framework: Framewor
 
         {options.length === 2 && (
           <div
-            className="absolute top-0 flex items-start"
-            style={{ left: pct(OPTIONS_BLOCK.left), width: pct(OPTIONS_BLOCK.width) }}
+            className="flex items-start self-start"
+            style={{
+              gridArea: "1 / 1",
+              marginLeft: pct(OPTIONS_BLOCK.left),
+              width: pct(OPTIONS_BLOCK.width),
+            }}
           >
             <div className="flex-1">
               <p className="m-0 font-sans text-[1.02cqw] font-bold uppercase leading-[1.2] tracking-[0.02em] text-[#1A1A1A]">
