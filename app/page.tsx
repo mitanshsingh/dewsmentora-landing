@@ -5,8 +5,10 @@ import type { CSSProperties } from "react";
 import Button from "@/components/ui/Button";
 import FaqAccordion from "@/components/ui/FaqAccordion";
 import StickyCta from "@/components/ui/StickyCta";
+import PillarGrid from "@/components/ui/PillarGrid";
 import Reveal from "@/components/motion/Reveal";
 import { StaggerGrid, StaggerItem } from "@/components/motion/StaggerGrid";
+import { WHY_DEWS_PILLARS } from "@/lib/frameworks";
 import { PRODUCTS, productHref } from "@/lib/products";
 import { HOME_FAQS, HOME_STEPS, WHY_POINTS, APP_REGISTER_URL } from "@/lib/site-content";
 
@@ -44,7 +46,9 @@ export default function HomePage() {
           >
             <Image
               src="/images/hero-poster.png"
-              alt="Paper-cut typographic poster reading: Your future deserves more than advice"
+              // Decorative: the poster sets the same words as the <h1> above it,
+              // so an alt would make screen readers announce the headline twice.
+              alt=""
               width={1122}
               height={1402}
               priority
@@ -144,18 +148,10 @@ export default function HomePage() {
               alt="A student considering education and career directions"
               width={720}
               height={900}
-              sizes="(max-width: 1080px) 100vw, 0px"
-              className="h-auto w-full nav:hidden"
+              sizes="(max-width: 1080px) 100vw, 620px"
+              className="h-auto w-full"
             />
-            <Image
-              src="/images/mapping-journey.png"
-              alt="The DEWSMENTORA Mapping Journey: different decisions require different kinds of clarity"
-              width={1699}
-              height={926}
-              sizes="(max-width: 1080px) 0px, 620px"
-              className="hidden h-auto w-full border border-[#2A2A2A] nav:block"
-            />
-            <div className="px-5 pb-[34px] pt-[26px] nav:hidden">
+            <div className="px-5 pb-[34px] pt-[26px] nav:px-0 nav:pb-0 nav:pt-7">
               <p className="m-0 mb-3 font-sans text-[22px] font-bold uppercase leading-[1.18] tracking-[0.01em]">
                 The DEWSMENTORA
                 <br />
@@ -281,13 +277,27 @@ export default function HomePage() {
           </Reveal>
           <Reveal delay={0.15} className="hidden nav:block">
             <Image
-              src="/images/why-dews.png"
-              alt="Why choose us: proven expertise, precision in execution, risk mitigation, timely delivery, client-centric approach, results that matter"
-              width={1942}
-              height={809}
+              src="/images/why-dews.webp"
+              alt="A student working at a laptop"
+              width={792}
+              height={525}
               sizes="(max-width: 1080px) 0px, 560px"
               className="h-auto w-full"
             />
+          </Reveal>
+        </div>
+      </section>
+
+      <section aria-labelledby="advantage" className="bg-cream px-5 py-[46px] nav:px-6 nav:py-[72px]">
+        <div className={SHELL}>
+          <Reveal>
+            <h2
+              id="advantage"
+              className="m-0 mb-9 max-w-[22ch] font-headline text-[30px] font-medium leading-[1.14] text-ink nav:font-display nav:text-[clamp(30px,3vw,44px)] nav:font-normal nav:uppercase nav:leading-[0.98]"
+            >
+              The advantage behind every successful journey
+            </h2>
+            <PillarGrid items={WHY_DEWS_PILLARS} minColumn={240} />
           </Reveal>
         </div>
       </section>

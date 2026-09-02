@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Breadcrumb from "@/components/ui/Breadcrumb";
 import Button from "@/components/ui/Button";
 import Reveal from "@/components/motion/Reveal";
 import { StaggerGrid, StaggerItem } from "@/components/motion/StaggerGrid";
+import StageTimeline from "@/components/ui/StageTimeline";
+import FrameworkExtras from "@/components/ui/FrameworkExtras";
+import { ADMISSION_JOURNEY } from "@/lib/frameworks";
 import { HOME_STEPS, APP_REGISTER_URL } from "@/lib/site-content";
 
 export const metadata: Metadata = {
@@ -54,18 +56,13 @@ export default function HowItWorksPage() {
             <h2 className="m-0 mb-6 font-display text-[clamp(28px,2.8vw,42px)] uppercase leading-none">
               Inside a managed admission journey
             </h2>
-            <figure className="m-0">
-              <Image
-                src="/images/execution-figure.png"
-                alt="Your admission journey: register, personal onboarding and planning, application preparation and submission, application management and offer tracking, university selection and visa preparation, pre-departure and beyond"
-                width={1536}
-                height={1024}
-                className="w-full h-auto border border-line"
-              />
-              <figcaption className="mt-3 font-sans text-sm leading-[1.5] text-muted">
-                The execution sequence applies when Execution Mapping is part of your journey.
-              </figcaption>
-            </figure>
+            <p className="m-0 mb-11 max-w-[62ch] font-serif text-[17px] leading-[1.55] text-muted">
+              The execution sequence applies when Execution Mapping is part of your journey.
+            </p>
+            <div className="max-w-[1000px]">
+              <StageTimeline stages={ADMISSION_JOURNEY.stages} tone="light" />
+              <FrameworkExtras framework={ADMISSION_JOURNEY} tone="light" />
+            </div>
           </Reveal>
         </div>
       </section>

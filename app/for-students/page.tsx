@@ -5,6 +5,7 @@ import Button from "@/components/ui/Button";
 import { ProductSummaryCard } from "@/components/ui/ProductLinkCard";
 import Reveal from "@/components/motion/Reveal";
 import { StaggerGrid, StaggerItem } from "@/components/motion/StaggerGrid";
+import MapFitPanel from "@/components/ui/MapFitPanel";
 import { PRODUCTS } from "@/lib/products";
 import { APP_REGISTER_URL } from "@/lib/site-content";
 
@@ -54,12 +55,22 @@ export default function ForStudentsPage() {
           </Reveal>
           <Reveal delay={0.15}>
             <Image
-              src="/images/identity-figure.png"
-              alt="You don't need everything, and we don't believe in selling everything — each Map addresses a specific decision problem"
-              width={1744}
-              height={902}
-              className="w-full h-auto"
+              src="/images/identity-figure.webp"
+              alt="A student thinking through her options at a desk"
+              width={263}
+              height={560}
+              priority
+              sizes="(max-width: 1080px) 60vw, 320px"
+              className="mx-auto h-auto w-full max-w-[320px]"
             />
+          </Reveal>
+        </div>
+      </section>
+
+      <section aria-labelledby="mapfit" className="px-6 pb-[88px]">
+        <div className="mx-auto max-w-[1000px]">
+          <Reveal>
+            <MapFitPanel headingId="mapfit" />
           </Reveal>
         </div>
       </section>

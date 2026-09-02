@@ -10,7 +10,11 @@ import JsonLd from "@/components/JsonLd";
 import Reveal from "@/components/motion/Reveal";
 import { StaggerGrid, StaggerItem } from "@/components/motion/StaggerGrid";
 import StageTimeline from "@/components/ui/StageTimeline";
-import { getFramework } from "@/lib/frameworks";
+import PillarGrid from "@/components/ui/PillarGrid";
+import StoryContrast from "@/components/ui/StoryContrast";
+import MapFitPanel from "@/components/ui/MapFitPanel";
+import FrameworkExtras from "@/components/ui/FrameworkExtras";
+import { getProductVisual } from "@/lib/frameworks";
 import { PRODUCTS, getProduct } from "@/lib/products";
 import { APP_REGISTER_URL } from "@/lib/site-content";
 import { serviceJsonLd } from "@/lib/structured-data";
@@ -38,13 +42,6 @@ export async function generateMetadata({
   };
 }
 
-const IMAGE_DIMS: Record<string, { hero: [number, number]; figure: [number, number] }> = {
-  "identity-mapping": { hero: [1699, 926], figure: [1744, 902] },
-  "university-intelligence-mapping": { hero: [1774, 887], figure: [1942, 809] },
-  "story-mapping": { hero: [1774, 887], figure: [1942, 809] },
-  "execution-mapping": { hero: [1774, 887], figure: [1536, 1024] },
-};
-
 export default async function ProductPage({
   params,
 }: {
@@ -55,8 +52,8 @@ export default async function ProductPage({
   if (!product) notFound();
 
   const otherProducts = PRODUCTS.filter((p) => p.slug !== product.slug);
-  const dims = IMAGE_DIMS[product.slug];
-  const framework = getFramework(product.slug);
+  const visual = getProductVisual(product.slug);
+  const framework = visual?.framework;
 
   return (
     <article>
@@ -85,18 +82,39 @@ export default async function ProductPage({
               <span className="font-sans text-[15px] font-semibold text-[#5A5A5A]">{product.price}</span>
             </div>
           </Reveal>
-          <Reveal delay={0.15}>
-            <Image
-              src={product.hero}
-              alt={product.heroAlt}
-              width={dims.hero[0]}
-              height={dims.hero[1]}
-              priority
-              className="w-full h-auto bg-white"
-            />
-          </Reveal>
+          {visual?.hero && (
+            <Reveal delay={0.15}>
+              <Image
+                src={visual.hero.src}
+                alt={visual.hero.alt}
+                width={visual.hero.width}
+                height={visual.hero.height}
+                priority
+                sizes="(max-width: 1080px) 100vw, 460px"
+                className="mx-auto h-auto w-full max-w-[460px]"
+              />
+            </Reveal>
+          )}
         </div>
       </section>
+
+      {visual?.pillars && (
+        <section aria-labelledby="pillars" className="px-6 pt-[72px]">
+          <div className="mx-auto max-w-[1280px]">
+            <Reveal>
+              {visual.pillars.heading && (
+                <h2
+                  id="pillars"
+                  className="m-0 mb-9 max-w-[28ch] font-display text-[clamp(26px,2.8vw,40px)] uppercase leading-[1.02]"
+                >
+                  {visual.pillars.heading}
+                </h2>
+              )}
+              <PillarGrid items={visual.pillars.items} minColumn={230} />
+            </Reveal>
+          </div>
+        </section>
+      )}
 
       <section className="px-6 py-[88px]">
         <div className="mx-auto grid max-w-[1280px] gap-14" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))" }}>
@@ -168,18 +186,16 @@ export default async function ProductPage({
                   {framework.intro}
                 </p>
                 <StageTimeline stages={framework.stages} />
+                <FrameworkExtras framework={framework} />
+              </div>
+            ) : product.slug === "story-mapping" ? (
+              <div className="max-w-[1000px]">
+                <StoryContrast />
               </div>
             ) : (
-              <figure className="m-0">
-                <Image
-                  src={product.figure}
-                  alt={product.figureAlt}
-                  width={dims.figure[0]}
-                  height={dims.figure[1]}
-                  className="w-full h-auto bg-white"
-                />
-                <figcaption className="mt-3.5 font-sans text-sm leading-[1.5] text-[#9A9A9A]">{product.figureAlt}</figcaption>
-              </figure>
+              <div className="max-w-[1000px]">
+                <MapFitPanel tone="dark" as="h3" />
+              </div>
             )}
           </Reveal>
         </div>

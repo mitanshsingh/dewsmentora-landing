@@ -14,10 +14,6 @@ export type Product = {
   fg: string;
   btnBg: string;
   btnFg: string;
-  hero: string;
-  heroAlt: string;
-  figure: string;
-  figureAlt: string;
   what: string[];
   who: string[];
   benefits: ProductBenefit[];
@@ -40,11 +36,6 @@ export const PRODUCTS: Product[] = [
     fg: "#0B0B0B",
     btnBg: "#0B0B0B",
     btnFg: "#fff",
-    hero: "/images/mapping-journey.png",
-    heroAlt: "The DEWSMENTORA Mapping Journey — different decisions require different kinds of clarity",
-    figure: "/images/identity-figure.png",
-    figureAlt:
-      "Each Map addresses a specific decision problem — an aspirant who knows their direction may not require Identity Mapping",
     what: [
       "Explores strengths, thinking and intelligence patterns",
       "Examines behaviour, decisions and motivation",
@@ -108,10 +99,6 @@ export const PRODUCTS: Product[] = [
     fg: "#0B0B0B",
     btnBg: "#fff",
     btnFg: "#0B0B0B",
-    hero: "/images/uim-hero.png",
-    heroAlt: "University Intelligence Mapping — right country, right university, right program, right career path, right future",
-    figure: "/images/uim-figure.png",
-    figureAlt: "How it works: from profile assessment to future outcomes across seven structured stages",
     what: [
       "Evaluates academic compatibility and career alignment",
       "Assesses admission feasibility against your profile",
@@ -173,10 +160,6 @@ export const PRODUCTS: Product[] = [
     fg: "#fff",
     btnBg: "#F2C230",
     btnFg: "#0B0B0B",
-    hero: "/images/story-hero.png",
-    heroAlt: "Your story, strategically connected, powerfully remembered — clear career direction, strong personal narrative, strategic positioning",
-    figure: "/images/story-figure.png",
-    figureAlt: "Why Story Mapping matters — most students focus on writing documents while universities focus on evaluating people",
     what: [
       "Connects academics, experiences, strengths, motivation and future intent",
       "Builds one narrative across CV, SOP, LORs and applications",
@@ -237,10 +220,6 @@ export const PRODUCTS: Product[] = [
     fg: "#0B0B0B",
     btnBg: "#0B0B0B",
     btnFg: "#fff",
-    hero: "/images/execution-hero.png",
-    heroAlt: "Execution excellence for high-stakes admissions — document verification, university applications, visa approval, timeline management",
-    figure: "/images/execution-figure.png",
-    figureAlt: "Your admission journey — a structured process from registration through pre-departure, professionally managed",
     what: [
       "Manages applications, documents, deadlines and submissions",
       "Verifies documentation before submission",
