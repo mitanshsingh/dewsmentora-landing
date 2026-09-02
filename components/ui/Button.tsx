@@ -9,6 +9,10 @@ type Variant = "primary" | "outline-dark" | "outline-light" | "dark" | "custom";
 const BASE =
   "inline-flex items-center gap-2.5 rounded-full font-sans text-[15px] font-bold leading-none transition-colors px-[30px] py-[18px]";
 
+// `custom` opts out of the shared shape/size so a caller can style the button
+// per breakpoint without fighting BASE for the same properties.
+const CUSTOM_BASE = "inline-flex items-center transition-colors";
+
 const VARIANTS: Record<Exclude<Variant, "custom">, string> = {
   primary: "bg-yellow text-ink hover:bg-yellow-hover",
   "outline-dark": "border-[1.5px] border-ink text-ink hover:bg-ink hover:text-white",
@@ -36,7 +40,11 @@ export default function Button({
   external?: boolean;
 }) {
   const sizing = small ? "px-6 py-3.5 text-sm" : "";
-  const cls = `${BASE} ${variant === "custom" ? "" : VARIANTS[variant]} ${sizing} ${className}`.trim();
+  const cls = (
+    variant === "custom"
+      ? `${CUSTOM_BASE} ${className}`
+      : `${BASE} ${VARIANTS[variant]} ${sizing} ${className}`
+  ).trim();
   const isExternal = external ?? href.startsWith("http");
   const tap = { scale: 0.97 };
   const hover = { scale: 1.03 };

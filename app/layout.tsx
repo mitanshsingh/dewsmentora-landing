@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Anton, Archivo, EB_Garamond } from "next/font/google";
+import { Anton, Archivo, EB_Garamond, Karla, Newsreader } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import JsonLd from "@/components/JsonLd";
@@ -24,6 +24,19 @@ const garamond = EB_Garamond({
   subsets: ["latin"],
   weight: ["400", "500"],
   style: ["normal", "italic"],
+});
+
+// Phone design system typefaces — used below the `nav` breakpoint.
+const newsreader = Newsreader({
+  variable: "--font-newsreader",
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+});
+
+const karla = Karla({
+  variable: "--font-karla",
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
 });
 
 export const metadata: Metadata = {
@@ -69,7 +82,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${anton.variable} ${archivo.variable} ${garamond.variable}`}
+      className={`${anton.variable} ${archivo.variable} ${garamond.variable} ${newsreader.variable} ${karla.variable}`}
     >
       <body className="flex min-h-screen flex-col">
         <JsonLd data={organizationJsonLd()} />

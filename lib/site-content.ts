@@ -47,10 +47,11 @@ export const BLOG_POSTS = [
   { t: "Second opinions: when to question a consultant shortlist", cat: "Decision making", read: "5 min read" },
 ];
 
-export const MOBILE_LINKS = [
-  { label: "Products", href: "/products" },
-  { label: "Study Abroad", href: "/study-abroad" },
+// Phone menu: the four Maps are listed individually above these, straight from
+// PRODUCTS, so the panel mirrors the phone design's full navigation.
+export const PHONE_NAV_LINKS = [
   { label: "How It Works", href: "/how-it-works" },
+  { label: "Study Abroad", href: "/study-abroad" },
   { label: "For Students", href: "/for-students" },
   { label: "Resources", href: "/resources" },
   { label: "About", href: "/about" },
