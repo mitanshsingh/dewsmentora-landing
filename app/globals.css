@@ -4,6 +4,8 @@
   --font-display: var(--font-anton);
   --font-sans: var(--font-archivo);
   --font-serif: var(--font-garamond);
+  --font-headline: var(--font-newsreader);
+  --font-text: var(--font-karla);
 
   --color-ink: #0b0b0b;
   --color-yellow: #f2c230;
@@ -18,38 +20,80 @@
   --color-muted-2: #4a4a4a;
   --color-error: #b3261e;
 
+  /* Phone design system — applies below the `nav` breakpoint */
+  --color-paper-warm: #f7f6f3;
+  --color-card-warm: #fffefc;
+  --color-ink-warm: #191811;
+  --color-ink-soft: #4c4a40;
+  --color-ink-muted: #54524a;
+  --color-ink-faint: #c0bdb2;
+  --color-gold: #c88410;
+  --color-gold-deep: #b8790b;
+  --color-gold-bright: #d79a24;
+  --color-night: #12110c;
+  --color-night-deep: #0b0b09;
+  --color-night-fg: #f2f0ea;
+  --color-night-body: #cfccc2;
+  --color-night-muted: #a19e93;
+  --color-night-faint: #7c7a70;
+  --color-warm-line-soft: rgba(25, 24, 17, 0.08);
+  --color-warm-line: rgba(25, 24, 17, 0.1);
+  --color-warm-line-mid: rgba(25, 24, 17, 0.12);
+  --color-warm-line-strong: rgba(25, 24, 17, 0.22);
+  --color-night-line-soft: rgba(255, 255, 255, 0.09);
+  --color-night-line: rgba(255, 255, 255, 0.12);
+  --color-night-line-strong: rgba(255, 255, 255, 0.22);
+
   --breakpoint-nav: 1080px;
 }
 
-html {
-  scroll-behavior: smooth;
-}
+/* These element defaults must sit in `base` so that utilities — which Tailwind
+   emits in the later `utilities` layer — can still override them. Unlayered,
+   `img { display: block }` would beat `.hidden` on every responsive image. */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
 
-body {
-  margin: 0;
-  background: var(--color-paper);
-  color: var(--color-ink);
-  font-family: var(--font-sans), system-ui, sans-serif;
-  -webkit-font-smoothing: antialiased;
-}
+  body {
+    margin: 0;
+    background: var(--color-paper-warm);
+    color: var(--color-ink-warm);
+    font-family: var(--font-sans), system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
 
-* {
-  box-sizing: border-box;
-}
+  @media (min-width: 1080px) {
+    body {
+      background: var(--color-paper);
+      color: var(--color-ink);
+    }
+  }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
+  * {
+    box-sizing: border-box;
+  }
 
-img {
-  max-width: 100%;
-  display: block;
-}
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
 
-:focus-visible {
-  outline: 3px solid var(--color-yellow);
-  outline-offset: 3px;
+  img {
+    max-width: 100%;
+    display: block;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-gold);
+    outline-offset: 3px;
+  }
+
+  @media (min-width: 1080px) {
+    :focus-visible {
+      outline-color: var(--color-yellow);
+    }
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
