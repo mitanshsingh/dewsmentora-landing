@@ -5,6 +5,7 @@
   --font-sans: var(--font-archivo);
   --font-serif: var(--font-garamond);
   --font-headline: var(--font-newsreader);
+  --font-hand: var(--font-caveat);
   --font-text: var(--font-karla);
 
   --color-ink: #0b0b0b;

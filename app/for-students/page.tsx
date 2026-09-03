@@ -4,8 +4,7 @@ import Button from "@/components/ui/Button";
 import { ProductSummaryCard } from "@/components/ui/ProductLinkCard";
 import Reveal from "@/components/motion/Reveal";
 import { StaggerGrid, StaggerItem } from "@/components/motion/StaggerGrid";
-import MapFitPanel from "@/components/ui/MapFitPanel";
-import ArtFigure from "@/components/ui/ArtFigure";
+import MapFitFigure from "@/components/ui/MapFitFigure";
 import { PRODUCTS } from "@/lib/products";
 import { APP_REGISTER_URL } from "@/lib/site-content";
 
@@ -40,7 +39,7 @@ export default function ForStudentsPage() {
   return (
     <>
       <section className="px-6 pb-14 pt-16">
-        <div className="mx-auto grid max-w-[1280px] items-center gap-12" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))" }}>
+        <div className="mx-auto max-w-[1280px]">
           <Reveal>
             <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "For Students" }]} />
             <h1 className="m-0 mb-[22px] font-display text-[clamp(38px,5.2vw,76px)] uppercase leading-[0.92]">For students</h1>
@@ -53,25 +52,13 @@ export default function ForStudentsPage() {
               Get Started
             </Button>
           </Reveal>
-          <Reveal delay={0.15}>
-            <ArtFigure
-              src="/images/identity-figure.webp"
-              alt="A student thinking through her options at a desk"
-              width={557}
-              height={560}
-              priority
-              surface="bg-paper-warm nav:bg-paper"
-              sizes="(max-width: 1080px) 92vw, 540px"
-              className="mx-auto w-full max-w-[540px]"
-            />
-          </Reveal>
         </div>
       </section>
 
-      <section aria-labelledby="mapfit" className="px-6 pb-[88px]">
-        <div className="mx-auto max-w-[1000px]">
+      <section aria-labelledby="mapfit" className="px-0 pb-[88px] nav:px-6">
+        <div className="mx-auto max-w-[1280px]">
           <Reveal>
-            <MapFitPanel headingId="mapfit" />
+            <MapFitFigure headingId="mapfit" />
           </Reveal>
         </div>
       </section>

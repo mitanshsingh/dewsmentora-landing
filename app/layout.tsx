@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Anton, Archivo, EB_Garamond, Karla, Newsreader } from "next/font/google";
+import { Anton, Archivo, Caveat, EB_Garamond, Karla, Newsreader } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import JsonLd from "@/components/JsonLd";
@@ -37,6 +37,14 @@ const karla = Karla({
   variable: "--font-karla",
   subsets: ["latin"],
   weight: ["400", "500", "600"],
+});
+
+// The margin notes in the Identity Mapping figure, which were handwriting
+// baked into the PNG.
+const caveat = Caveat({
+  variable: "--font-caveat",
+  subsets: ["latin"],
+  weight: ["400", "600"],
 });
 
 export const metadata: Metadata = {
@@ -82,7 +90,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${anton.variable} ${archivo.variable} ${garamond.variable} ${newsreader.variable} ${karla.variable}`}
+      className={`${anton.variable} ${archivo.variable} ${garamond.variable} ${newsreader.variable} ${karla.variable} ${caveat.variable}`}
     >
       <body className="flex min-h-screen flex-col">
         <JsonLd data={organizationJsonLd()} />
