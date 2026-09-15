@@ -67,8 +67,8 @@ export default function StudyAbroadHubPage() {
               can compare them on the same terms before you commit application fees and months of effort.
             </p>
             <div className="flex flex-wrap gap-3.5">
-              <Button href={APP_REGISTER_URL} variant="primary">
-                Get Started
+              <Button href={APP_REGISTER_URL} variant="primary" disabled>
+                Coming Soon
               </Button>
               <Button href="/products/university-intelligence-mapping" variant="outline-dark">
                 Explore University Intelligence Mapping

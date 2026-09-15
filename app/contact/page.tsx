@@ -2,12 +2,10 @@ import type { Metadata } from "next";
 import Breadcrumb from "@/components/ui/Breadcrumb";
 import ContactForm from "@/components/ContactForm";
 import Reveal from "@/components/motion/Reveal";
-import { APP_LOGIN_URL } from "@/lib/site-content";
 
 export const metadata: Metadata = {
   title: "Contact",
-  description:
-    "Send a message and we will reply by email. For anything inside your account, sign in to the application.",
+  description: "Send a message and we will reply by email.",
   alternates: { canonical: "/contact" },
   openGraph: {
     title: "Contact DEWS Mentora",
@@ -26,8 +24,7 @@ export default function ContactPage() {
               Have a question? We&apos;re here to help.
             </h1>
             <p className="m-0 max-w-[56ch] font-serif text-[18px] leading-[1.55]">
-              Send a message and we will reply by email. For anything inside your account, sign in to the
-              application.
+              Send a message and we will reply by email.
             </p>
           </Reveal>
         </div>
@@ -49,16 +46,6 @@ export default function ContactPage() {
                 General enquiries
               </h2>
               <p className="m-0 font-serif text-[18px] leading-[1.5]">hello@dewsmentora.com</p>
-            </div>
-            <div>
-              <h2 className="m-0 mb-2.5 font-sans text-[13px] font-semibold uppercase tracking-[0.14em] text-ochre">
-                Existing members
-              </h2>
-              <p className="m-0 font-serif text-[18px] leading-[1.5]">
-                <a href={APP_LOGIN_URL} className="border-b-[1.5px] border-yellow">
-                  Sign in to your dashboard
-                </a>
-              </p>
             </div>
           </Reveal>
         </div>

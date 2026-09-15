@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { AnimatePresence, motion } from "motion/react";
-import { APP_REGISTER_URL } from "@/lib/site-content";
 
 // Matches the phone design: the bar slides in once the hero CTAs have scrolled
 // away. It is hidden at `nav` and above, where the header keeps a visible CTA.
@@ -30,12 +29,13 @@ export default function StickyCta() {
           className="fixed inset-x-0 bottom-0 z-50 border-t border-warm-line bg-paper-warm/95 px-3.5 pb-3.5 pt-2.5 backdrop-blur-[10px] nav:hidden"
         >
           <div className="mx-auto flex max-w-[560px] gap-2">
-            <a
-              href={APP_REGISTER_URL}
-              className="flex h-[50px] flex-1 items-center justify-center bg-gold font-sans text-[12.5px] font-semibold uppercase tracking-[0.12em] text-night"
+            <span
+              className="flex h-[50px] flex-1 cursor-not-allowed items-center justify-center bg-gold font-sans text-[12.5px] font-semibold uppercase tracking-[0.12em] text-night opacity-50 grayscale"
+              aria-disabled="true"
+              role="button"
             >
-              Get started
-            </a>
+              Coming Soon
+            </span>
             <Link
               href="/products"
               className="flex h-[50px] flex-none items-center justify-center border border-warm-line-strong px-[18px] font-sans text-[12.5px] font-semibold uppercase tracking-[0.12em] text-ink-warm"

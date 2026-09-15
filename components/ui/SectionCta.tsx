@@ -21,8 +21,8 @@ export default function SectionCta({
         {heading}
       </h2>
       <div className="flex flex-wrap gap-3.5">
-        <Button href={APP_REGISTER_URL} variant={tone === "yellow" ? "dark" : "primary"}>
-          Get Started
+        <Button href={APP_REGISTER_URL} variant={tone === "yellow" ? "dark" : "primary"} disabled>
+          Coming Soon
         </Button>
         {secondary && (
           <Button href={secondary.href} variant={tone === "yellow" ? "outline-dark" : "outline-light"}>

@@ -68,9 +68,10 @@ export default function HomePage() {
               <Button
                 href={APP_REGISTER_URL}
                 variant="custom"
-                className="h-[54px] w-full justify-center gap-2.5 bg-ink-warm font-sans text-[13px] font-semibold uppercase tracking-[0.12em] text-paper-warm nav:h-auto nav:w-auto nav:rounded-full nav:bg-yellow nav:px-[30px] nav:py-[18px] nav:text-[15px] nav:font-bold nav:normal-case nav:leading-none nav:tracking-normal nav:text-ink nav:hover:bg-yellow-hover"
+                disabled
+                className="h-[54px] w-full justify-center gap-2.5 bg-ink-warm font-sans text-[13px] font-semibold uppercase tracking-[0.12em] text-paper-warm nav:h-auto nav:w-auto nav:rounded-full nav:bg-yellow nav:px-[30px] nav:py-[18px] nav:text-[15px] nav:font-bold nav:normal-case nav:leading-none nav:tracking-normal nav:text-ink"
               >
-                Get Started
+                Coming Soon
               </Button>
               <Button
                 href="/products"

@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { AnimatePresence, motion } from "motion/react";
 import { PRODUCTS, productHref } from "@/lib/products";
-import { PHONE_NAV_LINKS, APP_LOGIN_URL, APP_REGISTER_URL } from "@/lib/site-content";
+import { PHONE_NAV_LINKS } from "@/lib/site-content";
 
 const NAV_LINK = "font-sans text-sm font-semibold uppercase tracking-[0.08em] whitespace-nowrap";
 
@@ -90,15 +90,13 @@ export default function Header() {
           <Link href="/about" className={NAV_LINK}>
             About
           </Link>
-          <a href={APP_LOGIN_URL} className={`${NAV_LINK} text-muted`}>
-            Login
-          </a>
-          <a
-            href={APP_REGISTER_URL}
-            className="inline-flex items-center gap-2.5 whitespace-nowrap rounded-full bg-yellow px-[26px] py-[15px] font-sans text-sm font-bold text-ink hover:bg-yellow-hover"
+          <span
+            className="inline-flex cursor-not-allowed items-center gap-2.5 whitespace-nowrap rounded-full bg-yellow px-[26px] py-[15px] font-sans text-sm font-bold text-ink opacity-50 grayscale"
+            aria-disabled="true"
+            role="button"
           >
-            Get Started <span aria-hidden="true">→</span>
-          </a>
+            Coming Soon
+          </span>
         </nav>
 
         <button
@@ -156,18 +154,13 @@ export default function Header() {
                   </span>
                 </Link>
               ))}
-              <a
-                href={APP_REGISTER_URL}
-                className="mt-[26px] flex h-[52px] items-center justify-center bg-gold font-sans text-[13px] font-semibold uppercase tracking-[0.12em] text-night"
+              <span
+                className="mt-[26px] flex h-[52px] cursor-not-allowed items-center justify-center bg-gold font-sans text-[13px] font-semibold uppercase tracking-[0.12em] text-night opacity-50 grayscale"
+                aria-disabled="true"
+                role="button"
               >
-                Get started
-              </a>
-              <a
-                href={APP_LOGIN_URL}
-                className="mt-2.5 flex h-[52px] items-center justify-center border border-night-line-strong font-sans text-[13px] font-semibold uppercase tracking-[0.12em] text-[#F4F2EC]"
-              >
-                Log in
-              </a>
+                Coming Soon
+              </span>
             </div>
           </motion.nav>
         )}

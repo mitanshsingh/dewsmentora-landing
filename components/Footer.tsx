@@ -2,7 +2,6 @@ import Image from "next/image";
 import FooterGroup from "@/components/ui/FooterGroup";
 import { PRODUCTS, productHref } from "@/lib/products";
 import { COUNTRIES } from "@/lib/study-destinations";
-import { APP_LOGIN_URL, APP_REGISTER_URL } from "@/lib/site-content";
 
 const FOOTER_COLS = [
   {
@@ -34,7 +33,6 @@ const FOOTER_COLS = [
     links: [
       { label: "FAQs", href: "/resources/faqs" },
       { label: "Contact", href: "/contact" },
-      { label: "Login", href: APP_LOGIN_URL },
     ],
   },
   {
@@ -72,12 +70,13 @@ export default function Footer() {
             Structured evaluation for high-stakes education and career decisions. Four Maps, one question at a
             time.
           </p>
-          <a
-            href={APP_REGISTER_URL}
-            className="mb-[26px] flex h-[52px] items-center justify-center gap-2.5 bg-gold font-sans text-[13px] font-semibold uppercase tracking-[0.12em] text-night nav:mb-0 nav:inline-flex nav:h-auto nav:rounded-full nav:bg-yellow nav:px-[26px] nav:py-[15px] nav:text-sm nav:font-bold nav:normal-case nav:tracking-normal nav:text-ink nav:hover:bg-yellow-hover"
+          <span
+            className="mb-[26px] flex h-[52px] cursor-not-allowed items-center justify-center gap-2.5 bg-gold font-sans text-[13px] font-semibold uppercase tracking-[0.12em] text-night opacity-50 grayscale nav:mb-0 nav:inline-flex nav:h-auto nav:rounded-full nav:bg-yellow nav:px-[26px] nav:py-[15px] nav:text-sm nav:font-bold nav:normal-case nav:tracking-normal nav:text-ink"
+            aria-disabled="true"
+            role="button"
           >
-            Get Started <span aria-hidden="true">→</span>
-          </a>
+            Coming Soon
+          </span>
         </div>
         {FOOTER_COLS.map((col) => (
           <FooterGroup key={col.id} id={col.id} title={col.title} links={col.links} />
@@ -88,10 +87,7 @@ export default function Footer() {
           © 2026 DEWS Mentora. All rights reserved.
         </p>
         <p className="m-0 mt-1.5 font-text text-[12.5px] text-night-faint nav:mt-0 nav:font-sans nav:text-sm nav:text-[#8A8A8A]">
-          Application:{" "}
-          <a href={APP_LOGIN_URL} className="text-gold-bright nav:text-[#D9D9D9]">
-            app.dewsmentora.com
-          </a>
+          Application: coming soon
         </p>
       </div>
     </footer>

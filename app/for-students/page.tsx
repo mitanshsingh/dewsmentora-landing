@@ -48,8 +48,8 @@ export default function ForStudentsPage() {
               incomplete information and conflicting advice. DEWSMENTORA gives you a structured way to evaluate
               those decisions before you commit.
             </p>
-            <Button href={APP_REGISTER_URL} variant="primary">
-              Get Started
+            <Button href={APP_REGISTER_URL} variant="primary" disabled>
+              Coming Soon
             </Button>
           </Reveal>
         </div>

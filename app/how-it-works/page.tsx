@@ -82,8 +82,8 @@ export default function HowItWorksPage() {
               Start with the question you need answered
             </h2>
             <div className="flex flex-wrap gap-3.5">
-              <Button href={APP_REGISTER_URL} variant="primary">
-                Get Started
+              <Button href={APP_REGISTER_URL} variant="primary" disabled>
+                Coming Soon
               </Button>
               <Button href="/products" variant="outline-light">
                 Explore Products

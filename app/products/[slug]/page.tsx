@@ -76,8 +76,8 @@ export default async function ProductPage({
               {product.tagline}
             </p>
             <div className="flex flex-wrap items-center gap-3.5">
-              <Button href={APP_REGISTER_URL} variant="primary">
-                Get Started
+              <Button href={APP_REGISTER_URL} variant="primary" disabled>
+                Coming Soon
               </Button>
               <span className="font-sans text-[15px] font-semibold text-[#5A5A5A]">{product.price}</span>
             </div>

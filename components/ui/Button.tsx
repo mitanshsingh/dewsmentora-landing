@@ -30,6 +30,7 @@ export default function Button({
   className = "",
   small = false,
   external,
+  disabled = false,
 }: {
   href: string;
   children: ReactNode;
@@ -38,6 +39,7 @@ export default function Button({
   className?: string;
   small?: boolean;
   external?: boolean;
+  disabled?: boolean;
 }) {
   const sizing = small ? "px-6 py-3.5 text-sm" : "";
   const cls = (
@@ -45,6 +47,20 @@ export default function Button({
       ? `${CUSTOM_BASE} ${className}`
       : `${BASE} ${VARIANTS[variant]} ${sizing} ${className}`
   ).trim();
+
+  // Not yet live: render inert text in place of a link so nothing is clickable.
+  if (disabled) {
+    return (
+      <span
+        className={`${cls} pointer-events-none cursor-not-allowed opacity-50 grayscale`}
+        aria-disabled="true"
+        role="button"
+      >
+        {children}
+      </span>
+    );
+  }
+
   const isExternal = external ?? href.startsWith("http");
   const tap = { scale: 0.97 };
   const hover = { scale: 1.03 };
