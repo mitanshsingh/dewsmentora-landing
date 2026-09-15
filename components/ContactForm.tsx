@@ -10,16 +10,19 @@ const EMAIL_RE = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
 const inputClass =
   "border-[1.5px] border-[#C9C9C9] bg-white px-4 py-[15px] font-sans text-base leading-[1.2] focus:border-ink focus:outline-none";
 
+type Status = "idle" | "submitting" | "sent" | "error";
+
 export default function ContactForm() {
   const [form, setForm] = useState<FormState>({ name: "", email: "", subject: "", message: "" });
   const [errors, setErrors] = useState<Errors>({});
-  const [sent, setSent] = useState(false);
+  const [status, setStatus] = useState<Status>("idle");
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   function setField(key: keyof FormState, value: string) {
     setForm((s) => ({ ...s, [key]: value }));
   }
 
-  function onSubmit(e: FormEvent<HTMLFormElement>) {
+  async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const nextErrors: Errors = {};
     if (!form.name.trim()) nextErrors.name = "Please enter your name.";
@@ -27,7 +30,25 @@ export default function ContactForm() {
     if (!form.subject.trim()) nextErrors.subject = "Please add a subject.";
     if (form.message.trim().length < 10) nextErrors.message = "Please tell us a little more (10 characters minimum).";
     setErrors(nextErrors);
-    setSent(Object.keys(nextErrors).length === 0);
+    if (Object.keys(nextErrors).length > 0) return;
+
+    setStatus("submitting");
+    setSubmitError(null);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      const data = await res.json().catch(() => null);
+      if (!res.ok || !data?.ok) {
+        throw new Error(data?.error || "Something went wrong. Please try again.");
+      }
+      setStatus("sent");
+    } catch (err) {
+      setStatus("error");
+      setSubmitError(err instanceof Error ? err.message : "Something went wrong. Please try again.");
+    }
   }
 
   return (
@@ -104,13 +125,19 @@ export default function ContactForm() {
       </div>
       <button
         type="submit"
-        className="justify-self-start rounded-full bg-yellow px-8 py-[18px] font-sans text-[15px] font-bold hover:bg-yellow-hover"
+        disabled={status === "submitting"}
+        className="justify-self-start rounded-full bg-yellow px-8 py-[18px] font-sans text-[15px] font-bold hover:bg-yellow-hover disabled:cursor-not-allowed disabled:opacity-60"
       >
-        Send Message
+        {status === "submitting" ? "Sending…" : "Send Message"}
       </button>
-      {sent && (
+      {status === "sent" && (
         <p role="status" className="m-0 border-l-[3px] border-yellow bg-cream p-[16px_18px] font-serif text-[17px] leading-[1.5]">
           Thank you — your message has been recorded. We will reply to the email address you provided.
+        </p>
+      )}
+      {status === "error" && (
+        <p role="alert" className="m-0 border-l-[3px] border-error bg-cream p-[16px_18px] font-serif text-[17px] leading-[1.5]">
+          {submitError}
         </p>
       )}
     </form>
