@@ -2,7 +2,10 @@ import type { Metadata } from "next";
 import { Anton, Archivo, Caveat, EB_Garamond, Karla, Newsreader } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { GoogleTagManager } from "@next/third-parties/google";
 import JsonLd from "@/components/JsonLd";
+import MetaPixel from "@/components/MetaPixel";
+import MicrosoftClarity from "@/components/MicrosoftClarity";
 import { organizationJsonLd, websiteJsonLd } from "@/lib/structured-data";
 import { SITE_URL, SITE_NAME, ORG_DESCRIPTION } from "@/lib/seo";
 import "./globals.css";
@@ -92,7 +95,18 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${anton.variable} ${archivo.variable} ${garamond.variable} ${newsreader.variable} ${karla.variable} ${caveat.variable}`}
     >
+      <GoogleTagManager gtmId="GTM-NJKPKLMN" />
       <body className="flex min-h-screen flex-col">
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-NJKPKLMN"
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+          />
+        </noscript>
+        <MetaPixel />
+        <MicrosoftClarity />
         <JsonLd data={organizationJsonLd()} />
         <JsonLd data={websiteJsonLd()} />
         <a
