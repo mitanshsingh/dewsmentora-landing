@@ -14,6 +14,8 @@ type Status = "idle" | "submitting" | "sent" | "error";
 
 export default function ContactForm() {
   const [form, setForm] = useState<FormState>({ name: "", email: "", subject: "", message: "" });
+  const [company, setCompany] = useState("");
+  const [startedAt] = useState(() => Date.now());
   const [errors, setErrors] = useState<Errors>({});
   const [status, setStatus] = useState<Status>("idle");
   const [submitError, setSubmitError] = useState<string | null>(null);
@@ -38,7 +40,7 @@ export default function ContactForm() {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+        body: JSON.stringify({ ...form, company, startedAt }),
       });
       const data = await res.json().catch(() => null);
       if (!res.ok || !data?.ok) {
@@ -53,6 +55,21 @@ export default function ContactForm() {
 
   return (
     <form onSubmit={onSubmit} noValidate className="grid gap-5">
+      <div
+        style={{ position: "absolute", left: "-9999px", top: "-9999px" }}
+        aria-hidden="true"
+      >
+        <label htmlFor="cf-company">Company</label>
+        <input
+          id="cf-company"
+          name="company"
+          type="text"
+          tabIndex={-1}
+          autoComplete="off"
+          value={company}
+          onChange={(e) => setCompany(e.target.value)}
+        />
+      </div>
       <div className="grid gap-2">
         <label htmlFor="cf-name" className="font-sans text-[13px] font-semibold uppercase tracking-[0.1em]">
           Name
@@ -61,6 +78,7 @@ export default function ContactForm() {
           id="cf-name"
           type="text"
           autoComplete="name"
+          maxLength={100}
           value={form.name}
           onChange={(e) => setField("name", e.target.value)}
           className={inputClass}
@@ -79,6 +97,7 @@ export default function ContactForm() {
           id="cf-email"
           type="email"
           autoComplete="email"
+          maxLength={254}
           value={form.email}
           onChange={(e) => setField("email", e.target.value)}
           className={inputClass}
@@ -96,6 +115,7 @@ export default function ContactForm() {
         <input
           id="cf-subject"
           type="text"
+          maxLength={200}
           value={form.subject}
           onChange={(e) => setField("subject", e.target.value)}
           className={inputClass}
@@ -113,6 +133,7 @@ export default function ContactForm() {
         <textarea
           id="cf-message"
           rows={6}
+          maxLength={5000}
           value={form.message}
           onChange={(e) => setField("message", e.target.value)}
           className={`${inputClass} resize-y leading-[1.45]`}
