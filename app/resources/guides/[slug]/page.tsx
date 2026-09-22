@@ -10,6 +10,11 @@ import Reveal from "@/components/motion/Reveal";
 import { GUIDES, getGuide } from "@/lib/guides";
 import { articleJsonLd, howToJsonLd } from "@/lib/structured-data";
 
+// Only the slugs from generateStaticParams exist. Without this, every unknown
+// slug (bot probes, typos) is rendered on demand and its 404 is written to the
+// Vercel ISR cache, which burned through the plan's ISR write quota.
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   return GUIDES.map((g) => ({ slug: g.slug }));
 }
