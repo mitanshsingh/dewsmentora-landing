@@ -75,115 +75,19 @@ export type HeroVisual = {
   dark?: boolean;
 };
 
+export type ImageAsset = { src: string; width: number; height: number };
+
 export type ProductVisual = {
   hero?: HeroVisual;
   pillars?: PillarSet;
-  framework?: Framework;
+  /** Full-width editorial banners from the content doc, shown under the hero. */
+  banners?: (ImageAsset & { alt: string })[];
+  /** "How your report is created" infographic: landscape for desktop, portrait for phones. */
+  process?: { wide: ImageAsset; tall: ImageAsset; alt: string };
 };
 
 /* ------------------------------------------------------------------ */
-/* University Intelligence Mapping                                     */
-/* ------------------------------------------------------------------ */
-
-const UIM_FRAMEWORK: Framework = {
-  heading: "From profile assessment to future outcomes",
-  intro:
-    "A structured intelligence framework designed to identify the most suitable global education pathways.",
-  stages: [
-    {
-      n: "01",
-      title: "Profile intelligence assessment",
-      icon: "profile",
-      items: [
-        "Assess strengths",
-        "Understand goals",
-        "Career goal alignment",
-        "Personal preferences",
-        "Academic background",
-        "Long-term vision",
-      ],
-    },
-    {
-      n: "02",
-      title: "Career & industry mapping",
-      icon: "career",
-      items: [
-        "Global industry trends",
-        "In-demand careers",
-        "Salary benchmarks",
-        "Future workforce demand insights",
-        "Career path exploration",
-      ],
-    },
-    {
-      n: "03",
-      title: "Country intelligence analysis",
-      icon: "country",
-      items: [
-        "Best countries to study",
-        "Education quality",
-        "Living cost analysis",
-        "Post-study opportunities",
-        "Safety & environment",
-        "Long-term growth and stability",
-      ],
-    },
-    {
-      n: "04",
-      title: "University & program mapping",
-      icon: "university",
-      items: [
-        "Best university matches",
-        "Program suitability",
-        "Ranking & reputation",
-        "Specialisations & electives",
-        "Admission insights",
-        "Program compatibility",
-      ],
-    },
-    {
-      n: "05",
-      title: "Admission readiness assessment",
-      icon: "readiness",
-      items: [
-        "Academic evaluation",
-        "Test score benchmark",
-        "Language readiness",
-        "Application strength check",
-        "Gap analysis & improvement",
-      ],
-    },
-    {
-      n: "06",
-      title: "Roadmap & live evaluation",
-      icon: "roadmap",
-      items: [
-        "Personalised action plan",
-        "Timeline & milestones",
-        "Financial planning & aid",
-        "Career outcome mapping",
-        "Risk assessment & backup planning",
-        "Continuous evaluation",
-      ],
-    },
-    {
-      n: "07",
-      title: "Strategic recommendation report",
-      icon: "report",
-      items: [
-        "Comprehensive report",
-        "Best-fit recommendations",
-        "Alternative pathways",
-        "Scholarship opportunities",
-        "Career outlook summary",
-        "Future readiness plan",
-      ],
-    },
-  ],
-};
-
-/* ------------------------------------------------------------------ */
-/* Execution Mapping — the managed admission journey                   */
+/* The managed admission journey (How It Works page)                   */
 /* ------------------------------------------------------------------ */
 
 export const ADMISSION_JOURNEY: Framework = {
@@ -309,197 +213,243 @@ export const ADMISSION_JOURNEY: Framework = {
 /* Per-product visuals                                                 */
 /* ------------------------------------------------------------------ */
 
+const IMG = "/images/products";
+
 export const PRODUCT_VISUALS: Record<string, ProductVisual> = {
   "identity-mapping": {
     hero: {
-      src: "/images/journey.webp",
-      width: 720,
-      height: 900,
-      alt: "A student considering education and career directions",
-      dark: true,
+      src: `${IMG}/identity-hero.webp`,
+      width: 1035,
+      height: 680,
+      alt: "Sketch of a student writing in a notebook, beside the quote “Clarity about yourself is the first responsible career decision.”",
     },
+    banners: [
+      {
+        src: `${IMG}/identity-banner-ability.webp`,
+        width: 1920,
+        height: 815,
+        alt: "Good at something doesn’t automatically mean built for it. Good at maths is not automatically engineering, good at biology is not automatically medicine, creative is not automatically design, good at communication is not automatically management. Ability is one signal; identity is the bigger picture — marks, interests, aptitude, behaviour, what parents observe and what the aspirant experiences each tell us something. Identity Mapping™ brings these signals together before direction is chosen.",
+      },
+      {
+        src: `${IMG}/identity-banner-cost.webp`,
+        width: 940,
+        height: 398,
+        alt: "The cost of a wrong direction isn’t only money: it is time, effort, motivation, opportunity and confidence. Identity Mapping™ cannot eliminate uncertainty, predict the future or make the decision for you — but before committing years to a direction, understanding the person behind the decision can matter.",
+      },
+    ],
     pillars: {
-      heading: "What Identity Mapping clarifies",
+      heading: "What Identity Mapping™ changes",
       items: [
         {
-          title: "Right direction",
-          body: "Understand the person making the decision before choosing a path.",
+          title: "Clearer self-understanding",
+          body: "Understand what genuinely drives you—your strengths, interests, motivations and natural patterns.",
+          icon: "eye",
+        },
+        {
+          title: "Stronger sense of direction",
+          body: "Turn scattered interests and possibilities into a clearer path forward.",
           icon: "compass",
         },
         {
-          title: "Clarity over confusion",
-          body: "Separate genuine fit from inherited expectation and conflicting advice.",
-          icon: "idea",
-        },
-        {
-          title: "Stronger decisions",
-          body: "Course, university, country and career choices tested against who you are.",
+          title: "Better-fit choices",
+          body: "Identify academic and career options that align with who you are—not just what seems popular or expected.",
           icon: "target",
         },
+        {
+          title: "Confident decision-making",
+          body: "Make important choices with greater clarity and less second-guessing.",
+          icon: "check",
+        },
+        {
+          title: "Distinct personal identity",
+          body: "Recognise what makes you different and where your strongest potential lies.",
+          icon: "profile",
+        },
+        {
+          title: "More purposeful future",
+          body: "Move forward with choices built around your abilities, aspirations and the person you want to become.",
+          icon: "idea",
+        },
       ],
+    },
+    process: {
+      wide: { src: `${IMG}/identity-process-wide.webp`, width: 1379, height: 920 },
+      tall: { src: `${IMG}/identity-process-tall.webp`, width: 1024, height: 1536 },
+      alt: "How your Identity Mapping report is created, in six stages: candidate evidence architecture, multi-lens expert review, independent signal discovery, evidence triangulation, contradiction intelligence and hidden potential discovery, leading to the final Identity Mapping report.",
     },
   },
 
   "university-intelligence-mapping": {
     hero: {
-      src: "/images/uim-hero.webp",
-      width: 660,
-      height: 800,
-      alt: "A student holding a laptop, considering study destinations",
+      src: `${IMG}/uim-hero.webp`,
+      width: 1100,
+      height: 734,
+      alt: "Sketch of a student researching universities at a desk, beside the quote “Find the right universities, not just any options.”",
     },
+    banners: [
+      {
+        src: `${IMG}/uim-banner-decision.webp`,
+        width: 1414,
+        height: 598,
+        alt: "From a complex world to a clear decision: your profile, universities, admissions data, courses and global opportunities pass through research, analysis, evaluation and comparison to become your University Intelligence Report.",
+      },
+      {
+        src: `${IMG}/uim-banner-intelligence.webp`,
+        width: 1380,
+        height: 585,
+        alt: "Not just universities. Complete intelligence for the right decision: global opportunities, program fit and trends, a personalised university shortlist, admission strategy, and career and ROI insights. University Intelligence Mapping converts complex global information into a clear, personalised roadmap.",
+      },
+    ],
     pillars: {
-      heading: "Make smarter study abroad decisions",
+      heading: "What University Intelligence Mapping™ changes",
       items: [
         {
-          title: "Right country",
-          body: "Identify the best countries aligned with your goals and future opportunities.",
-          icon: "country",
-        },
-        {
-          title: "Right university",
-          body: "Find universities that fit your profile, ambition and career aspirations.",
+          title: "Smarter university choices",
+          body: "Move beyond rankings to identify universities that genuinely fit your profile, goals and potential.",
           icon: "university",
         },
         {
-          title: "Right program",
-          body: "Choose programs that match your strengths, interests and career direction.",
+          title: "Stronger program fit",
+          body: "Match your academic interests and career direction with the right programs, curriculum and opportunities.",
           icon: "book",
         },
         {
-          title: "Right career path",
-          body: "Map pathways to industries and roles that align with your future goals.",
+          title: "Balanced application strategy",
+          body: "Build the right mix of ambitious, competitive and realistic university choices.",
+          icon: "layers",
+        },
+        {
+          title: "Better opportunity alignment",
+          body: "Evaluate universities through the opportunities that matter—research, internships, industry access, location and career pathways.",
           icon: "career",
         },
         {
-          title: "Right future",
-          body: "Build a future with clarity, confidence and the right opportunities.",
-          icon: "profile",
+          title: "More informed decisions",
+          body: "Compare universities using meaningful factors instead of reputation, rankings or assumptions alone.",
+          icon: "search",
+        },
+        {
+          title: "Stronger admission strategy",
+          body: "Focus your applications where profile fit, university expectations and future goals create the strongest case for admission.",
+          icon: "target",
         },
       ],
     },
-    framework: UIM_FRAMEWORK,
+    process: {
+      wide: { src: `${IMG}/uim-process-wide.webp`, width: 1379, height: 920 },
+      tall: { src: `${IMG}/uim-process-tall.webp`, width: 1024, height: 1536 },
+      alt: "How your University Intelligence Mapping report is created, in six stages: candidate-to-university translation, global opportunity discovery, program-level investigation, candidate × program fit analysis, multi-expert intelligence review and admission reality mapping, leading to a personalised shortlist, program insights, admission strategy and final recommendation.",
+    },
   },
 
   "story-mapping": {
     hero: {
-      src: "/images/story-hero.webp",
-      width: 914,
-      height: 665,
-      alt: "A student on a university campus",
+      src: `${IMG}/story-hero.webp`,
+      width: 1100,
+      height: 734,
+      alt: "Sketch of a student writing at a desk, beside the quote “A clear and compelling Story Mapping turns your experiences into opportunities.”",
     },
+    banners: [
+      {
+        src: `${IMG}/story-banner.webp`,
+        width: 1427,
+        height: 604,
+        alt: "More than a list of achievements — a story that works for you. Your journey connected, not just documents; your strengths positioned, not just achievements; your story aligned, not just separate essays; your future amplified, not just an application. Story Mapping brings your academic journey, experiences and aspirations together into one compelling story before your applications are sent.",
+      },
+    ],
     pillars: {
-      heading: "What a mapped story changes",
+      heading: "What Story Mapping™ changes",
       items: [
         {
-          title: "Clear career direction",
-          body: "Define your path with confidence.",
-          icon: "target",
-        },
-        {
-          title: "Strong personal narrative",
-          body: "Highlight your unique strengths and potential.",
-          icon: "profile",
-        },
-        {
-          title: "Strategic positioning",
-          body: "Stand out to admissions committees.",
+          title: "Clear narrative direction",
+          body: "Turn academics, experiences, achievements and ambitions into one focused story.",
           icon: "compass",
         },
         {
-          title: "Differentiated application",
-          body: "A story that sets you apart from the rest.",
+          title: "Stronger personal positioning",
+          body: "Show what makes you distinctive—and why it matters to the admissions committee.",
+          icon: "profile",
+        },
+        {
+          title: "Connected application",
+          body: "Make your SOP, essays, CV and recommendations work together instead of reading as separate documents.",
           icon: "layers",
         },
         {
-          title: "University fit",
-          body: "Connect with programs that match your goals.",
+          title: "Meaningful differentiation",
+          body: "Move beyond listing achievements to reveal the thinking, choices and potential behind them.",
+          icon: "idea",
+        },
+        {
+          title: "Stronger university connection",
+          body: "Clearly communicate why this program, why this university and why you belong there.",
           icon: "university",
         },
         {
-          title: "Better admissions outcomes",
-          body: "Stronger stories lead to stronger results.",
+          title: "More compelling application",
+          body: "Give evaluators a coherent, credible and memorable reason to choose you.",
           icon: "trophy",
         },
       ],
+    },
+    process: {
+      wide: { src: `${IMG}/story-process-wide.webp`, width: 1379, height: 920 },
+      tall: { src: `${IMG}/story-process-tall.webp`, width: 1024, height: 1536 },
+      alt: "How your Story Mapping application portfolio is created, in six stages: complete candidate evidence extraction, story mining, evidence classification, narrative DNA, differentiation discovery and multi-expert story review, leading to the final application portfolio.",
     },
   },
 
   "execution-mapping": {
     hero: {
-      src: "/images/execution-hero.webp",
-      width: 390,
-      height: 550,
-      alt: "A student walking up steps towards a university building",
+      src: `${IMG}/execution-hero.webp`,
+      width: 1100,
+      height: 724,
+      alt: "Sketch of a student planning applications, beside the quote “A well-executed plan turns your dream university from a possibility into a reality.”",
     },
+    banners: [
+      {
+        src: `${IMG}/execution-banner.webp`,
+        width: 1446,
+        height: 613,
+        alt: "Your journey. Our execution. From planning to filing, simple and seamless: your university list, cost & procedure report, Story Mapping and document design, application execution, dedicated executive support, and visa process & filing support.",
+      },
+    ],
     pillars: {
-      heading: "Execution excellence for high-stakes admissions",
+      heading: "What Execution Mapping™ changes",
       items: [
         {
-          title: "Clear roadmap",
-          body: "Defined milestones and timelines.",
+          title: "Clearer application journey",
+          body: "Turn multiple universities, requirements, documents, deadlines and procedures into one structured execution plan.",
           icon: "roadmap",
         },
         {
-          title: "Zero-error execution",
-          body: "Multiple verification checkpoints.",
+          title: "Cost visibility before execution",
+          body: "Understand the expected application-related expenses through your personalised Cost & Procedure Report (CPR) before proceeding.",
+          icon: "eye",
+        },
+        {
+          title: "Fewer avoidable errors",
+          body: "Reduce the risk of missed requirements, incomplete documents, incorrect submissions and overlooked deadlines through structured checks.",
           icon: "shield",
         },
         {
-          title: "Expert-led delivery",
-          body: "Specialists managing critical stages.",
-          icon: "users",
+          title: "Better document coordination",
+          body: "Bring SOPs, essays, CV/resume, recommendations and university-specific requirements into one coordinated process.",
+          icon: "edit",
         },
         {
-          title: "Full visibility & control",
-          body: "Real-time tracking and transparent updates.",
-          icon: "eye",
+          title: "Stronger deadline control",
+          body: "Know what needs to happen, for which university, and by when.",
+          icon: "clock",
+        },
+        {
+          title: "One point of coordination",
+          body: "A dedicated executive helps coordinate applications, updates, follow-ups and next steps.",
+          icon: "users",
         },
       ],
     },
-    framework: ADMISSION_JOURNEY,
   },
-};
-
-/* ------------------------------------------------------------------ */
-/* Story Mapping — the "why it matters" contrast                       */
-/* ------------------------------------------------------------------ */
-
-export const STORY_CONTRAST = {
-  heading: "Why Story Mapping matters",
-  intro:
-    "The challenge is not presenting information. The challenge is presenting information in a way that supports the decision-making process of the evaluator.",
-  left: {
-    heading: "Most students focus on",
-    caption: "Writing documents",
-    items: [
-      "Transcript",
-      "Test scores",
-      "Resume",
-      "Certifications",
-      "Recommendation letter",
-      "Application essay",
-    ],
-  },
-  right: {
-    heading: "Universities focus on",
-    caption: "Evaluating people",
-    items: [
-      "Academic readiness",
-      "Leadership potential",
-      "Program fit",
-      "Professional maturity",
-      "Career clarity",
-      "Future contribution",
-      "Intellectual curiosity",
-      "Long-term success probability",
-    ],
-  },
-  flow: ["Information", "Intelligence", "Impact"],
-  bridge: [
-    { title: "Connects the dots", icon: "layers" as FrameworkIcon },
-    { title: "Creates a coherent narrative", icon: "book" as FrameworkIcon },
-    { title: "Drives direction and purpose", icon: "target" as FrameworkIcon },
-  ],
 };
 
 /* ------------------------------------------------------------------ */
@@ -567,6 +517,3 @@ export function getProductVisual(slug: string): ProductVisual | undefined {
   return PRODUCT_VISUALS[slug];
 }
 
-export function getFramework(slug: string): Framework | undefined {
-  return PRODUCT_VISUALS[slug]?.framework;
-}

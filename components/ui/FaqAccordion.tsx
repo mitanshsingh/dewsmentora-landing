@@ -3,29 +3,11 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import JsonLd from "@/components/JsonLd";
+import LineText from "@/components/ui/LineText";
 import { faqPageJsonLd } from "@/lib/structured-data";
 
-// `a` is plain text. Newlines split it into paragraphs, and consecutive lines
-// starting with "- " render as one bulleted list.
+// `a` uses LineText's markup: one paragraph per line, "- " for bullets.
 export type FaqItem = { q: string; a: string };
-
-type Block = { kind: "p"; text: string } | { kind: "ul"; items: string[] };
-
-function toBlocks(answer: string): Block[] {
-  const blocks: Block[] = [];
-  for (const raw of answer.split("\n")) {
-    const line = raw.trim();
-    if (!line) continue;
-    if (line.startsWith("- ")) {
-      const last = blocks.at(-1);
-      if (last?.kind === "ul") last.items.push(line.slice(2));
-      else blocks.push({ kind: "ul", items: [line.slice(2)] });
-    } else {
-      blocks.push({ kind: "p", text: line });
-    }
-  }
-  return blocks;
-}
 
 const ANSWER_TEXT =
   "font-text text-[15px] leading-[1.62] text-ink-muted nav:font-serif nav:text-[18px] nav:leading-[1.6] nav:text-muted-2";
@@ -87,20 +69,8 @@ export default function FaqAccordion({
                   transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
                   className="overflow-hidden"
                 >
-                  <div className="-mt-1 grid gap-3 pb-[18px] nav:mt-0 nav:pb-6">
-                    {toBlocks(item.a).map((b, j) =>
-                      b.kind === "p" ? (
-                        <p key={j} className={`m-0 ${ANSWER_TEXT}`}>
-                          {b.text}
-                        </p>
-                      ) : (
-                        <ul key={j} className={`m-0 grid list-disc gap-1 pl-5 marker:text-gold ${ANSWER_TEXT}`}>
-                          {b.items.map((li) => (
-                            <li key={li}>{li}</li>
-                          ))}
-                        </ul>
-                      ),
-                    )}
+                  <div className="-mt-1 pb-[18px] nav:mt-0 nav:pb-6">
+                    <LineText text={item.a} className={ANSWER_TEXT} />
                   </div>
                 </motion.div>
               )}

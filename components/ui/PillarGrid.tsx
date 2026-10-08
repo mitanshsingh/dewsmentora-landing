@@ -9,18 +9,26 @@ export default function PillarGrid({
   items,
   tone = "light",
   minColumn = 220,
+  maxColumns,
   className = "",
 }: {
   items: Pillar[];
   tone?: "light" | "dark";
   minColumn?: number;
+  /** Cap the column count, e.g. 3 so six items wrap into two even rows. */
+  maxColumns?: number;
   className?: string;
 }) {
   const dark = tone === "dark";
+  // Each column is at least 1/maxColumns of the row (less the 2rem gaps), so
+  // auto-fit can never place more than maxColumns side by side.
+  const min = maxColumns
+    ? `max(${minColumn}px, calc((100% - ${maxColumns - 1} * 2rem) / ${maxColumns}))`
+    : `${minColumn}px`;
   return (
     <ul
       className={`m-0 grid list-none gap-x-8 gap-y-7 p-0 ${className}`}
-      style={{ gridTemplateColumns: `repeat(auto-fit, minmax(${minColumn}px, 1fr))` }}
+      style={{ gridTemplateColumns: `repeat(auto-fit, minmax(${min}, 1fr))` }}
     >
       {items.map((p) => (
         <li key={p.title}>
