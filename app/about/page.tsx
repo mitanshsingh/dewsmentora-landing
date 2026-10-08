@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Breadcrumb from "@/components/ui/Breadcrumb";
 import Reveal from "@/components/motion/Reveal";
+import HistorySlider from "@/components/ui/HistorySlider";
 import { StaggerGrid, StaggerItem } from "@/components/motion/StaggerGrid";
 import { PRINCIPLES } from "@/lib/site-content";
 
@@ -46,7 +47,21 @@ export default function AboutPage() {
         </Reveal>
       </section>
 
-      <section className="px-6 pb-24">
+      <section aria-labelledby="history" className="bg-cream px-6 py-[88px]">
+        <div className="mx-auto max-w-[1280px]">
+          <Reveal>
+            <h2 id="history" className="m-0 mb-3 font-display text-[clamp(28px,2.8vw,42px)] uppercase leading-none">
+              The history of DEWS
+            </h2>
+            <p className="m-0 mb-10 max-w-[62ch] font-serif text-[18px] leading-[1.55] text-muted-2">
+              From career mentoring in 1998 to DEWSMENTORA™ in 2025.
+            </p>
+            <HistorySlider />
+          </Reveal>
+        </div>
+      </section>
+
+      <section className="px-6 py-24">
         <div className="mx-auto max-w-[1280px]">
           <Reveal>
             <h2 className="m-0 mb-[30px] font-display text-[clamp(28px,2.8vw,42px)] uppercase leading-none">
