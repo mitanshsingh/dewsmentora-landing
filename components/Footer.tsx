@@ -36,11 +36,11 @@ const FOOTER_COLS = [
     ],
   },
   {
-    id: "legal",
-    title: "Legal",
+    id: "policies",
+    title: "Policies",
     links: [
+      { label: "Terms & Conditions", href: "/terms" },
       { label: "Privacy Policy", href: "/privacy" },
-      { label: "Terms of Service", href: "/terms" },
     ],
   },
 ];

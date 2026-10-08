@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, type MouseEvent } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { AnimatePresence, motion } from "motion/react";
@@ -17,6 +17,13 @@ const PHONE_LINKS = [
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [productsOpen, setProductsOpen] = useState(false);
+
+  // Blur too, so the focus handler doesn't reopen the menu on the next page.
+  const closeProducts = (e: MouseEvent<HTMLAnchorElement>) => {
+    setProductsOpen(false);
+    e.currentTarget.blur();
+  };
 
   // Lock the page behind the phone menu and let Escape dismiss it.
   useEffect(() => {
@@ -58,15 +65,40 @@ export default function Header() {
           aria-label="Primary"
           className="ml-auto hidden flex-wrap items-center justify-end gap-x-[clamp(18px,2vw,34px)] gap-y-2 nav:flex"
         >
-          <div className="group relative">
-            <Link href="/products" aria-haspopup="true" className={NAV_LINK}>
+          {/* Open state is explicit rather than CSS :focus-within, which kept the
+              menu open after a click because client navigation leaves focus on
+              the clicked link. */}
+          <div
+            className="relative"
+            onMouseEnter={() => setProductsOpen(true)}
+            onMouseLeave={() => setProductsOpen(false)}
+            onFocus={() => setProductsOpen(true)}
+            onBlur={(e) => {
+              if (!e.currentTarget.contains(e.relatedTarget)) setProductsOpen(false);
+            }}
+            onKeyDown={(e) => {
+              if (e.key === "Escape") setProductsOpen(false);
+            }}
+          >
+            <Link
+              href="/products"
+              aria-haspopup="true"
+              aria-expanded={productsOpen}
+              onClick={closeProducts}
+              className={NAV_LINK}
+            >
               Products ▾
             </Link>
-            <div className="invisible absolute left-[-20px] top-[26px] z-10 grid w-80 gap-0.5 border border-line bg-white p-2.5 opacity-0 shadow-[0_24px_48px_rgba(0,0,0,0.12)] transition-opacity group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+            <div
+              className={`absolute left-[-20px] top-[26px] z-10 grid w-80 gap-0.5 border border-line bg-white p-2.5 shadow-[0_24px_48px_rgba(0,0,0,0.12)] transition-opacity ${
+                productsOpen ? "visible opacity-100" : "invisible opacity-0"
+              }`}
+            >
               {PRODUCTS.map((p) => (
                 <Link
                   key={p.slug}
                   href={productHref(p)}
+                  onClick={closeProducts}
                   className="grid gap-[3px] rounded-md p-[12px_14px] hover:bg-cream"
                 >
                   <span className="font-sans text-[14px] font-semibold leading-[1.2]">{p.name}</span>
@@ -75,14 +107,8 @@ export default function Header() {
               ))}
             </div>
           </div>
-          <Link href="/study-abroad" className={NAV_LINK}>
-            Study Abroad
-          </Link>
           <Link href="/how-it-works" className={NAV_LINK}>
             How It Works
-          </Link>
-          <Link href="/for-students" className={NAV_LINK}>
-            For Students
           </Link>
           <Link href="/resources" className={NAV_LINK}>
             Resources

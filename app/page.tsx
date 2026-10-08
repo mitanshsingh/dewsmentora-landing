@@ -7,11 +7,12 @@ import FaqAccordion from "@/components/ui/FaqAccordion";
 import StickyCta from "@/components/ui/StickyCta";
 import PillarGrid from "@/components/ui/PillarGrid";
 import ArtFigure from "@/components/ui/ArtFigure";
+import MapFitPanel from "@/components/ui/MapFitPanel";
 import Reveal from "@/components/motion/Reveal";
 import { StaggerGrid, StaggerItem } from "@/components/motion/StaggerGrid";
 import { WHY_DEWS_PILLARS } from "@/lib/frameworks";
 import { PRODUCTS, productHref } from "@/lib/products";
-import { HOME_FAQS, HOME_STEPS, WHY_POINTS, APP_REGISTER_URL } from "@/lib/site-content";
+import { HOME_FAQS, HOME_MAPS_SUMMARY, HOME_STEPS, WHY_POINTS, APP_REGISTER_URL } from "@/lib/site-content";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
@@ -191,21 +192,12 @@ export default function HomePage() {
             </div>
           </Reveal>
 
-          <Reveal delay={0.1} className="px-5 pt-11 nav:p-0">
-            <h2
-              id="journey"
-              className="m-0 mb-3.5 font-headline text-[30px] font-medium leading-[1.14] nav:mb-[22px] nav:font-display nav:text-[clamp(34px,3.6vw,56px)] nav:font-normal nav:uppercase nav:leading-[0.95]"
-            >
-              You don&apos;t need every Map
-            </h2>
-            <p className="m-0 mb-5 max-nav:text-pretty font-text text-[15.5px] leading-[1.62] text-ink-soft nav:mb-7 nav:font-serif nav:text-[20px] nav:leading-[1.55] nav:text-[#D9D9D9]">
-              Each Map addresses a specific decision problem. DEWSMENTORA&apos;s role is not to maximise the
-              number of services you purchase. It is to identify where structured evaluation or professional
-              support genuinely adds value.
-            </p>
+          {/* Dark on phone too, so it reads as one block with the image card above. */}
+          <Reveal delay={0.1} className="bg-night-deep px-5 pb-11 pt-2 nav:bg-transparent nav:p-0">
+            <MapFitPanel headingId="journey" tone="dark" />
             <Link
               href="/how-it-works"
-              className="inline-flex items-center gap-2 border-b-[1.5px] border-gold pb-1.5 font-sans text-[12px] font-semibold uppercase tracking-[0.14em] text-ink-warm nav:gap-2.5 nav:border-yellow nav:text-[15px] nav:font-bold nav:normal-case nav:tracking-normal nav:text-yellow"
+              className="mt-9 inline-flex items-center gap-2.5 border-b-[1.5px] border-yellow pb-1.5 font-sans text-[15px] font-bold text-yellow"
             >
               See how it works <span aria-hidden="true">→</span>
             </Link>
@@ -306,7 +298,7 @@ export default function HomePage() {
 
       <section
         aria-labelledby="homefaq"
-        className="px-5 pb-[52px] pt-11 nav:px-6 nav:pb-24 nav:pt-0"
+        className="px-5 pb-[52px] pt-11 nav:px-6 nav:pb-24 nav:pt-24"
       >
         <div className="mx-auto w-full max-w-[560px] nav:max-w-[900px]">
           <Reveal>
@@ -330,6 +322,37 @@ export default function HomePage() {
                   →
                 </span>
               </Link>
+            </p>
+          </Reveal>
+        </div>
+      </section>
+
+      <section aria-labelledby="maps-summary" className="bg-cream px-5 py-[52px] text-ink nav:px-6 nav:py-24">
+        <div className={SHELL}>
+          <Reveal>
+            <h2
+              id="maps-summary"
+              className="m-0 mb-9 max-w-[24ch] font-headline text-[30px] font-medium leading-[1.14] nav:mb-12 nav:font-display nav:text-[clamp(30px,3vw,44px)] nav:font-normal nav:uppercase nav:leading-[0.98]"
+            >
+              {HOME_MAPS_SUMMARY.heading}
+            </h2>
+          </Reveal>
+          <StaggerGrid
+            className="grid gap-6"
+            style={{ gridTemplateColumns: "repeat(auto-fit, minmax(230px, 1fr))" }}
+          >
+            {HOME_MAPS_SUMMARY.maps.map((m) => (
+              <StaggerItem key={m.name} className="border-t-[3px] border-yellow pt-5">
+                <h3 className="m-0 mb-2 font-sans text-[17px] font-semibold leading-[1.3] nav:text-[19px]">
+                  {m.name}
+                </h3>
+                <p className="m-0 font-serif text-[16px] leading-[1.5] text-muted-2 nav:text-[17px]">{m.line}</p>
+              </StaggerItem>
+            ))}
+          </StaggerGrid>
+          <Reveal>
+            <p className="m-0 mt-10 max-w-[40ch] border-l-2 border-yellow pl-4 font-serif text-[20px] leading-[1.45] text-ink nav:mt-14 nav:pl-[22px] nav:text-[24px]">
+              {HOME_MAPS_SUMMARY.closing}
             </p>
           </Reveal>
         </div>

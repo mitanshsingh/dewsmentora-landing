@@ -11,7 +11,6 @@ import { StaggerGrid, StaggerItem } from "@/components/motion/StaggerGrid";
 import StageTimeline from "@/components/ui/StageTimeline";
 import PillarGrid from "@/components/ui/PillarGrid";
 import StoryContrast from "@/components/ui/StoryContrast";
-import MapFitPanel from "@/components/ui/MapFitPanel";
 import ArtFigure from "@/components/ui/ArtFigure";
 import FrameworkExtras from "@/components/ui/FrameworkExtras";
 import { getProductVisual } from "@/lib/frameworks";
@@ -200,11 +199,7 @@ export default async function ProductPage({
               <div className="max-w-[1000px]">
                 <StoryContrast />
               </div>
-            ) : (
-              <div className="max-w-[1000px]">
-                <MapFitPanel tone="dark" as="h3" />
-              </div>
-            )}
+            ) : null}
           </Reveal>
         </div>
       </section>

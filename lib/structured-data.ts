@@ -47,7 +47,12 @@ export function faqPageJsonLd(items: { q: string; a: string }[]) {
       name: item.q,
       acceptedAnswer: {
         "@type": "Answer",
-        text: item.a,
+        // Flatten FaqAccordion's line-based markup ("- " bullets) to prose.
+        text: item.a
+          .split("\n")
+          .map((l) => l.trim().replace(/^- /, ""))
+          .filter(Boolean)
+          .join(" "),
       },
     })),
   };
