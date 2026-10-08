@@ -89,3 +89,96 @@ export const EXECUTION_DIFFERENCE = {
   closing:
     "And once you proceed, your application journey is professionally coordinated from documentation through the applicable post-application and visa stages.",
 };
+
+// The process as the How It Works page tells it: steps 01–05 up to the coupon.
+export const EXECUTION_OVERVIEW = {
+  title: "From university decision to application, visa & beyond",
+  intro: [
+    "Choosing your universities is only the beginning. Execution Mapping™ turns your final university shortlist into a clear, cost-visible and professionally managed application journey.",
+    "You know the expected costs before you commit. You know what DEWSMENTORA will manage. And you have a dedicated executive coordinating your journey.",
+  ],
+};
+
+export type ProcessStep = {
+  n: string;
+  t: string;
+  body: string[];
+  lists?: { heading: string; items: string[] }[];
+  aside?: { heading: string; body: string[] };
+  outcome?: string;
+};
+
+export const EXECUTION_STEPS: ProcessStep[] = [
+  {
+    n: "01",
+    t: "Complete University Intelligence Mapping™",
+    body: [
+      "Register for University Intelligence Mapping™ (UIM) and complete the required information.",
+      "UIM helps you evaluate universities through factors such as course, career alignment, cost, location, outcomes and profile fit before deciding where you want to apply.",
+    ],
+    outcome: "An evidence-based foundation for your university decision.",
+  },
+  {
+    n: "02",
+    t: "Receive Your UIM Report",
+    body: [
+      "DEWSMENTORA prepares your University Intelligence Mapping™ report.",
+      "Review the findings, comparisons, opportunities, risks and considerations relevant to your profile and objectives.",
+    ],
+    outcome: "Understand your options before committing application money.",
+  },
+  {
+    n: "03",
+    t: "Finalise Your University List",
+    body: [
+      "The final decision remains yours.",
+      "After reviewing the UIM report, select the universities and programmes where you actually want to apply and submit your Final Application List to DEWSMENTORA.",
+    ],
+    outcome: "Your confirmed application portfolio.",
+  },
+  {
+    n: "04",
+    t: "Receive Your Cost & Procedure Report (CPR)",
+    body: [
+      "Before application execution begins, DEWSMENTORA prepares a personalised Cost & Procedure Report (CPR) based on your selected universities. Your CPR shows:",
+    ],
+    lists: [
+      {
+        heading: "University/Application Costs",
+        items: [
+          "Application fees",
+          "Test-score/reporting fees, where applicable",
+          "Transcript requirements and associated costs",
+          "Credential/transcript evaluation charges, where required",
+          "Translation charges, where required",
+          "Other university- or third-party application expenses",
+        ],
+      },
+      {
+        heading: "Application Requirements",
+        items: [
+          "Documents required",
+          "University-specific procedures",
+          "Important application stages",
+          "Relevant deadlines",
+          "Additional requirements identified for your selected universities",
+        ],
+      },
+    ],
+    aside: {
+      heading: "Why CPR matters",
+      body: [
+        "You shouldn't discover the real cost of applying after the process has started.",
+        "Know the process. Know the expected external costs. Then decide how you want DEWSMENTORA to execute it.",
+      ],
+    },
+  },
+  {
+    n: "05",
+    t: "Receive Your Personalised Execution Coupon",
+    body: [
+      "Your final university selection determines the level of work involved.",
+      "Based on your selected application portfolio, DEWSMENTORA provides a personalised service coupon showing the Execution Mapping™ services available to you and your applicable fee.",
+    ],
+  },
+];

@@ -13,6 +13,7 @@ export const metadata: Metadata = {
 const TILES = [
   { href: "/resources/blog", label: "Blog", d: "Analysis and practical thinking on education decisions." },
   { href: "/resources/guides", label: "Guides", d: "Checklists and worksheets you can work through yourself." },
+  { href: "/resources/preparation", label: "Preparation", d: "Preparation resources for aspirants and families — coming soon." },
   { href: "/resources/faqs", label: "FAQs", d: "Answers about the platform, the Maps and the process." },
 ];
 
