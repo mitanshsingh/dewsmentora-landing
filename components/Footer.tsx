@@ -1,5 +1,6 @@
 import Image from "next/image";
 import FooterGroup from "@/components/ui/FooterGroup";
+import { POLICY_LINKS } from "@/components/PolicyPage";
 import { PRODUCTS, productHref } from "@/lib/products";
 import { COUNTRIES } from "@/lib/study-destinations";
 
@@ -38,10 +39,7 @@ const FOOTER_COLS = [
   {
     id: "policies",
     title: "Policies",
-    links: [
-      { label: "Terms & Conditions", href: "/terms" },
-      { label: "Privacy Policy", href: "/privacy" },
-    ],
+    links: POLICY_LINKS.map((l) => ({ label: l.label, href: l.href })),
   },
 ];
 
