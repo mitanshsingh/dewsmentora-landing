@@ -3,15 +3,12 @@ import Link from "next/link";
 import Breadcrumb from "@/components/ui/Breadcrumb";
 import FaqAccordion from "@/components/ui/FaqAccordion";
 import Reveal from "@/components/motion/Reveal";
-import { HOME_FAQS } from "@/lib/site-content";
-import { PRODUCTS } from "@/lib/products";
+import { FAQS } from "@/lib/site-content";
 
 export const metadata: Metadata = {
   title: "FAQs",
   alternates: { canonical: "/resources/faqs" },
 };
-
-const ALL_FAQS = [...HOME_FAQS, ...PRODUCTS[1].faqs, ...PRODUCTS[3].faqs];
 
 export default function FaqsPage() {
   return (
@@ -27,7 +24,7 @@ export default function FaqsPage() {
       <section className="px-6 pb-24 pt-6">
         <div className="mx-auto max-w-[1000px]">
           <Reveal>
-            <FaqAccordion items={ALL_FAQS} idPrefix="all-faqs" />
+            <FaqAccordion items={FAQS} idPrefix="all-faqs" />
             <p className="m-0 mt-[30px] font-serif text-[17px] leading-[1.5]">
               Still unanswered?{" "}
               <Link href="/contact" className="border-b-[1.5px] border-yellow">

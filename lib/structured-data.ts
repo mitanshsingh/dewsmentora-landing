@@ -38,7 +38,19 @@ export function breadcrumbJsonLd(items: { label: string; href?: string }[]) {
   };
 }
 
-export function faqPageJsonLd(items: { q: string; a: string }[]) {
+/** A FAQ answer is one paragraph, or paragraphs and bullet lists in order. */
+export type FaqBlock = string | { list: string[] };
+export type FaqItem = { q: string; a: string | FaqBlock[] };
+
+/** Plain-text form of an answer, for JSON-LD, which cannot carry list markup. */
+export function faqAnswerText(a: FaqItem["a"]): string {
+  if (typeof a === "string") return a;
+  return a
+    .map((block) => (typeof block === "string" ? block : block.list.map((li) => `• ${li}`).join("\n")))
+    .join("\n\n");
+}
+
+export function faqPageJsonLd(items: FaqItem[]) {
   return {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -47,7 +59,7 @@ export function faqPageJsonLd(items: { q: string; a: string }[]) {
       name: item.q,
       acceptedAnswer: {
         "@type": "Answer",
-        text: item.a,
+        text: faqAnswerText(item.a),
       },
     })),
   };

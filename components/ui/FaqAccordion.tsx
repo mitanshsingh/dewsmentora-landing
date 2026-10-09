@@ -3,9 +3,26 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import JsonLd from "@/components/JsonLd";
-import { faqPageJsonLd } from "@/lib/structured-data";
+import { faqPageJsonLd, type FaqItem } from "@/lib/structured-data";
 
-export type FaqItem = { q: string; a: string };
+function FaqAnswer({ a }: { a: FaqItem["a"] }) {
+  if (typeof a === "string") return <p>{a}</p>;
+  return (
+    <>
+      {a.map((block, i) =>
+        typeof block === "string" ? (
+          <p key={i}>{block}</p>
+        ) : (
+          <ul key={i} className="list-disc pl-5 marker:text-gold">
+            {block.list.map((li) => (
+              <li key={li}>{li}</li>
+            ))}
+          </ul>
+        ),
+      )}
+    </>
+  );
+}
 
 export default function FaqAccordion({
   items,
@@ -64,9 +81,9 @@ export default function FaqAccordion({
                   transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
                   className="overflow-hidden"
                 >
-                  <p className="m-0 -mt-1 pb-[18px] font-text text-[15px] leading-[1.62] text-ink-muted nav:mt-0 nav:max-w-[70ch] nav:pb-6 nav:font-serif nav:text-[18px] nav:leading-[1.6] nav:text-muted-2">
-                    {item.a}
-                  </p>
+                  <div className="-mt-1 space-y-3 pb-[18px] font-text text-[15px] leading-[1.62] text-ink-muted nav:mt-0 nav:max-w-[70ch] nav:pb-6 nav:font-serif nav:text-[18px] nav:leading-[1.6] nav:text-muted-2">
+                    <FaqAnswer a={item.a} />
+                  </div>
                 </motion.div>
               )}
             </AnimatePresence>
