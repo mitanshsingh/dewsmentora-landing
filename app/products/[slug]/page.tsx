@@ -11,7 +11,6 @@ import { StaggerGrid, StaggerItem } from "@/components/motion/StaggerGrid";
 import StageTimeline from "@/components/ui/StageTimeline";
 import PillarGrid from "@/components/ui/PillarGrid";
 import StoryContrast from "@/components/ui/StoryContrast";
-import MapFitPanel from "@/components/ui/MapFitPanel";
 import ArtFigure from "@/components/ui/ArtFigure";
 import FrameworkExtras from "@/components/ui/FrameworkExtras";
 import { getProductVisual } from "@/lib/frameworks";
@@ -118,7 +117,7 @@ export default async function ProductPage({
                   {visual.pillars.heading}
                 </h2>
               )}
-              <PillarGrid items={visual.pillars.items} minColumn={230} />
+              <PillarGrid items={visual.pillars.items} minColumn={230} maxColumns={visual.pillars.maxColumns} />
             </Reveal>
           </div>
         </section>
@@ -173,7 +172,7 @@ export default async function ProductPage({
             </h2>
           </Reveal>
           <StaggerGrid
-            className="m-0 mb-12 grid list-none gap-[26px] p-0"
+            className="m-0 grid list-none gap-[26px] p-0"
             style={{ gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))" }}
           >
             {product.steps.map((s) => (
@@ -184,30 +183,38 @@ export default async function ProductPage({
               </StaggerItem>
             ))}
           </StaggerGrid>
-          <Reveal delay={0.1}>
-            {framework ? (
-              <div className="max-w-[1000px]">
-                <h3 className="m-0 mb-3 font-display text-[clamp(22px,2.4vw,34px)] uppercase leading-[1.05]">
-                  {framework.heading}
-                </h3>
-                <p className="m-0 mb-12 max-w-[62ch] font-serif text-[18px] leading-[1.55] text-[#C9C9C9]">
-                  {framework.intro}
-                </p>
-                <StageTimeline stages={framework.stages} />
-                <FrameworkExtras framework={framework} />
-              </div>
-            ) : product.slug === "story-mapping" ? (
-              <div className="max-w-[1000px]">
-                <StoryContrast />
-              </div>
-            ) : (
-              <div className="max-w-[1000px]">
-                <MapFitPanel tone="dark" as="h3" />
-              </div>
-            )}
-          </Reveal>
         </div>
       </section>
+
+      {product.slug === "story-mapping" && (
+        <section aria-labelledby="story-contrast" className="bg-cream px-6 py-[88px]">
+          <div className="mx-auto max-w-[1280px]">
+            <Reveal className="max-w-[1000px]">
+              <StoryContrast tone="light" headingId="story-contrast" />
+            </Reveal>
+          </div>
+        </section>
+      )}
+
+      {framework && (
+        <section aria-labelledby="framework" className="bg-cream px-6 py-[88px]">
+          <div className="mx-auto max-w-[1280px]">
+            <Reveal className="max-w-[1000px]">
+              <h2
+                id="framework"
+                className="m-0 mb-3 max-w-[28ch] font-display text-[clamp(26px,2.8vw,40px)] uppercase leading-[1.02]"
+              >
+                {framework.heading}
+              </h2>
+              <p className="m-0 mb-12 max-w-[62ch] font-serif text-[18px] leading-[1.55] text-muted-2">
+                {framework.intro}
+              </p>
+              <StageTimeline stages={framework.stages} tone="light" />
+              <FrameworkExtras framework={framework} tone="light" />
+            </Reveal>
+          </div>
+        </section>
+      )}
 
       <section className="px-6 py-[88px]">
         <div className="mx-auto max-w-[1000px]">

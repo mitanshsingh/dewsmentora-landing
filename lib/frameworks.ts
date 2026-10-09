@@ -61,7 +61,7 @@ export type Framework = {
 
 export type Pillar = { title: string; body: string; icon: FrameworkIcon };
 
-export type PillarSet = { heading?: string; items: Pillar[] };
+export type PillarSet = { heading?: string; items: Pillar[]; maxColumns?: number };
 
 export type HeroVisual = {
   src: string;
@@ -389,6 +389,7 @@ export const PRODUCT_VISUALS: Record<string, ProductVisual> = {
     },
     pillars: {
       heading: "What a mapped story changes",
+      maxColumns: 3,
       items: [
         {
           title: "Clear career direction",

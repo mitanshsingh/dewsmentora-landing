@@ -1,7 +1,6 @@
 import Image from "next/image";
 import FooterGroup from "@/components/ui/FooterGroup";
 import { PRODUCTS, productHref } from "@/lib/products";
-import { COUNTRIES } from "@/lib/study-destinations";
 
 const FOOTER_COLS = [
   {
@@ -10,19 +9,10 @@ const FOOTER_COLS = [
     links: PRODUCTS.map((p) => ({ label: p.name, href: productHref(p) })),
   },
   {
-    id: "study-abroad",
-    title: "Study Abroad",
-    links: [
-      { label: "Study Abroad Guide", href: "/study-abroad" },
-      ...COUNTRIES.map((c) => ({ label: `Study in ${c.flagLabel}`, href: `/study-abroad/${c.slug}` })),
-    ],
-  },
-  {
     id: "explore",
     title: "Explore",
     links: [
       { label: "How It Works", href: "/how-it-works" },
-      { label: "For Students", href: "/for-students" },
       { label: "Resources", href: "/resources" },
       { label: "About", href: "/about" },
     ],
