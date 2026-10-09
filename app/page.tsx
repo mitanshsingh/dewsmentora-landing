@@ -7,6 +7,7 @@ import FaqAccordion from "@/components/ui/FaqAccordion";
 import StickyCta from "@/components/ui/StickyCta";
 import PillarGrid from "@/components/ui/PillarGrid";
 import ArtFigure from "@/components/ui/ArtFigure";
+import MapFitPanel from "@/components/ui/MapFitPanel";
 import Reveal from "@/components/motion/Reveal";
 import { StaggerGrid, StaggerItem } from "@/components/motion/StaggerGrid";
 import { WHY_DEWS_PILLARS } from "@/lib/frameworks";
@@ -26,7 +27,7 @@ const EYEBROW = "m-0 font-sans text-[10.5px] font-semibold uppercase tracking-[0
 export default function HomePage() {
   return (
     <>
-      <section className="px-5 pt-[34px] nav:bg-white nav:px-6 nav:pb-[72px] nav:pt-24">
+      <section className="px-5 pt-5 nav:bg-white nav:px-6 nav:pb-[72px] nav:pt-12">
         <div
           className={`${SHELL} flex flex-col nav:grid nav:grid-cols-[1.15fr_1fr] nav:grid-rows-[1fr_auto_auto_1fr] nav:gap-x-14 nav:gap-y-0`}
         >
@@ -53,8 +54,8 @@ export default function HomePage() {
               width={1122}
               height={1402}
               priority
-              sizes="(max-width: 1080px) 100vw, 620px"
-              className="h-auto w-full bg-[#EDEBE5] nav:bg-transparent"
+              sizes="(max-width: 1080px) 320px, 440px"
+              className="mx-auto block h-auto w-full max-w-[320px] bg-[#EDEBE5] nav:mr-0 nav:max-w-[440px] nav:bg-transparent"
             />
           </Reveal>
 
@@ -136,79 +137,30 @@ export default function HomePage() {
         </StaggerGrid>
       </section>
 
-      <section
-        aria-labelledby="journey"
-        className="mt-[52px] nav:mt-0 nav:bg-ink nav:px-6 nav:py-24 nav:text-white"
-      >
+      <section aria-labelledby="mapfit" className="mt-[52px] bg-black px-5 py-[46px] text-white nav:mt-0 nav:px-6 nav:py-[88px]">
         <div
-          className={`${SHELL} nav:grid nav:items-center nav:gap-12`}
-          style={{ gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))" }}
+          className={`${SHELL} flex flex-col gap-8 nav:grid nav:grid-cols-[clamp(280px,27vw,400px)_minmax(0,1fr)] nav:items-center nav:gap-14`}
         >
-          <Reveal className="bg-night-deep text-night-fg nav:bg-transparent nav:text-inherit">
+          <Reveal>
             <Image
-              src="/images/journey.webp"
-              alt="A student considering education and career directions"
-              width={720}
-              height={900}
-              sizes="(max-width: 1080px) 100vw, 620px"
-              className="h-auto w-full"
+              src="/images/mapfit-crossroads.webp"
+              alt="A student at a signpost where only one direction is lit"
+              width={1122}
+              height={1402}
+              sizes="(max-width: 1080px) 320px, 400px"
+              className="mx-auto block h-auto w-full max-w-[320px] nav:max-w-none"
+              // The artwork is painted on pure black, hence bg-black on this
+              // section rather than bg-ink. The fade softens where its line-art
+              // and the figure run off the edge of the frame.
+              style={{
+                maskImage:
+                  "linear-gradient(to right, transparent, #000 10%, #000 90%, transparent), linear-gradient(to bottom, transparent, #000 8%, #000 90%, transparent)",
+                maskComposite: "intersect",
+              }}
             />
-            <div className="px-5 pb-[34px] pt-[26px] nav:px-0 nav:pb-0 nav:pt-7">
-              <p className="m-0 mb-3 font-sans text-[22px] font-bold uppercase leading-[1.18] tracking-[0.01em]">
-                The DEWSMENTORA
-                <br />
-                <span className="text-gold-bright">Mapping Journey</span>™
-              </p>
-              <div aria-hidden="true" className="mb-[18px] h-0.5 w-11 bg-gold" />
-              <p className="m-0 mb-[18px] max-nav:text-pretty font-text text-[15.5px] leading-[1.6] text-night-body">
-                DEWSMENTORA uses specialised Maps to evaluate different stages of an aspirant&apos;s education
-                and admission journey.
-              </p>
-              <ul className="m-0 flex list-none flex-col gap-3.5 p-0">
-                <li className="flex items-start gap-3.5">
-                  <span
-                    aria-hidden="true"
-                    className="flex h-[26px] w-[26px] flex-none items-center justify-center rounded-full border-[1.5px] border-[#77746A] text-[13px] text-[#9C998E]"
-                  >
-                    ✕
-                  </span>
-                  <p className="m-0 font-text text-[15.5px] font-semibold leading-[1.45]">
-                    You don&apos;t need every Map.
-                  </p>
-                </li>
-                <li className="flex items-start gap-3.5">
-                  <span
-                    aria-hidden="true"
-                    className="flex h-[26px] w-[26px] flex-none items-center justify-center rounded-full border-[1.5px] border-gold text-[13px] text-gold-bright"
-                  >
-                    ✓
-                  </span>
-                  <p className="m-0 font-text text-[15.5px] font-semibold leading-[1.45]">
-                    You need the right Map for the decision you&apos;re facing.
-                  </p>
-                </li>
-              </ul>
-            </div>
           </Reveal>
-
-          <Reveal delay={0.1} className="px-5 pt-11 nav:p-0">
-            <h2
-              id="journey"
-              className="m-0 mb-3.5 font-headline text-[30px] font-medium leading-[1.14] nav:mb-[22px] nav:font-display nav:text-[clamp(34px,3.6vw,56px)] nav:font-normal nav:uppercase nav:leading-[0.95]"
-            >
-              You don&apos;t need every Map
-            </h2>
-            <p className="m-0 mb-5 max-nav:text-pretty font-text text-[15.5px] leading-[1.62] text-ink-soft nav:mb-7 nav:font-serif nav:text-[20px] nav:leading-[1.55] nav:text-[#D9D9D9]">
-              Each Map addresses a specific decision problem. DEWSMENTORA&apos;s role is not to maximise the
-              number of services you purchase. It is to identify where structured evaluation or professional
-              support genuinely adds value.
-            </p>
-            <Link
-              href="/how-it-works"
-              className="inline-flex items-center gap-2 border-b-[1.5px] border-gold pb-1.5 font-sans text-[12px] font-semibold uppercase tracking-[0.14em] text-ink-warm nav:gap-2.5 nav:border-yellow nav:text-[15px] nav:font-bold nav:normal-case nav:tracking-normal nav:text-yellow"
-            >
-              See how it works <span aria-hidden="true">→</span>
-            </Link>
+          <Reveal delay={0.1}>
+            <MapFitPanel tone="dark" headingId="mapfit" />
           </Reveal>
         </div>
       </section>
@@ -299,14 +251,14 @@ export default function HomePage() {
             >
               The advantage behind every successful journey
             </h2>
-            <PillarGrid items={WHY_DEWS_PILLARS} minColumn={240} />
+            <PillarGrid items={WHY_DEWS_PILLARS} minColumn={240} maxColumns={3} />
           </Reveal>
         </div>
       </section>
 
       <section
         aria-labelledby="homefaq"
-        className="px-5 pb-[52px] pt-11 nav:px-6 nav:pb-24 nav:pt-0"
+        className="px-5 pb-[52px] pt-11 nav:px-6 nav:pb-24 nav:pt-24"
       >
         <div className="mx-auto w-full max-w-[560px] nav:max-w-[900px]">
           <Reveal>
