@@ -59,10 +59,14 @@ export default function Header() {
           className="ml-auto hidden flex-wrap items-center justify-end gap-x-[clamp(18px,2vw,34px)] gap-y-2 nav:flex"
         >
           <div className="group relative">
-            <Link href="/products" aria-haspopup="true" className={NAV_LINK}>
+            <Link href="/products" className={NAV_LINK}>
               Products ▾
             </Link>
-            <div className="invisible absolute left-[-20px] top-[26px] z-10 grid w-80 gap-0.5 border border-line bg-white p-2.5 opacity-0 shadow-[0_24px_48px_rgba(0,0,0,0.12)] transition-opacity group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+            {/* Hover only. Opening on focus-within kept the menu open over the
+                next page after a click, because the header persists across
+                navigations and the clicked link keeps focus. /products lists
+                every Map, so keyboard users lose nothing. */}
+            <div className="invisible absolute left-[-20px] top-[26px] z-10 grid w-80 gap-0.5 border border-line bg-white p-2.5 opacity-0 shadow-[0_24px_48px_rgba(0,0,0,0.12)] transition-opacity group-hover:visible group-hover:opacity-100">
               {PRODUCTS.map((p) => (
                 <Link
                   key={p.slug}
