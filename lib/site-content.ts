@@ -274,6 +274,27 @@ export const PRINCIPLES = [
   { t: "Data-driven", d: "Structured evaluation, documented criteria, evidence over assumption." },
 ];
 
+// Resources → Preparation. Material is added per test; until then each card
+// reads "Material coming soon".
+export const PREP_TEST_GROUPS = [
+  {
+    title: "English proficiency",
+    tests: [
+      { name: "IELTS", d: "International English Language Testing System." },
+      { name: "TOEFL", d: "Test of English as a Foreign Language." },
+      { name: "PTE Academic", d: "Pearson Test of English Academic." },
+    ],
+  },
+  {
+    title: "Admissions tests",
+    tests: [
+      { name: "GRE", d: "Graduate Record Examinations, for master's and doctoral programs." },
+      { name: "GMAT", d: "Graduate Management Admission Test, for business school programs." },
+      { name: "SAT", d: "For undergraduate admission, mainly in the USA." },
+    ],
+  },
+];
+
 export const BLOG_POSTS = [
   { t: "How to compare two university offers without defaulting to rankings", cat: "Decision making", read: "6 min read" },
   { t: "What admissions teams are actually evaluating when they read your SOP", cat: "Applications", read: "8 min read" },
