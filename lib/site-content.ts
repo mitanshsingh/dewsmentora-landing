@@ -51,8 +51,6 @@ export const BLOG_POSTS = [
 // PRODUCTS, so the panel mirrors the phone design's full navigation.
 export const PHONE_NAV_LINKS = [
   { label: "How It Works", href: "/how-it-works" },
-  { label: "Study Abroad", href: "/study-abroad" },
-  { label: "For Students", href: "/for-students" },
   { label: "Resources", href: "/resources" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },

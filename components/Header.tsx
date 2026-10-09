@@ -75,14 +75,8 @@ export default function Header() {
               ))}
             </div>
           </div>
-          <Link href="/study-abroad" className={NAV_LINK}>
-            Study Abroad
-          </Link>
           <Link href="/how-it-works" className={NAV_LINK}>
             How It Works
-          </Link>
-          <Link href="/for-students" className={NAV_LINK}>
-            For Students
           </Link>
           <Link href="/resources" className={NAV_LINK}>
             Resources
