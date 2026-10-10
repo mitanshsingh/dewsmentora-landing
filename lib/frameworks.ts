@@ -39,7 +39,10 @@ export type FrameworkIcon =
   | "dashboard"
   | "inbox"
   | "eye"
-  | "trophy";
+  | "trophy"
+  | "chat"
+  | "video"
+  | "visa";
 
 export type FrameworkStage = {
   n: string;

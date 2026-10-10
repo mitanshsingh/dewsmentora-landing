@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import Breadcrumb from "@/components/ui/Breadcrumb";
 import Reveal from "@/components/motion/Reveal";
 import { StaggerGrid, StaggerItem } from "@/components/motion/StaggerGrid";
-import { PRINCIPLES } from "@/lib/site-content";
+import HistoryTimeline from "@/components/ui/HistoryTimeline";
+import { HISTORY, PRINCIPLES } from "@/lib/site-content";
 
 export const metadata: Metadata = {
   title: "About",
@@ -44,6 +45,18 @@ export default function AboutPage() {
             To give every aspirant a structured way to understand a high-stakes decision before making it.
           </p>
         </Reveal>
+      </section>
+
+      <section className="px-6 pb-24">
+        <div className="mx-auto max-w-[1280px]">
+          <Reveal>
+            <h2 className="m-0 mb-3 font-display text-[clamp(28px,2.8vw,42px)] uppercase leading-none">Our journey</h2>
+            <p className="m-0 mb-12 max-w-[60ch] font-serif text-[18px] leading-[1.55] text-muted-2">
+              Nearly three decades of mentoring students, from DMC in 1998 to DEWSMENTORA™ in 2025.
+            </p>
+          </Reveal>
+          <HistoryTimeline milestones={HISTORY} />
+        </div>
       </section>
 
       <section className="px-6 pb-24">
