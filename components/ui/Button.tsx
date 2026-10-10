@@ -30,6 +30,7 @@ export default function Button({
   className = "",
   small = false,
   external,
+  newTab = false,
   disabled = false,
 }: {
   href: string;
@@ -39,6 +40,8 @@ export default function Button({
   className?: string;
   small?: boolean;
   external?: boolean;
+  /** Open an external link in a new tab. */
+  newTab?: boolean;
   disabled?: boolean;
 }) {
   const sizing = small ? "px-6 py-3.5 text-sm" : "";
@@ -67,7 +70,13 @@ export default function Button({
 
   if (isExternal) {
     return (
-      <motion.a href={href} className={cls} whileHover={hover} whileTap={tap}>
+      <motion.a
+        href={href}
+        className={cls}
+        whileHover={hover}
+        whileTap={tap}
+        {...(newTab && { target: "_blank", rel: "noopener noreferrer" })}
+      >
         {children}
         {arrow && <span aria-hidden="true">→</span>}
       </motion.a>
