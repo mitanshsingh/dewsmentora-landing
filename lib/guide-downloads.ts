@@ -4,10 +4,12 @@
 const API_URL = process.env.DEWS_API_URL || "https://backend-production-d39a.up.railway.app";
 const API_ORIGIN = new URL(API_URL).origin;
 
-// How often /resources/guides picks up newly uploaded or hidden guides. Each
-// refresh is an ISR write, and the team's Hobby plan has run out of those
-// before, so this stays at an hour rather than minutes.
+// The API calls /api/revalidate/guides whenever an admin changes a guide, which
+// refreshes the list straight away. This hourly refresh only catches a call
+// that failed. Each refresh is an ISR write, and the team's Hobby plan has run
+// out of those before, so it stays at an hour rather than minutes.
 export const GUIDES_REVALIDATE_SECONDS = 3600;
+export const GUIDES_CACHE_TAG = "guides";
 
 export type GuideDownload = {
   slug: string;
@@ -60,7 +62,9 @@ function toGuideDownload(g: GuideOut): GuideDownload | null {
 // than replacing the list with nothing for the next hour.
 export async function getGuideDownloads(): Promise<GuideDownload[]> {
   try {
-    const res = await fetch(`${API_URL}/guides`, { next: { revalidate: GUIDES_REVALIDATE_SECONDS } });
+    const res = await fetch(`${API_URL}/guides`, {
+      next: { revalidate: GUIDES_REVALIDATE_SECONDS, tags: [GUIDES_CACHE_TAG] },
+    });
     if (!res.ok) throw new Error(`GET /guides responded ${res.status}`);
     const data: unknown = await res.json();
     if (!Array.isArray(data)) throw new Error("GET /guides did not return a list");
