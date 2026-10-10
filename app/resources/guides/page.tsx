@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Breadcrumb from "@/components/ui/Breadcrumb";
+import Button from "@/components/ui/Button";
 import Reveal from "@/components/motion/Reveal";
 import { StaggerGrid, StaggerItem } from "@/components/motion/StaggerGrid";
 import { GUIDES } from "@/lib/guides";
+import { formatFileSize, formatUpdated, getGuideDownloads } from "@/lib/guide-downloads";
 
 export const metadata: Metadata = {
   title: "Guides",
@@ -12,7 +14,13 @@ export const metadata: Metadata = {
   alternates: { canonical: "/resources/guides" },
 };
 
-export default function GuidesPage() {
+// Picks up newly uploaded PDF guides hourly; keep in step with
+// GUIDES_REVALIDATE_SECONDS (this has to be a literal for Next to read it).
+export const revalidate = 3600;
+
+export default async function GuidesPage() {
+  const downloads = await getGuideDownloads();
+
   return (
     <>
       <section className="px-6 pb-5 pt-[72px]">
@@ -44,6 +52,50 @@ export default function GuidesPage() {
           ))}
         </StaggerGrid>
       </section>
+      {downloads.length > 0 && (
+        <section className="px-6 pb-24">
+          <div className="mx-auto max-w-[1280px]">
+            <Reveal>
+              <h2 className="m-0 mb-3 font-display text-[clamp(26px,2.6vw,36px)] uppercase leading-[1.05]">
+                Downloadable guides
+              </h2>
+              <p className="m-0 mb-8 max-w-[60ch] font-serif text-[18px] leading-[1.55]">
+                PDFs you can read in the browser or save to work through offline.
+              </p>
+            </Reveal>
+            <StaggerGrid className="grid gap-0.5">
+              {downloads.map((g) => {
+                const meta = [
+                  g.category,
+                  g.sizeBytes ? `PDF · ${formatFileSize(g.sizeBytes)}` : "PDF",
+                  formatUpdated(g.updatedISO),
+                ].filter(Boolean);
+                return (
+                  <StaggerItem key={g.slug} className="grid gap-2.5 bg-[#EFEFEF] p-[32px_30px]">
+                    <span className="font-sans text-xs font-semibold uppercase tracking-[0.14em] text-ochre">
+                      {meta.join(" · ")}
+                    </span>
+                    <h3 className="m-0 font-display text-2xl uppercase leading-[1.1]">{g.title}</h3>
+                    {g.description && (
+                      <p className="m-0 max-w-[70ch] font-serif text-[17px] leading-[1.55] text-muted-2">
+                        {g.description}
+                      </p>
+                    )}
+                    <div className="mt-2 flex flex-wrap gap-3">
+                      <Button href={g.downloadHref} small>
+                        Download PDF
+                      </Button>
+                      <Button href={g.viewHref} variant="outline-dark" small arrow={false} newTab>
+                        Open in browser
+                      </Button>
+                    </div>
+                  </StaggerItem>
+                );
+              })}
+            </StaggerGrid>
+          </div>
+        </section>
+      )}
     </>
   );
 }
