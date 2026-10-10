@@ -14,6 +14,7 @@ import {
   Landmark,
   Layers,
   Lightbulb,
+  MessagesSquare,
   MonitorSmartphone,
   Plane,
   ClipboardCheck,
@@ -22,12 +23,14 @@ import {
   Send,
   ShieldCheck,
   SquarePen,
+  Stamp,
   Target,
   TrendingUp,
   Trophy,
   UserRound,
   UserRoundPlus,
   Users,
+  Video,
   type LucideIcon,
 } from "lucide-react";
 import type { FrameworkIcon as IconKey } from "@/lib/frameworks";
@@ -67,6 +70,9 @@ export const FRAMEWORK_ICONS: Record<IconKey, LucideIcon> = {
   inbox: Inbox,
   eye: Eye,
   trophy: Trophy,
+  chat: MessagesSquare,
+  video: Video,
+  visa: Stamp,
 };
 
 export default function FrameworkIcon({

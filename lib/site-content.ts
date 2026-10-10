@@ -1,4 +1,5 @@
 import type { FaqItem } from "./structured-data";
+import type { FrameworkIcon } from "./frameworks";
 
 // The owner's FAQ document, in its order. /resources/faqs lists all of them;
 // the homepage shows the first few.
@@ -272,6 +273,145 @@ export const PRINCIPLES = [
   { t: "Simple", d: "One question per Map, answered in language a family can act on." },
   { t: "Personalised", d: "Every output is built from the profile in front of us." },
   { t: "Data-driven", d: "Structured evaluation, documented criteria, evidence over assumption." },
+];
+
+export type HistoryItem = { t: string; d?: string; icon: FrameworkIcon; href?: string };
+
+export type HistoryMilestone = {
+  year: string;
+  title: string;
+  subtitle?: string;
+  body: string[];
+  /** Closing line, set apart beneath the body. */
+  note?: string;
+  /** Short pill label above the list. */
+  listLabel?: string;
+  /** Sentence-length lead-in above the list, for when a pill is too small. */
+  listIntro?: string;
+  items: HistoryItem[];
+  /** Closing line beneath the list, when it speaks to the list rather than the story. */
+  listOutro?: string;
+};
+
+// About → Our journey. Transcribed from the owner's history slides (About Us
+// section of the "Mishu todo 2" document), in chronological order.
+export const HISTORY: HistoryMilestone[] = [
+  {
+    year: "1998",
+    title: "The Beginning",
+    subtitle: "DMC – Coaching & Career Mentoring",
+    body: [
+      "Our journey began with DMC, providing academic coaching and career mentoring to students.",
+      "At a time when structured career guidance was still uncommon, we focused on helping students discover their potential and make informed educational decisions.",
+    ],
+    listLabel: "Core focus",
+    items: [
+      { t: "Academic Coaching", icon: "graduation" },
+      { t: "Career Mentoring", icon: "profile" },
+      { t: "Student Development", icon: "career" },
+      { t: "Educational Guidance", icon: "book" },
+    ],
+  },
+  {
+    year: "2003",
+    title: "Preparing Future Professionals",
+    body: [
+      "As higher education became increasingly competitive, we expanded into advanced entrance examination preparation.",
+    ],
+    note: "This marked our transition from academic coaching to professional career preparation.",
+    listLabel: "Programs included",
+    items: [
+      { t: "CAT", icon: "readiness" },
+      { t: "GMAT", icon: "report" },
+      { t: "Other MBA Entrance Examinations", icon: "briefcase" },
+    ],
+  },
+  {
+    year: "2005",
+    title: "Entering the International Education Industry",
+    body: [
+      "Under the DEWS brand, we expanded into overseas education.",
+      "During this phase, we became one of the early private ETS-authorised examination centres for TOEFL, with GRE added later. We also served as an IELTS Nodal Centre, while providing comprehensive preparation for international entrance examinations.",
+    ],
+    note: "This was the beginning of our complete study abroad ecosystem.",
+    listLabel: "Our services expanded to include",
+    items: [
+      { t: "TOEFL Testing", icon: "dashboard" },
+      { t: "GRE Testing", icon: "edit" },
+      { t: "IELTS Services", icon: "chat" },
+      { t: "TOEFL, GRE & IELTS Preparation", icon: "book" },
+      { t: "International University Admissions", icon: "university" },
+      { t: "Overseas Education Counselling", icon: "country" },
+    ],
+  },
+  {
+    year: "2008",
+    title: "A Complete Study Abroad Destination",
+    body: [
+      "DEWS evolved into a full-fledged international education centre, providing students with every major service required throughout their study abroad journey.",
+      "Students no longer had to coordinate with multiple providers—everything was available through a single, structured process.",
+    ],
+    listLabel: "Our integrated services included",
+    items: [
+      { t: "Career Counselling", icon: "chat" },
+      { t: "University Selection", icon: "graduation" },
+      { t: "Test Preparation", icon: "book" },
+      { t: "Application & Admission Support", icon: "edit" },
+      { t: "SOP, Résumé & Documentation Guidance", icon: "report" },
+      { t: "Visa Processing Support", icon: "visa" },
+      { t: "Pre-Departure Assistance", icon: "plane" },
+    ],
+  },
+  {
+    year: "2020",
+    title: "Digital Transformation",
+    body: [
+      "Recognising the changing needs of students worldwide, DEWS transitioned to a digital-first model.",
+      "Students could now access expert guidance remotely through online counselling, virtual mentoring, and digital admission support, making quality international education services accessible regardless of location.",
+    ],
+    items: [
+      { t: "Online Counselling", icon: "dashboard" },
+      { t: "Virtual Mentoring", icon: "video" },
+      { t: "Digital Admission Support", icon: "readiness" },
+    ],
+  },
+  {
+    year: "2025",
+    title: "The Birth of DEWSMENTORA™",
+    body: [
+      "After nearly three decades of mentoring students and supporting international admissions, we transformed our accumulated knowledge into DEWSMENTORA™.",
+      "Rather than functioning as a traditional consultancy, DEWSMENTORA™ is designed as a needs-based, AI-enabled international education platform that combines human expertise with structured decision-making frameworks.",
+    ],
+    listIntro: "Built upon decades of practical experience, DEWSMENTORA™ introduces proprietary systems including:",
+    items: [
+      {
+        t: "Identity Mapping™",
+        d: "Discover who you are, what drives you, and where you truly belong.",
+        icon: "profile",
+        href: "/products/identity-mapping",
+      },
+      {
+        t: "University Intelligence Mapping™",
+        d: "Find the right universities based on data, outcomes, and opportunities.",
+        icon: "university",
+        href: "/products/university-intelligence-mapping",
+      },
+      {
+        t: "Story Mapping™",
+        d: "Craft a compelling, authentic story that strengthens every application.",
+        icon: "edit",
+        href: "/products/story-mapping",
+      },
+      {
+        t: "Execution Mapping™",
+        d: "Plan, track, and manage every step of your study abroad journey with precision.",
+        icon: "roadmap",
+        href: "/products/execution-mapping",
+      },
+    ],
+    listOutro:
+      "These frameworks help students make informed decisions, build stronger applications, and manage their entire study abroad journey with greater clarity, transparency, and confidence.",
+  },
 ];
 
 // Resources → Preparation. Material is added per test; until then each card
