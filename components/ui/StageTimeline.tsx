@@ -14,16 +14,22 @@ import type { FrameworkStage } from "@/lib/frameworks";
  * Collapsed, the six titles fit one screen and the reader chooses what to open.
  * `<details>` is used rather than state so this stays a server component: no
  * hydration, and it still works with JS unavailable.
+ *
+ * `headingLevel` sets the stage titles' level so the outline stays in order
+ * wherever the timeline is nested.
  */
 export default function StageTimeline({
   stages,
   tone = "dark",
   collapsible = false,
+  headingLevel = 3,
 }: {
   stages: FrameworkStage[];
   tone?: "light" | "dark";
   collapsible?: boolean;
+  headingLevel?: 3 | 4 | 5;
 }) {
+  const Heading = `h${headingLevel}` as const;
   const dark = tone === "dark";
   const rail = dark ? "bg-white/20" : "bg-line-strong";
   const nodeRing = dark ? "border-yellow bg-ink" : "border-ochre/40 bg-white";
@@ -43,11 +49,11 @@ export default function StageTimeline({
             <p className={`m-0 mb-1.5 font-sans text-[13px] font-bold tracking-[0.14em] uppercase ${eyebrow}`}>
               Stage {stage.n}
             </p>
-            <h3
+            <Heading
               className={`m-0 font-display text-[clamp(20px,2vw,28px)] leading-[1.1] uppercase ${title}`}
             >
               {stage.title}
-            </h3>
+            </Heading>
           </>
         );
 
