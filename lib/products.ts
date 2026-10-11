@@ -254,7 +254,7 @@ export const PRODUCTS: Product[] = [
     slug: "university-intelligence-mapping",
     name: "University Intelligence Mapping",
     question: "Where should I go?",
-    price: "Rs. 3,999",
+    price: "₹3,999",
     cardText:
       "Don't just find universities. Evaluate Course + Career + Cost + Location + Outcomes + Profile Fit before making the investment.",
     summary: "A good university isn't automatically a good decision for you. Evaluate the decision, not only the ranking.",
@@ -488,7 +488,7 @@ export const PRODUCTS: Product[] = [
     slug: "story-mapping",
     name: "Story Mapping",
     question: "How should I present myself?",
-    price: "Rs. 12,999",
+    price: "₹12,999",
     cardText:
       "Transform achievements, experiences, aspirations and future direction into one coherent application narrative. Not simply better documents. A better-positioned applicant.",
     summary: "Your application isn't a collection of documents. It's one story.",
