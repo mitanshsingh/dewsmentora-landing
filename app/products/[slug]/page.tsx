@@ -284,18 +284,22 @@ export default async function ProductPage({
         </section>
       )}
 
-      <section className="px-6 pb-[88px]">
+      {/* Its own band, so the FAQ reads as a separate part of the page. */}
+      <section aria-labelledby="faq" className="bg-cream px-6 py-[88px]">
         <div className="mx-auto max-w-[1000px]">
           <Reveal>
-            <h2 className="m-0 mb-[26px] max-w-[30ch] font-display text-[clamp(28px,2.8vw,40px)] uppercase leading-[1.02]">
+            <h2
+              id="faq"
+              className="m-0 mb-[26px] max-w-[30ch] font-display text-[clamp(28px,2.8vw,40px)] uppercase leading-[1.02]"
+            >
               {product.faqHeading ?? "FAQ"}
             </h2>
-            <FaqAccordion items={product.faqs} idPrefix={`product-${product.slug}`} />
+            <FaqAccordion items={product.faqs} idPrefix={`product-${product.slug}`} expandAll />
           </Reveal>
         </div>
       </section>
 
-      <section className="px-6 pb-24">
+      <section className="px-6 py-24">
         <Reveal>
           <SectionCta heading="Start with the question you need answered" tone="yellow" />
         </Reveal>
