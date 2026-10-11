@@ -6,7 +6,7 @@ import Link from "next/link";
 export type FooterLink = { label: string; href: string };
 
 const LINK_CLASS =
-  "block py-[9px] font-text text-[15px] text-[#BDBAB0] nav:inline nav:py-0 nav:font-sans nav:leading-[1.3] nav:text-[#D9D9D9] nav:hover:text-white";
+  "block py-[9px] font-text text-[15px] text-[#D9D9D9] nav:inline nav:py-0 nav:font-sans nav:leading-[1.3] nav:hover:text-white";
 
 function FooterLinkItem({ href, label }: FooterLink) {
   if (href.startsWith("http")) {
@@ -38,16 +38,16 @@ export default function FooterGroup({
   const panelId = `footer-${id}`;
 
   return (
-    <nav aria-label={title} className="border-t border-night-line nav:border-t-0">
+    <nav aria-label={title} className="border-t border-[#2A2A2A] nav:border-t-0">
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
         aria-expanded={open}
         aria-controls={panelId}
-        className="flex min-h-[50px] w-full items-center justify-between py-3.5 font-sans text-[11.5px] font-semibold uppercase tracking-[0.18em] text-night-fg nav:hidden"
+        className="flex min-h-[50px] w-full items-center justify-between py-3.5 font-sans text-[11.5px] font-semibold uppercase tracking-[0.18em] text-yellow nav:hidden"
       >
         <span>{title}</span>
-        <span aria-hidden="true" className="text-[18px] leading-none text-gold-bright">
+        <span aria-hidden="true" className="text-[18px] leading-none text-yellow">
           {open ? "−" : "+"}
         </span>
       </button>

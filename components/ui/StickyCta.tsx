@@ -26,11 +26,11 @@ export default function StickyCta() {
           animate={{ y: 0 }}
           exit={{ y: "110%" }}
           transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
-          className="fixed inset-x-0 bottom-0 z-50 border-t border-warm-line bg-paper-warm/95 px-3.5 pb-3.5 pt-2.5 backdrop-blur-[10px] nav:hidden"
+          className="fixed inset-x-0 bottom-0 z-50 border-t border-line bg-white/95 px-3.5 pb-3.5 pt-2.5 backdrop-blur-[10px] nav:hidden"
         >
           <div className="mx-auto flex max-w-[560px] gap-2">
             <span
-              className="flex h-[50px] flex-1 cursor-not-allowed items-center justify-center bg-gold font-sans text-[12.5px] font-semibold uppercase tracking-[0.12em] text-night opacity-50 grayscale"
+              className="flex h-[50px] flex-1 cursor-not-allowed items-center justify-center bg-yellow font-sans text-[12.5px] font-semibold uppercase tracking-[0.12em] text-ink opacity-50 grayscale"
               aria-disabled="true"
               role="button"
             >
@@ -38,7 +38,7 @@ export default function StickyCta() {
             </span>
             <Link
               href="/products"
-              className="flex h-[50px] flex-none items-center justify-center border border-warm-line-strong px-[18px] font-sans text-[12.5px] font-semibold uppercase tracking-[0.12em] text-ink-warm"
+              className="flex h-[50px] flex-none items-center justify-center border border-ink px-[18px] font-sans text-[12.5px] font-semibold uppercase tracking-[0.12em] text-ink"
             >
               Maps
             </Link>

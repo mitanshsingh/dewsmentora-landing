@@ -38,7 +38,7 @@ const FOOTER_COLS = [
 export default function Footer() {
   return (
     // The extra phone bottom padding clears the landing page's sticky CTA bar.
-    <footer className="mt-[52px] bg-night-deep px-5 pb-[76px] pt-9 text-night-body nav:mt-0 nav:bg-ink nav:px-6 nav:pb-9 nav:pt-[72px] nav:text-white">
+    <footer className="mt-[52px] bg-ink px-5 pb-[76px] pt-9 text-white nav:mt-0 nav:px-6 nav:pb-9 nav:pt-[72px]">
       <div
         className="mx-auto w-full max-w-[560px] nav:grid nav:max-w-[1280px] nav:gap-11"
         style={{ gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 190px), 1fr))" }}
@@ -52,16 +52,16 @@ export default function Footer() {
               height={36}
               className="hidden h-9 w-9 flex-none rounded-full nav:block"
             />
-            <p className="m-0 font-sans text-[14px] font-bold uppercase tracking-[0.14em] text-night-fg nav:font-display nav:text-[26px] nav:font-normal nav:leading-none nav:tracking-normal nav:text-white">
+            <p className="m-0 font-sans text-[14px] font-bold uppercase tracking-[0.14em] text-white nav:font-display nav:text-[26px] nav:font-normal nav:leading-none nav:tracking-normal">
               DEWS Mentora
             </p>
           </div>
-          <p className="m-0 mb-[22px] max-nav:text-pretty font-text text-[14.5px] leading-[1.6] text-night-muted nav:max-w-[34ch] nav:font-serif nav:text-[17px] nav:leading-[1.55] nav:text-[#BDBDBD]">
+          <p className="m-0 mb-[22px] max-nav:text-pretty font-text text-[14.5px] leading-[1.6] text-[#BDBDBD] nav:max-w-[34ch] nav:font-serif nav:text-[17px] nav:leading-[1.55]">
             Structured evaluation for high-stakes education and career decisions. Four Maps, one question at a
             time.
           </p>
           <span
-            className="mb-[26px] flex h-[52px] cursor-not-allowed items-center justify-center gap-2.5 bg-gold font-sans text-[13px] font-semibold uppercase tracking-[0.12em] text-night opacity-50 grayscale nav:mb-0 nav:inline-flex nav:h-auto nav:rounded-full nav:bg-yellow nav:px-[26px] nav:py-[15px] nav:text-sm nav:font-bold nav:normal-case nav:tracking-normal nav:text-ink"
+            className="mb-[26px] flex h-[52px] cursor-not-allowed items-center justify-center gap-2.5 bg-yellow font-sans text-[13px] font-semibold uppercase tracking-[0.12em] text-ink opacity-50 grayscale nav:mb-0 nav:inline-flex nav:h-auto nav:rounded-full nav:px-[26px] nav:py-[15px] nav:text-sm nav:font-bold nav:normal-case nav:tracking-normal"
             aria-disabled="true"
             role="button"
           >
@@ -73,10 +73,10 @@ export default function Footer() {
         ))}
       </div>
       <div className="mx-auto mt-[26px] w-full max-w-[560px] nav:mt-[52px] nav:flex nav:max-w-[1280px] nav:flex-wrap nav:justify-between nav:gap-4 nav:border-t nav:border-[#2A2A2A] nav:pt-6">
-        <p className="m-0 font-text text-[12.5px] text-night-faint nav:font-sans nav:text-sm nav:text-[#8A8A8A]">
+        <p className="m-0 font-text text-[12.5px] text-[#8A8A8A] nav:font-sans nav:text-sm">
           © 2026 DEWS Mentora. All rights reserved.
         </p>
-        <p className="m-0 mt-1.5 font-text text-[12.5px] text-night-faint nav:mt-0 nav:font-sans nav:text-sm nav:text-[#8A8A8A]">
+        <p className="m-0 mt-1.5 font-text text-[12.5px] text-[#8A8A8A] nav:mt-0 nav:font-sans nav:text-sm">
           Application: coming soon
         </p>
       </div>

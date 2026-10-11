@@ -33,7 +33,7 @@ export default function HomePage() {
         >
           <Reveal className="nav:col-start-1 nav:row-start-2">
             <p
-              className={`${EYEBROW} mb-3.5 text-gold-deep nav:mb-[22px] nav:text-[12.5px] nav:text-ochre`}
+              className={`${EYEBROW} mb-3.5 text-ochre nav:mb-[22px] nav:text-[12.5px]`}
             >
               Decision intelligence for aspirants
             </p>
@@ -60,7 +60,7 @@ export default function HomePage() {
           </Reveal>
 
           <Reveal className="nav:col-start-1 nav:row-start-3">
-            <p className="m-0 mt-[22px] max-nav:text-pretty font-text text-[15.5px] leading-[1.62] text-ink-soft nav:mb-[34px] nav:mt-0 nav:max-w-[56ch] nav:font-serif nav:text-[clamp(18px,2vw,22px)] nav:leading-[1.55] nav:text-[#2A2A2A]">
+            <p className="m-0 mt-[22px] max-nav:text-pretty font-text text-[15.5px] leading-[1.62] text-[#2A2A2A] nav:mb-[34px] nav:mt-0 nav:max-w-[56ch] nav:font-serif nav:text-[clamp(18px,2vw,22px)] nav:leading-[1.55]">
               Before choosing a direction, university, or application strategy — understand what you&apos;re
               committing to. DEWSMENTORA™ helps aspirants and families independently evaluate, compare and
               validate high-stakes education and career decisions before commitment.
@@ -70,14 +70,14 @@ export default function HomePage() {
                 href={APP_REGISTER_URL}
                 variant="custom"
                 disabled
-                className="h-[54px] w-full justify-center gap-2.5 bg-ink-warm font-sans text-[13px] font-semibold uppercase tracking-[0.12em] text-paper-warm nav:h-auto nav:w-auto nav:rounded-full nav:bg-yellow nav:px-[30px] nav:py-[18px] nav:text-[15px] nav:font-bold nav:normal-case nav:leading-none nav:tracking-normal nav:text-ink"
+                className="h-[54px] w-full justify-center gap-2.5 bg-yellow font-sans text-[13px] font-semibold uppercase tracking-[0.12em] text-ink nav:h-auto nav:w-auto nav:rounded-full nav:px-[30px] nav:py-[18px] nav:text-[15px] nav:font-bold nav:normal-case nav:leading-none nav:tracking-normal"
               >
                 Coming Soon
               </Button>
               <Button
                 href="/products"
                 variant="custom"
-                className="h-[54px] w-full justify-center gap-2.5 border border-warm-line-strong font-sans text-[13px] font-semibold uppercase tracking-[0.12em] text-ink-warm nav:h-auto nav:w-auto nav:rounded-full nav:border-[1.5px] nav:border-ink nav:px-[30px] nav:py-[18px] nav:text-[15px] nav:font-bold nav:normal-case nav:leading-none nav:tracking-normal nav:text-ink nav:hover:bg-ink nav:hover:text-white"
+                className="h-[54px] w-full justify-center gap-2.5 border border-ink font-sans text-[13px] font-semibold uppercase tracking-[0.12em] text-ink nav:h-auto nav:w-auto nav:rounded-full nav:border-[1.5px] nav:px-[30px] nav:py-[18px] nav:text-[15px] nav:font-bold nav:normal-case nav:leading-none nav:tracking-normal nav:hover:bg-ink nav:hover:text-white"
               >
                 Explore Products
               </Button>
@@ -93,7 +93,7 @@ export default function HomePage() {
         >
           <StaggerItem className="mb-2 nav:mb-0 nav:flex nav:items-center nav:px-8 nav:py-16">
             <div>
-              <p className={`${EYEBROW} mb-2 text-gold-deep nav:hidden`}>Four Maps</p>
+              <p className={`${EYEBROW} mb-2 text-ochre nav:hidden`}>Four Maps</p>
               <h2
                 id="deciding"
                 className="m-0 font-headline text-[32px] font-medium leading-[1.12] tracking-[-0.01em] nav:font-display nav:text-[clamp(34px,3.4vw,52px)] nav:font-normal nav:uppercase nav:leading-[0.95] nav:tracking-normal nav:text-ink"
@@ -105,7 +105,7 @@ export default function HomePage() {
           {PRODUCTS.map((p) => (
             <StaggerItem
               key={p.slug}
-              className="flex flex-col border border-warm-line bg-card-warm p-[20px_18px] nav:gap-[18px] nav:border-0 nav:bg-[var(--card-bg)] nav:p-[56px_30px] nav:text-[var(--card-fg)]"
+              className="flex flex-col border border-line bg-[var(--card-bg)] p-[20px_18px] text-[var(--card-fg)] nav:gap-[18px] nav:border-0 nav:p-[56px_30px]"
               style={
                 {
                   "--card-bg": p.bg,
@@ -119,16 +119,16 @@ export default function HomePage() {
                 {p.question}
               </h3>
               <p
-                className={`${EYEBROW} mb-2.5 text-gold-deep nav:mb-0 nav:font-serif nav:text-[17px] nav:font-normal nav:normal-case nav:leading-[1.2] nav:tracking-normal nav:text-inherit nav:opacity-85`}
+                className={`${EYEBROW} mb-2.5 opacity-85 nav:mb-0 nav:font-serif nav:text-[17px] nav:font-normal nav:normal-case nav:leading-[1.2] nav:tracking-normal`}
               >
                 {p.name}
               </p>
-              <p className="m-0 mb-3.5 max-nav:text-pretty font-text text-[14.5px] leading-[1.6] text-ink-muted nav:mb-0 nav:flex-1 nav:font-serif nav:text-[16px] nav:leading-[1.5] nav:text-inherit">
+              <p className="m-0 mb-3.5 max-nav:text-pretty font-text text-[14.5px] leading-[1.6] nav:mb-0 nav:flex-1 nav:font-serif nav:text-[16px] nav:leading-[1.5]">
                 {p.cardText}
               </p>
               <Link
                 href={productHref(p)}
-                className="inline-flex w-fit items-center gap-2 font-sans text-[11.5px] font-semibold uppercase tracking-[0.14em] text-ink-warm nav:rounded-full nav:bg-[var(--btn-bg)] nav:px-6 nav:py-3.5 nav:text-sm nav:font-bold nav:normal-case nav:tracking-normal nav:text-[var(--btn-fg)]"
+                className="inline-flex w-fit items-center gap-2 font-sans text-[11.5px] font-semibold uppercase tracking-[0.14em] nav:rounded-full nav:bg-[var(--btn-bg)] nav:px-6 nav:py-3.5 nav:text-sm nav:font-bold nav:normal-case nav:tracking-normal nav:text-[var(--btn-fg)]"
               >
                 Explore <span aria-hidden="true">→</span>
               </Link>
@@ -168,7 +168,7 @@ export default function HomePage() {
       <section aria-labelledby="steps" className="px-5 pt-[46px] nav:px-6 nav:py-24">
         <div className={SHELL}>
           <Reveal>
-            <p className={`${EYEBROW} mb-2 text-gold-deep nav:hidden`}>Process</p>
+            <p className={`${EYEBROW} mb-2 text-ochre nav:hidden`}>Process</p>
             <h2
               id="steps"
               className="m-0 mb-[22px] font-headline text-[30px] font-medium leading-[1.14] nav:mb-12 nav:font-display nav:text-[clamp(32px,3.4vw,52px)] nav:font-normal nav:uppercase nav:leading-[0.95] nav:text-ink"
@@ -183,16 +183,16 @@ export default function HomePage() {
             {HOME_STEPS.map((s) => (
               <StaggerItem
                 key={s.n}
-                className="grid grid-cols-[46px_1fr] gap-3.5 border-t border-warm-line-mid py-[18px] nav:block nav:border-t-[3px] nav:border-yellow nav:pb-0 nav:pt-[22px]"
+                className="grid grid-cols-[46px_1fr] gap-3.5 border-t border-yellow py-[18px] nav:block nav:border-t-[3px] nav:pb-0 nav:pt-[22px]"
               >
-                <p className="m-0 font-headline text-[26px] leading-none text-ink-faint nav:mb-3.5 nav:font-display nav:text-[40px] nav:text-yellow">
+                <p className="m-0 font-headline text-[26px] leading-none text-yellow nav:mb-3.5 nav:font-display nav:text-[40px]">
                   {s.n}
                 </p>
                 <div>
                   <h3 className="m-0 mb-1.5 font-sans text-[15px] font-semibold leading-snug tracking-[0.01em] nav:mb-2.5 nav:text-[19px] nav:leading-[1.2] nav:tracking-normal">
                     {s.t}
                   </h3>
-                  <p className="m-0 max-nav:text-pretty font-text text-[14.5px] leading-[1.6] text-ink-muted nav:font-serif nav:text-[17px] nav:leading-[1.5] nav:text-[#4A4A4A]">
+                  <p className="m-0 max-nav:text-pretty font-text text-[14.5px] leading-[1.6] text-muted-2 nav:font-serif nav:text-[17px] nav:leading-[1.5]">
                     {s.d}
                   </p>
                 </div>
@@ -204,14 +204,14 @@ export default function HomePage() {
 
       <section
         aria-labelledby="why"
-        className="mt-[46px] bg-night px-5 pb-[38px] pt-[34px] text-night-fg nav:mt-0 nav:bg-transparent nav:px-6 nav:pb-24 nav:pt-0 nav:text-ink"
+        className="mt-[46px] px-5 pb-[38px] pt-[34px] text-ink nav:mt-0 nav:px-6 nav:pb-24 nav:pt-0"
       >
         <div
           className={`${SHELL} nav:grid nav:items-center nav:gap-10 nav:bg-cream nav:p-[56px_40px]`}
           style={{ gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))" }}
         >
           <Reveal>
-            <p className={`${EYEBROW} mb-2 text-gold-bright nav:hidden`}>Why us</p>
+            <p className={`${EYEBROW} mb-2 text-ochre nav:hidden`}>Why us</p>
             <h2
               id="why"
               className="m-0 mb-[22px] font-headline text-[30px] font-medium leading-[1.14] nav:mb-5 nav:font-display nav:text-[clamp(30px,3vw,44px)] nav:font-normal nav:uppercase nav:leading-[0.98]"
@@ -222,7 +222,7 @@ export default function HomePage() {
               {WHY_POINTS.map((w) => (
                 <li
                   key={w}
-                  className="max-nav:text-pretty border-l-2 border-gold pl-4 font-text text-[15.5px] leading-[1.55] text-[#DEDBD2] nav:border-yellow nav:pl-[22px] nav:font-serif nav:text-[18px] nav:leading-[1.5] nav:text-ink"
+                  className="max-nav:text-pretty border-l-2 border-yellow pl-4 font-text text-[15.5px] leading-[1.55] text-ink nav:pl-[22px] nav:font-serif nav:text-[18px] nav:leading-[1.5]"
                 >
                   {w}
                 </li>
@@ -272,7 +272,7 @@ export default function HomePage() {
             <p className="m-0 mt-5 nav:mt-[26px] nav:font-serif nav:text-[17px] nav:leading-[1.5]">
               <Link
                 href="/resources/faqs"
-                className="inline-flex items-center border-b-[1.5px] border-gold pb-1.5 font-sans text-[12px] font-semibold uppercase tracking-[0.14em] text-ink-warm nav:inline nav:border-yellow nav:pb-0 nav:font-serif nav:text-[17px] nav:font-normal nav:normal-case nav:tracking-normal nav:text-ink"
+                className="inline-flex items-center border-b-[1.5px] border-yellow pb-1.5 font-sans text-[12px] font-semibold uppercase tracking-[0.14em] text-ink nav:inline nav:pb-0 nav:font-serif nav:text-[17px] nav:font-normal nav:normal-case nav:tracking-normal"
               >
                 {/* The space lives inside the arrow so desktop's underline does
                     not pick up a trailing space when the arrow is hidden. */}

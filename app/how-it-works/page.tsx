@@ -4,6 +4,7 @@ import Button from "@/components/ui/Button";
 import Reveal from "@/components/motion/Reveal";
 import { StaggerGrid, StaggerItem } from "@/components/motion/StaggerGrid";
 import ProductHowItWorks from "@/components/ui/ProductHowItWorks";
+import OpenDetailsOnHash from "@/components/ui/OpenDetailsOnHash";
 import { PRODUCTS } from "@/lib/products";
 import { HOME_STEPS, APP_REGISTER_URL } from "@/lib/site-content";
 
@@ -69,6 +70,7 @@ export default function HowItWorksPage() {
               </StaggerItem>
             ))}
           </StaggerGrid>
+          <OpenDetailsOnHash />
         </div>
       </section>
 
