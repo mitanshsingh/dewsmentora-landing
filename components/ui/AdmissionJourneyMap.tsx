@@ -24,6 +24,9 @@ import type { Framework } from "@/lib/frameworks";
  * The serpentine only works while all six stages sit side by side, so this is a
  * `nav:` (>=1080px) treatment. Below that the caller falls back to the vertical
  * StageTimeline, which is what makes this content readable on a phone at all.
+ *
+ * Headings start at h4 because the map sits inside Execution Mapping's block on
+ * /how-it-works (section h2, Map h3).
  */
 
 const CANVAS = 1536;
@@ -136,12 +139,12 @@ function StageBlock({
             child, not the canvas, which caps the heading far narrower than
             intended. The root sets `container-type: inline-size`, so 1cqw is
             1% of the canvas. */}
-        <h3
+        <h5
           className={TITLE}
           style={titleWidth ? { maxWidth: `${(titleWidth / CANVAS) * 100}cqw` } : undefined}
         >
           {title}
-        </h3>
+        </h5>
         <Bullets items={items} />
       </div>
     </div>
@@ -164,9 +167,9 @@ export default function AdmissionJourneyMap({ framework }: { framework: Framewor
         <span className="rounded-full bg-[#FEDD02] px-[1.5cqw] py-[0.5cqw] font-sans text-[2.7cqw] font-bold uppercase leading-[1] tracking-[-0.01em] text-[#111]">
           Your
         </span>
-        <h2 className="m-0 font-sans text-[2.7cqw] font-bold uppercase leading-[1] tracking-[-0.005em] text-[#1A1A1A]">
+        <h4 className="m-0 font-sans text-[2.7cqw] font-bold uppercase leading-[1] tracking-[-0.005em] text-[#1A1A1A]">
           Admission Journey
-        </h2>
+        </h4>
       </div>
       <p className="m-0 mt-[0.75cqw] mb-[2.2cqw] font-sans text-[1.12cqw] leading-[1.4] text-[#6B6B6B]">
         A Structured Process. Professionally Managed.
@@ -328,9 +331,9 @@ export default function AdmissionJourneyMap({ framework }: { framework: Framewor
                 <Users className="h-[52%] w-[52%] text-[#1A1A1A]" strokeWidth={1.7} absoluteStrokeWidth />
               </span>
               <div className="min-w-0">
-                <h3 className="m-0 font-sans text-[1.28cqw] font-bold uppercase leading-[1.15] text-[#1A1A1A]">
+                <h5 className="m-0 font-sans text-[1.28cqw] font-bold uppercase leading-[1.15] text-[#1A1A1A]">
                   Throughout your journey
-                </h3>
+                </h5>
                 <p className="m-0 mt-[0.35cqw] font-sans text-[0.95cqw] leading-[1.4] text-[#3D3D3D]">
                   You always receive:
                 </p>
@@ -362,9 +365,9 @@ export default function AdmissionJourneyMap({ framework }: { framework: Framewor
                 <Handshake className="h-[52%] w-[52%] text-[#1A1A1A]" strokeWidth={1.7} absoluteStrokeWidth />
               </span>
               <div className="min-w-0">
-                <h3 className="m-0 font-sans text-[1.28cqw] font-bold uppercase leading-[1.15] text-[#1A1A1A]">
+                <h5 className="m-0 font-sans text-[1.28cqw] font-bold uppercase leading-[1.15] text-[#1A1A1A]">
                   Our commitment
-                </h3>
+                </h5>
                 <p className="m-0 mt-[0.5cqw] font-sans text-[0.95cqw] leading-[1.45] text-[#3D3D3D]">
                   {commitment.body[0]}
                 </p>

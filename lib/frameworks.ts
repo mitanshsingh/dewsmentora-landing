@@ -42,7 +42,23 @@ export type FrameworkIcon =
   | "trophy"
   | "chat"
   | "video"
-  | "visa";
+  | "visa"
+  | "evidence"
+  | "signal"
+  | "triangulate"
+  | "contrast"
+  | "translate"
+  | "investigate"
+  | "fit"
+  | "shortlist"
+  | "signpost"
+  | "candidate"
+  | "dna"
+  | "star"
+  | "mail"
+  | "files"
+  | "resume"
+  | "write";
 
 export type FrameworkStage = {
   n: string;
@@ -78,10 +94,40 @@ export type HeroVisual = {
   dark?: boolean;
 };
 
+/** A bullet, optionally led by a bold term ("Past — what shaped me?"). */
+export type ProcessItem = string | { term: string; text: string };
+
+export type ProcessStage = {
+  n: string;
+  title: string;
+  icon: FrameworkIcon;
+  items: ProcessItem[];
+  /** What the stage hands to the next one. */
+  output: string;
+};
+
+export type ProcessDeliverable = { title: string; body?: string; icon?: FrameworkIcon };
+
+/**
+ * "How your … report is created": the owner's per-Map process infographics.
+ * Each stage produces a named output, and the stages together produce the
+ * final report or portfolio.
+ */
+export type ReportProcess = {
+  /** Split so the middle phrase can be highlighted, as in the artwork. */
+  heading: [lead: string, highlight: string, tail: string];
+  tagline: string;
+  stages: ProcessStage[];
+  /** Deliverables with icons render as tiles; without, as a bullet list. */
+  final: { heading: string; items: ProcessDeliverable[] };
+  commitment: string;
+};
+
 export type ProductVisual = {
   hero?: HeroVisual;
   pillars?: PillarSet;
   framework?: Framework;
+  process?: ReportProcess;
 };
 
 /* ------------------------------------------------------------------ */
@@ -309,6 +355,316 @@ export const ADMISSION_JOURNEY: Framework = {
 };
 
 /* ------------------------------------------------------------------ */
+/* How each report is created                                          */
+/*                                                                     */
+/* Transcribed from the owner's landscape and portrait infographics.   */
+/* Where the two differed, the fuller wording is kept.                 */
+/* ------------------------------------------------------------------ */
+
+const IDENTITY_PROCESS: ReportProcess = {
+  heading: ["How your", "Identity Mapping report", "is created"],
+  tagline: "Not generated. Investigated. Challenged. Interpreted. Validated.",
+  stages: [
+    {
+      n: "01",
+      title: "Candidate evidence architecture",
+      icon: "evidence",
+      items: [
+        "Organise complete information",
+        "Connect different pieces",
+        "Identify patterns & gaps",
+        "What stands out?",
+        "What is inconsistent?",
+        "What needs further investigation?",
+      ],
+      output: "Candidate Evidence Map",
+    },
+    {
+      n: "02",
+      title: "Multi-lens expert review",
+      icon: "users",
+      items: [
+        "Academic profile",
+        "Career & industry direction",
+        "Behavioural patterns",
+        "Strength & potential",
+        "Higher-education pathways",
+        "Skill development",
+        "Application & future positioning",
+        "Multiple professional perspectives",
+      ],
+      output: "Multi-Perspective Candidate Review",
+    },
+    {
+      n: "03",
+      title: "Independent signal discovery",
+      icon: "signal",
+      items: [
+        "Identify recurring signals",
+        "Look across academics, activities, experiences",
+        "Analyse key traits",
+        "Find patterns across unrelated situations",
+        "Investigate what appears consistently",
+      ],
+      output: "Identity Signal Map",
+    },
+    {
+      n: "04",
+      title: "Evidence triangulation",
+      icon: "triangulate",
+      items: [
+        "Self-perception (what they say)",
+        "Demonstrated evidence (what they have done)",
+        "Recurring behaviour (what appears consistently)",
+        "Assessment signals (structured inputs)",
+        "Expert interpretation (in context)",
+        "Stronger convergence = stronger confidence",
+      ],
+      output: "Evidence Confidence Map",
+    },
+    {
+      n: "05",
+      title: "Contradiction intelligence",
+      icon: "contrast",
+      items: [
+        "Investigate conflicting evidence",
+        "Understand real aspirations",
+        "Identify external influences (parents, peers, prestige, etc.)",
+        "Separate authentic direction from external pressure",
+        "Assess genuine potential behind contradictions",
+      ],
+      output: "Alignment & Contradiction Map",
+    },
+    {
+      n: "06",
+      title: "Hidden potential discovery",
+      icon: "idea",
+      items: [
+        "Proven strengths",
+        "Emerging strengths",
+        "Underutilised potential",
+        "Development priorities",
+        "Look beyond marks and achievements",
+        "Identify where they could become exceptional",
+      ],
+      output: "Potential & Development Map",
+    },
+  ],
+  final: {
+    heading: "Final Identity Mapping report",
+    items: [
+      { title: "Complete identity profile" },
+      { title: "Key strengths and differentiators" },
+      { title: "Alignments and contradictions" },
+      { title: "True interests and motivations" },
+      { title: "Academic and career direction options" },
+      { title: "Development priorities" },
+      { title: "Actionable next steps" },
+      { title: "A clear, personalised roadmap" },
+    ],
+  },
+  commitment:
+    "A deep, unbiased and expert-led process to help every candidate understand who they are, where they can go and how to get there with clarity, confidence and purpose.",
+};
+
+const UIM_PROCESS: ReportProcess = {
+  heading: ["How your", "University Intelligence Mapping report", "is created"],
+  tagline: "Not a university list. A decision intelligence system.",
+  stages: [
+    {
+      n: "01",
+      title: "Candidate-to-university translation",
+      icon: "translate",
+      items: [
+        "Use Identity Mapping findings",
+        "Consider academics, interests, career goals",
+        "Include learning environment, financial and geographic preferences",
+        "Define what the right university must provide for this candidate",
+      ],
+      output: "Candidate University Requirement Map",
+    },
+    {
+      n: "02",
+      title: "Global opportunity discovery",
+      icon: "country",
+      items: [
+        "Look beyond familiar names",
+        "Remove bias from rankings, brand, social media",
+        "Search widely for relevant universities and programs",
+        "Identify strong, lesser-known opportunities",
+      ],
+      output: "Global University Opportunity Pool",
+    },
+    {
+      n: "03",
+      title: "Program-level investigation",
+      icon: "investigate",
+      items: [
+        "Analyse the actual program (not just university ranking)",
+        "Curriculum, specialisations, electives",
+        "Faculty, research, laboratories",
+        "Industry projects, internships",
+        "Experiential learning, flexibility",
+        "Career relevance and academic structure",
+      ],
+      output: "Program Intelligence Profile",
+    },
+    {
+      n: "04",
+      title: "Candidate × program fit analysis",
+      icon: "fit",
+      items: [
+        "Compare the candidate’s strengths, interests and goals with program offerings",
+        "Identify the right environment and learning fit",
+        "Reveal if a famous university is still the right choice",
+        "Focus on “Should this candidate actually study there?”",
+      ],
+      output: "Candidate–Program Fit Map",
+    },
+    {
+      n: "05",
+      title: "Multi-expert intelligence review",
+      icon: "users",
+      items: [
+        "Different professional lenses review shortlisted options",
+        "Academic fit, higher-education strategy",
+        "Career alignment, industry relevance",
+        "Competitiveness, application strategy",
+        "Financial considerations",
+        "Reduce one-dimensional advice",
+      ],
+      output: "Multi-Perspective University Review",
+    },
+    {
+      n: "06",
+      title: "Admission reality mapping",
+      icon: "signal",
+      items: [
+        "Evaluate each university against the candidate’s profile",
+        "Consider academics, test scores, projects, research, work experience, leadership and achievements",
+        "Categorise opportunities (aspirational, competitive, strategic, safe)",
+        "Identify risks and alternatives",
+        "Provide realistic admission possibility",
+      ],
+      output: "Admission Probability & Strategy Map",
+    },
+  ],
+  final: {
+    heading: "Final University Intelligence Mapping report",
+    items: [
+      { title: "Personalised university shortlist", body: "With clear rationale", icon: "shortlist" },
+      { title: "Detailed program insights", body: "What each program offers", icon: "report" },
+      { title: "Admission strategy", body: "Realistic positioning", icon: "signal" },
+      { title: "Comparison & final recommendation", body: "Which university and why", icon: "signpost" },
+    ],
+  },
+  commitment:
+    "A structured, evidence-based and expert-led process to help every candidate identify the right universities and programs, with clarity, confidence and a clear path forward.",
+};
+
+const STORY_PROCESS: ReportProcess = {
+  heading: ["How your", "Story Mapping application portfolio", "is created"],
+  tagline: "Your profile may be strong. But can the evaluator see why?",
+  stages: [
+    {
+      n: "01",
+      title: "Complete candidate evidence extraction",
+      icon: "candidate",
+      items: [
+        "Academics, projects, internships, research",
+        "Work experience, leadership, activities",
+        "Achievements, failures & challenges",
+        "Decisions, turning points, motivations",
+        "Career ambitions, personal experiences",
+        "Future aspirations",
+      ],
+      output: "Candidate Story Evidence Bank",
+    },
+    {
+      n: "02",
+      title: "Story mining",
+      icon: "search",
+      items: [
+        "What happened?",
+        "Why did you choose it?",
+        "What did you actually do?",
+        "What problem did you face?",
+        "How did you respond?",
+        "What changed? What did you learn?",
+        "How did it influence what came next?",
+        "What does this reveal about you?",
+      ],
+      output: "Candidate Story Bank",
+    },
+    {
+      n: "03",
+      title: "Evidence classification",
+      icon: "layers",
+      items: [
+        "Academic readiness, intellectual curiosity",
+        "Leadership, initiative, problem-solving",
+        "Resilience, creativity, professional maturity",
+        "Collaboration, impact, career clarity",
+        "Contribution potential, future direction",
+      ],
+      output: "Evidence-to-Attribute Map",
+    },
+    {
+      n: "04",
+      title: "Narrative DNA",
+      icon: "dna",
+      items: [
+        { term: "Past", text: "What shaped me?" },
+        { term: "Development", text: "What changed me?" },
+        { term: "Present", text: "Who have I become?" },
+        { term: "Direction", text: "Where am I going?" },
+        { term: "Purpose", text: "Why is this next academic step necessary?" },
+      ],
+      output: "Core Candidate Narrative",
+    },
+    {
+      n: "05",
+      title: "Differentiation discovery",
+      icon: "star",
+      items: [
+        "Analyse what makes the candidate unique",
+        "Experience × Perspective × Capability × Motivation × Ambition",
+        "Uncover existing differentiators",
+        "Show why this candidate should be remembered",
+      ],
+      output: "Candidate Differentiation Position",
+    },
+    {
+      n: "06",
+      title: "Multi-expert story review",
+      icon: "users",
+      items: [
+        "Academic positioning, career direction",
+        "Admissions strategy, candidate differentiation",
+        "Communication & narrative, program fit",
+        "Application consistency",
+        "Different professional perspectives",
+        "Reduce one-dimensional interpretation",
+      ],
+      output: "Multi-Perspective Candidate Review",
+    },
+  ],
+  final: {
+    heading: "Final application portfolio",
+    items: [
+      { title: "Application narrative blueprint", body: "One clear story across all documents", icon: "report" },
+      { title: "Statement of purpose", body: "Compelling and authentic", icon: "edit" },
+      { title: "Personal statements and essays", body: "Tailored to each university", icon: "write" },
+      { title: "Academic CV / resume", body: "Strong and consistent with your story", icon: "resume" },
+      { title: "Recommendation strategy framework", body: "Guidance for impactful recommendations", icon: "mail" },
+      { title: "University-specific application versions", body: "Customised for each target university", icon: "files" },
+    ],
+  },
+  commitment:
+    "A structured, expert-led process to help every candidate present their story with clarity, authenticity and impact — and stand out in a competitive admissions process.",
+};
+
+/* ------------------------------------------------------------------ */
 /* Per-product visuals                                                 */
 /* ------------------------------------------------------------------ */
 
@@ -341,6 +697,7 @@ export const PRODUCT_VISUALS: Record<string, ProductVisual> = {
         },
       ],
     },
+    process: IDENTITY_PROCESS,
   },
 
   "university-intelligence-mapping": {
@@ -381,6 +738,7 @@ export const PRODUCT_VISUALS: Record<string, ProductVisual> = {
       ],
     },
     framework: UIM_FRAMEWORK,
+    process: UIM_PROCESS,
   },
 
   "story-mapping": {
@@ -426,6 +784,7 @@ export const PRODUCT_VISUALS: Record<string, ProductVisual> = {
         },
       ],
     },
+    process: STORY_PROCESS,
   },
 
   "execution-mapping": {
@@ -573,4 +932,8 @@ export function getProductVisual(slug: string): ProductVisual | undefined {
 
 export function getFramework(slug: string): Framework | undefined {
   return PRODUCT_VISUALS[slug]?.framework;
+}
+
+export function getProcess(slug: string): ReportProcess | undefined {
+  return PRODUCT_VISUALS[slug]?.process;
 }

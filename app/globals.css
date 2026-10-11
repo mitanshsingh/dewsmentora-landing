@@ -97,6 +97,30 @@
   }
 }
 
+/* `<details class="disclosure">` slides open and shut instead of snapping.
+   Browsers without `interpolate-size` (Safari, Firefox today) still toggle,
+   just instantly. The motion guard is needed here because the reduced-motion
+   reset below targets `*`, and `*` never matches a pseudo-element. */
+@supports (interpolate-size: allow-keywords) {
+  @media (prefers-reduced-motion: no-preference) {
+    details.disclosure {
+      interpolate-size: allow-keywords;
+    }
+
+    details.disclosure::details-content {
+      block-size: 0;
+      overflow-y: clip;
+      transition:
+        block-size 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+        content-visibility 0.45s allow-discrete;
+    }
+
+    details.disclosure[open]::details-content {
+      block-size: auto;
+    }
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   * {
     transition: none !important;

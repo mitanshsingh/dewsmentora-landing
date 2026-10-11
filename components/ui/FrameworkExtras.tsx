@@ -7,10 +7,13 @@ import type { Framework } from "@/lib/frameworks";
 export default function FrameworkExtras({
   framework,
   tone = "dark",
+  headingLevel = 3,
 }: {
   framework: Framework;
   tone?: "light" | "dark";
+  headingLevel?: 3 | 4 | 5;
 }) {
+  const Heading = `h${headingLevel}` as const;
   const dark = tone === "dark";
   const rule = dark ? "border-white/15" : "border-line-strong";
   const body = dark ? "text-[#C9C9C9]" : "text-muted-2";
@@ -25,9 +28,9 @@ export default function FrameworkExtras({
     >
       {throughout && (
         <div>
-          <h3 className="m-0 mb-5 font-display text-[clamp(19px,2vw,26px)] leading-[1.1] uppercase">
+          <Heading className="m-0 mb-5 font-display text-[clamp(19px,2vw,26px)] leading-[1.1] uppercase">
             {throughout.heading}
-          </h3>
+          </Heading>
           <ul
             className="m-0 grid list-none gap-x-7 gap-y-2.5 p-0"
             style={{ gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))" }}
@@ -49,9 +52,9 @@ export default function FrameworkExtras({
 
       {commitment && (
         <div>
-          <h3 className="m-0 mb-5 font-display text-[clamp(19px,2vw,26px)] leading-[1.1] uppercase">
+          <Heading className="m-0 mb-5 font-display text-[clamp(19px,2vw,26px)] leading-[1.1] uppercase">
             {commitment.heading}
-          </h3>
+          </Heading>
           {commitment.body.map((p) => (
             <p
               key={p}
