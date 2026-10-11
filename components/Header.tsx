@@ -35,14 +35,14 @@ export default function Header() {
 
   return (
     <>
-      <header className="sticky top-0 z-100 border-b border-warm-line-soft bg-paper-warm/92 backdrop-blur-[10px] nav:border-line nav:bg-white nav:backdrop-blur-none">
+      <header className="sticky top-0 z-100 border-b border-line bg-white/92 backdrop-blur-[10px] nav:bg-white nav:backdrop-blur-none">
       <div className="mx-auto flex h-[58px] max-w-[1280px] items-center gap-6 px-[18px] nav:h-auto nav:px-6 nav:py-3.5">
         <Link href="/" aria-label="DEWS Mentora home" className="flex flex-none items-center gap-3">
           <span className="flex items-baseline gap-[7px] nav:hidden">
-            <span className="font-sans text-[15px] font-bold uppercase tracking-[0.14em] text-ink-warm">
+            <span className="font-sans text-[15px] font-bold uppercase tracking-[0.14em] text-ink">
               DEWS
             </span>
-            <span className="font-headline text-[15px] tracking-[0.02em] text-[#5E5B4F]">Mentora</span>
+            <span className="font-headline text-[15px] tracking-[0.02em] text-muted">Mentora</span>
           </span>
           <Image
             src="/images/logo-mark.png"
@@ -105,8 +105,8 @@ export default function Header() {
           aria-controls="phone-menu"
           className="-mr-3 ml-auto flex h-[46px] w-[46px] flex-col items-end justify-center gap-[5px] nav:hidden"
         >
-          <span aria-hidden="true" className="block h-[1.5px] w-[22px] bg-ink-warm" />
-          <span aria-hidden="true" className="block h-[1.5px] w-4 bg-ink-warm" />
+          <span aria-hidden="true" className="block h-[1.5px] w-[22px] bg-ink" />
+          <span aria-hidden="true" className="block h-[1.5px] w-4 bg-ink" />
         </button>
       </div>
 
@@ -123,17 +123,17 @@ export default function Header() {
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed inset-y-0 right-0 z-[110] w-full max-w-[430px] overflow-y-auto bg-night shadow-[-18px_0_40px_rgba(0,0,0,0.28)] nav:hidden"
+            className="fixed inset-y-0 right-0 z-[110] w-full max-w-[430px] overflow-y-auto bg-ink shadow-[-18px_0_40px_rgba(0,0,0,0.28)] nav:hidden"
           >
-            <div className="flex h-[58px] items-center justify-between border-b border-night-line px-[18px]">
-              <span className="font-sans text-[11px] font-semibold uppercase tracking-[0.2em] text-[#C88F1E]">
+            <div className="flex h-[58px] items-center justify-between border-b border-white/12 px-[18px]">
+              <span className="font-sans text-[11px] font-semibold uppercase tracking-[0.2em] text-yellow">
                 Menu
               </span>
               <button
                 type="button"
                 onClick={() => setMobileOpen(false)}
                 aria-label="Close menu"
-                className="-mr-3 flex h-[46px] w-[46px] items-center justify-center text-[26px] leading-none text-night-fg"
+                className="-mr-3 flex h-[46px] w-[46px] items-center justify-center text-[26px] leading-none text-white"
               >
                 ×
               </button>
@@ -144,16 +144,16 @@ export default function Header() {
                   key={l.href}
                   href={l.href}
                   onClick={() => setMobileOpen(false)}
-                  className="flex items-center justify-between border-b border-night-line-soft py-[17px] font-headline text-[21px] text-[#F4F2EC]"
+                  className="flex items-center justify-between border-b border-white/10 py-[17px] font-headline text-[21px] text-white"
                 >
                   <span>{l.label}</span>
-                  <span aria-hidden="true" className="text-[15px] text-[#8C8878]">
+                  <span aria-hidden="true" className="text-[15px] text-[#8A8A8A]">
                     →
                   </span>
                 </Link>
               ))}
               <span
-                className="mt-[26px] flex h-[52px] cursor-not-allowed items-center justify-center bg-gold font-sans text-[13px] font-semibold uppercase tracking-[0.12em] text-night opacity-50 grayscale"
+                className="mt-[26px] flex h-[52px] cursor-not-allowed items-center justify-center bg-yellow font-sans text-[13px] font-semibold uppercase tracking-[0.12em] text-ink opacity-50 grayscale"
                 aria-disabled="true"
                 role="button"
               >

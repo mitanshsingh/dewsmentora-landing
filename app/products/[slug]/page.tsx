@@ -8,11 +8,14 @@ import { ProductPickerCard } from "@/components/ui/ProductLinkCard";
 import JsonLd from "@/components/JsonLd";
 import Reveal from "@/components/motion/Reveal";
 import { StaggerGrid, StaggerItem } from "@/components/motion/StaggerGrid";
-import StageTimeline from "@/components/ui/StageTimeline";
 import PillarGrid from "@/components/ui/PillarGrid";
-import StoryContrast from "@/components/ui/StoryContrast";
+import ContrastPanels from "@/components/ui/ContrastPanels";
+import SignalsBanner from "@/components/ui/SignalsBanner";
+import DecisionFlow from "@/components/ui/DecisionFlow";
+import DirectionStakes from "@/components/ui/DirectionStakes";
+import ReceiveItem, { receiveKey } from "@/components/ui/ReceiveItem";
 import ArtFigure from "@/components/ui/ArtFigure";
-import FrameworkExtras from "@/components/ui/FrameworkExtras";
+import CostNote from "@/components/ui/CostNote";
 import { getProductVisual } from "@/lib/frameworks";
 import { PRODUCTS, getProduct } from "@/lib/products";
 import { APP_REGISTER_URL } from "@/lib/site-content";
@@ -22,6 +25,7 @@ import { serviceJsonLd } from "@/lib/structured-data";
 // slug (bot probes, typos) is rendered on demand and its 404 is written to the
 // Vercel ISR cache, which burned through the plan's ISR write quota.
 export const dynamicParams = false;
+
 
 export function generateStaticParams() {
   return PRODUCTS.map((p) => ({ slug: p.slug }));
@@ -35,14 +39,13 @@ export async function generateMetadata({
   const { slug } = await params;
   const product = getProduct(slug);
   if (!product) return {};
+  const title = product.seo?.title ?? `${product.name} — ${product.question}`;
+  const description = product.seo?.description ?? product.tagline;
   return {
-    title: `${product.name} — ${product.question}`,
-    description: product.tagline,
+    title,
+    description,
     alternates: { canonical: `/products/${product.slug}` },
-    openGraph: {
-      title: `${product.name} — ${product.question}`,
-      description: product.tagline,
-    },
+    openGraph: { title, description },
   };
 }
 
@@ -57,14 +60,13 @@ export default async function ProductPage({
 
   const otherProducts = PRODUCTS.filter((p) => p.slug !== product.slug);
   const visual = getProductVisual(product.slug);
-  const framework = visual?.framework;
 
   return (
     <article>
       <JsonLd
         data={serviceJsonLd({
           name: product.name,
-          description: product.tagline,
+          description: product.seo?.description ?? product.tagline,
           path: `/products/${product.slug}`,
         })}
       />
@@ -74,7 +76,7 @@ export default async function ProductPage({
             <Breadcrumb
               items={[{ label: "Home", href: "/" }, { label: "Products", href: "/products" }, { label: product.name }]}
             />
-            <p className="m-0 mb-[18px] font-display text-sm uppercase tracking-[0.16em] text-ochre">{product.question}</p>
+            <p className="m-0 mb-[18px] font-display text-sm uppercase tracking-[0.16em] text-ochre">{product.eyebrow ?? product.question}</p>
             <h1 className="m-0 mb-[22px] font-display text-[clamp(38px,5vw,74px)] uppercase leading-[0.92]">{product.name}</h1>
             <p className="m-0 mb-[30px] max-w-[56ch] font-serif text-[clamp(18px,1.9vw,22px)] leading-[1.5] text-[#2A2A2A]">
               {product.tagline}
@@ -95,7 +97,7 @@ export default async function ProductPage({
                 height={visual.hero.height}
                 priority
                 blend={!visual.hero.dark}
-                fade={!visual.hero.dark}
+                fade={!visual.hero.dark && visual.hero.fade !== false}
                 surface="bg-[#EFEFEF]"
                 sizes="(max-width: 1080px) 100vw, 520px"
                 className="mx-auto w-full max-w-[520px]"
@@ -104,6 +106,16 @@ export default async function ProductPage({
           )}
         </div>
       </section>
+
+      {visual?.signals && (
+        <section aria-labelledby="signals-banner" className="px-6 pt-[88px]">
+          <div className="mx-auto max-w-[1280px]">
+            <Reveal>
+              <SignalsBanner banner={visual.signals} />
+            </Reveal>
+          </div>
+        </section>
+      )}
 
       {visual?.pillars && (
         <section aria-labelledby="pillars" className="px-6 pt-[72px]">
@@ -153,7 +165,17 @@ export default async function ProductPage({
           <Reveal>
             <h2 className="m-0 mb-[34px] font-display text-[clamp(28px,2.8vw,40px)] uppercase leading-none">Key benefits</h2>
           </Reveal>
-          <StaggerGrid className="grid gap-6" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))" }}>
+          <StaggerGrid
+            className="grid gap-6"
+            style={{
+              // Six benefits sit as two rows of three rather than four and two:
+              // a track can't be narrower than a third of the row (less the 24px
+              // gaps), and it still wraps by 240px on narrower screens.
+              gridTemplateColumns: `repeat(auto-fit, minmax(${
+                product.benefits.length % 3 === 0 ? "max(240px, calc((100% - 48px) / 3))" : "240px"
+              }, 1fr))`,
+            }}
+          >
             {product.benefits.map((b) => (
               <StaggerItem key={b.t} className="bg-cream p-[30px_26px]">
                 <h3 className="m-0 mb-2.5 font-sans text-[18px] font-semibold leading-[1.25]">{b.t}</h3>
@@ -183,34 +205,39 @@ export default async function ProductPage({
               </StaggerItem>
             ))}
           </StaggerGrid>
+          <Reveal className="mt-12">
+            <Button href={`/how-it-works#${product.slug}`} variant="outline-light">
+              See how {product.name} works in detail
+            </Button>
+          </Reveal>
         </div>
       </section>
 
-      {product.slug === "story-mapping" && (
-        <section aria-labelledby="story-contrast" className="bg-cream px-6 py-[88px]">
+      {visual?.contrast && (
+        <section aria-labelledby="why-it-matters" className="bg-cream px-6 py-[88px]">
           <div className="mx-auto max-w-[1280px]">
-            <Reveal className="max-w-[1000px]">
-              <StoryContrast tone="light" headingId="story-contrast" />
+            <Reveal>
+              <ContrastPanels contrast={visual.contrast} headingId="why-it-matters" />
             </Reveal>
           </div>
         </section>
       )}
 
-      {framework && (
-        <section aria-labelledby="framework" className="bg-cream px-6 py-[88px]">
+      {visual?.stakes && (
+        <section aria-labelledby="direction-stakes" className="px-6 pt-[88px]">
+          <div className="mx-auto max-w-[1000px]">
+            <Reveal>
+              <DirectionStakes stakes={visual.stakes} />
+            </Reveal>
+          </div>
+        </section>
+      )}
+
+      {visual?.flow && (
+        <section aria-labelledby="decision-flow" className="px-6 pt-[88px]">
           <div className="mx-auto max-w-[1280px]">
-            <Reveal className="max-w-[1000px]">
-              <h2
-                id="framework"
-                className="m-0 mb-3 max-w-[28ch] font-display text-[clamp(26px,2.8vw,40px)] uppercase leading-[1.02]"
-              >
-                {framework.heading}
-              </h2>
-              <p className="m-0 mb-12 max-w-[62ch] font-serif text-[18px] leading-[1.55] text-muted-2">
-                {framework.intro}
-              </p>
-              <StageTimeline stages={framework.stages} tone="light" />
-              <FrameworkExtras framework={framework} tone="light" />
+            <Reveal>
+              <DecisionFlow flow={visual.flow} />
             </Reveal>
           </div>
         </section>
@@ -220,24 +247,49 @@ export default async function ProductPage({
         <div className="mx-auto max-w-[1000px]">
           <Reveal>
             <h2 className="m-0 mb-7 font-display text-[clamp(28px,2.8vw,40px)] uppercase leading-none">What you receive</h2>
-            <ul className="m-0 grid list-none gap-3.5 p-0" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))" }}>
+            <ul
+              className="m-0 grid list-none gap-3.5 p-0"
+              style={{
+                // Named deliverables carry a sentence each, so give them wider columns.
+                gridTemplateColumns: `repeat(auto-fit, minmax(${
+                  product.receive.some((r) => typeof r !== "string") ? "min(100%, 400px)" : "280px"
+                }, 1fr))`,
+              }}
+            >
               {product.receive.map((r) => (
-                <li key={r} className="flex gap-3 font-serif text-[18px] leading-[1.5]">
+                <li key={receiveKey(r)} className="flex gap-3 font-serif text-[18px] leading-[1.5]">
                   <span aria-hidden="true" className="text-ochre">
                     ✓
                   </span>
-                  {r}
+                  <ReceiveItem item={r} />
                 </li>
               ))}
             </ul>
+            {product.receiveNote && (
+              <p className="m-0 mt-9 max-w-[62ch] border-l-2 border-yellow pl-5 font-serif text-[19px] leading-[1.5] text-ink">
+                {product.receiveNote}
+              </p>
+            )}
           </Reveal>
         </div>
       </section>
 
+      {product.costNote && (
+        <section className="px-6 pb-[88px]">
+          <div className="mx-auto max-w-[1000px]">
+            <Reveal>
+              <CostNote note={product.costNote} />
+            </Reveal>
+          </div>
+        </section>
+      )}
+
       <section className="px-6 pb-[88px]">
         <div className="mx-auto max-w-[1000px]">
           <Reveal>
-            <h2 className="m-0 mb-[26px] font-display text-[clamp(28px,2.8vw,40px)] uppercase leading-none">FAQ</h2>
+            <h2 className="m-0 mb-[26px] max-w-[30ch] font-display text-[clamp(28px,2.8vw,40px)] uppercase leading-[1.02]">
+              {product.faqHeading ?? "FAQ"}
+            </h2>
             <FaqAccordion items={product.faqs} idPrefix={`product-${product.slug}`} />
           </Reveal>
         </div>

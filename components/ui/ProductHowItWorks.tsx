@@ -5,6 +5,7 @@ import StageTimeline from "@/components/ui/StageTimeline";
 import FrameworkExtras from "@/components/ui/FrameworkExtras";
 import AdmissionJourneyMap from "@/components/ui/AdmissionJourneyMap";
 import ReportProcess from "@/components/ui/ReportProcess";
+import ReceiveItem, { receiveKey } from "@/components/ui/ReceiveItem";
 import { ADMISSION_JOURNEY, getFramework, getProcess, type Framework } from "@/lib/frameworks";
 import { productHref, type Product } from "@/lib/products";
 
@@ -129,11 +130,11 @@ export default function ProductHowItWorks({ product }: { product: Product }) {
                 }}
               >
                 {product.receive.map((r) => (
-                  <li key={r} className="flex gap-2.5 font-serif text-[16px] leading-[1.45] text-muted-2">
+                  <li key={receiveKey(r)} className="flex gap-2.5 font-serif text-[16px] leading-[1.45] text-muted-2">
                     <span aria-hidden="true" className="text-ochre">
                       ✓
                     </span>
-                    {r}
+                    <ReceiveItem item={r} />
                   </li>
                 ))}
               </ul>

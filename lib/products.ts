@@ -3,6 +3,8 @@ import type { FaqItem } from "./structured-data";
 export type ProductStep = { n: string; t: string; d: string };
 export type ProductBenefit = { t: string; d: string };
 export type ProductFaq = FaqItem;
+/** A deliverable, optionally named ("Strength & Capability Map — identifies …"). */
+export type ProductReceive = string | { t: string; d: string };
 
 export type Product = {
   slug: string;
@@ -12,6 +14,8 @@ export type Product = {
   cardText: string;
   summary: string;
   tagline: string;
+  /** Hero eyebrow; defaults to the question, which also labels the Map in nav and cards. */
+  eyebrow?: string;
   bg: string;
   fg: string;
   btnBg: string;
@@ -20,8 +24,16 @@ export type Product = {
   who: string[];
   benefits: ProductBenefit[];
   steps: ProductStep[];
-  receive: string[];
+  receive: ProductReceive[];
+  /** Closing line under What you receive. */
+  receiveNote?: string;
+  /** A boxed caveat after What you receive, e.g. what a quoted fee does not cover. */
+  costNote?: { label: string; heading: string; intro: string; items: string[]; outro: string[] };
   faqs: ProductFaq[];
+  /** Defaults to "FAQ". */
+  faqHeading?: string;
+  /** Search title and description; default to "name — question" and the tagline. */
+  seo?: { title: string; description: string };
 };
 
 export const PRODUCTS: Product[] = [
@@ -34,23 +46,30 @@ export const PRODUCTS: Product[] = [
       "Understand strengths, thinking patterns, behavioural orientation and direction before committing to important education and career choices.",
     summary: "Before choosing a direction, understand the person making the decision.",
     tagline: "Understand the person. Explore the direction. Decide with greater clarity.",
+    seo: {
+      title: "Identity Mapping — Career Clarity for Students",
+      description:
+        "Identity Mapping™ helps students understand their strengths, interests and motivations before choosing a course, university or career. Decide with clarity.",
+    },
     bg: "#fff",
     fg: "#0B0B0B",
     btnBg: "#0B0B0B",
     btnFg: "#fff",
     what: [
-      "Explores strengths, thinking and intelligence patterns",
-      "Examines behaviour, decisions and motivation",
-      "Clarifies interests and direction",
-      "Answers: does this direction actually fit me?",
-      "Separates genuine fit from inherited expectation",
+      "Connects interests, strengths, values, personality, experiences and natural tendencies",
+      "Identifies patterns that reveal how you think, learn, decide and perform best",
+      "Separates genuine interests from external expectations, trends and peer pressure",
+      "Brings clarity to what motivates you—and what is likely to sustain that motivation",
+      "Connects who you are today with the directions you could realistically grow into",
+      "Answers the critical question: Who am I—and what kind of future genuinely fits me?",
     ],
     who: [
-      "Students unsure of their direction",
-      "Students choosing a stream, course or career",
-      "Aspirants comparing options",
-      "Aspirants receiving conflicting advice",
-      "Anyone looking for clarity beyond a career test",
+      "Students unsure about what to study or pursue",
+      "Students choosing subjects, courses, majors or career directions",
+      "High-performing students with several possible paths",
+      "Students whose interests keep changing or feel disconnected",
+      "Students influenced by parental expectations, peers or popular career trends",
+      "Young people who want to understand themselves before making decisions that shape their future",
     ],
     benefits: [
       { t: "Direction before decisions", d: "Establish fit before spending on applications, coaching or tuition." },
@@ -65,12 +84,38 @@ export const PRODUCTS: Product[] = [
       { n: "04", t: "Clarity report", d: "Findings are returned as a readable report with recommended next steps." },
     ],
     receive: [
-      "Identity and strengths summary",
-      "Thinking and behavioural orientation overview",
-      "Direction suitability analysis",
-      "Recommended next Map, where relevant",
-      "A report you can revisit as decisions change",
+      {
+        t: "Personal Identity Blueprint™",
+        d: "a structured picture of who you are beyond marks, degrees, and conventional labels.",
+      },
+      {
+        t: "Strength & Capability Map",
+        d: "identifies natural strengths, emerging capabilities, and areas with the greatest potential.",
+      },
+      {
+        t: "Interest & Motivation Profile",
+        d: "reveals what genuinely engages you and the environments in which you are most likely to thrive.",
+      },
+      {
+        t: "Personality & Working-Style Insights",
+        d: "helps you understand how you think, learn, communicate, decide, and respond to challenges.",
+      },
+      {
+        t: "Career & Academic Direction Map",
+        d: "connects your identity with suitable fields, subjects, career directions, and future possibilities.",
+      },
+      {
+        t: "Decision-Fit Framework",
+        d: "a practical lens for evaluating future choices based on personal fit rather than pressure, trends, or assumptions.",
+      },
+      {
+        t: "Personalised Identity Mapping™ Report",
+        d: "brings the insights together into one clear, actionable reference for future academic and career decisions.",
+      },
     ],
+    receiveNote:
+      "You don’t receive a label telling you what to become. You receive a clearer understanding of who you are—and a framework for deciding where you can go next.",
+    faqHeading: "Frequently Asked Questions About Identity Mapping™",
     faqs: [
       {
         q: "What exactly is Identity Mapping™ — and why does it matter?",
@@ -215,30 +260,50 @@ export const PRODUCTS: Product[] = [
     summary: "A good university isn't automatically a good decision for you. Evaluate the decision, not only the ranking.",
     tagline:
       "Make smarter study abroad decisions. Choosing a country, university, or program should not be based solely on rankings, trends, or agent recommendations.",
+    seo: {
+      title: "University Intelligence Mapping — Choose the Right University",
+      description:
+        "University Intelligence Mapping™ compares universities on program fit, admission chances, career outcomes and cost, so you know where to apply and why.",
+    },
     bg: "#D9D9D9",
     fg: "#0B0B0B",
     btnBg: "#fff",
     btnFg: "#0B0B0B",
     what: [
-      "Evaluates academic compatibility and career alignment",
-      "Assesses admission feasibility against your profile",
-      "Analyses return on investment and living costs",
-      "Reviews employment opportunities and industry demand",
-      "Compares post-study pathways and long-term growth potential",
+      "Connects your academic profile, career goals, preferences and priorities with the right universities",
+      "Evaluates universities beyond rankings—across program fit, outcomes, opportunities, location, cost and career relevance",
+      "Identifies where your profile is likely to be competitive and where the opportunity may justify the stretch",
+      "Builds a balanced university strategy across ambitious, competitive and strong-fit options",
+      "Identifies important differences between seemingly similar universities and programs",
+      "Answers the critical question: Where should I apply—and why is each university right for me?",
     ],
     who: [
-      "Students unsure about country selection",
-      "Students confused between multiple university offers",
-      "Applicants relying heavily on rankings and trends",
-      "Students seeking better career outcomes",
-      "Families wanting transparency before investing in international education",
-      "Aspirants seeking an independent second opinion",
+      "Undergraduate, Master’s and MBA applicants",
+      "Students overwhelmed by hundreds of universities, programs and rankings",
+      "Applicants unsure how ambitious or realistic their university list should be",
+      "Students comparing similar programs across universities or countries",
+      "Applicants who want decisions based on fit and outcomes—not rankings alone",
+      "Families looking to make better-informed choices before investing significant time, money and effort in applications",
     ],
     benefits: [
-      { t: "Evidence over assumptions", d: "Decisions rest on structured evaluation rather than popularity." },
-      { t: "Cost clarity", d: "Total cost, living expenses and expected returns are examined together." },
-      { t: "Feasibility, not guesswork", d: "Your profile is compared against admission criteria before you commit." },
-      { t: "Future-focused", d: "The objective is not only admission, but the pathway that creates the strongest future." },
+      {
+        t: "Smarter university selection",
+        d: "Move beyond rankings and reputation to identify universities that genuinely fit your profile, goals and priorities.",
+      },
+      {
+        t: "Evidence-based fit",
+        d: "Evaluate programs through curriculum, faculty, outcomes, opportunities and admission expectations—not assumptions.",
+      },
+      {
+        t: "Strategic shortlisting",
+        d: "Build a balanced university list based on fit, competitiveness and realistic admission potential.",
+      },
+      { t: "Opportunity visibility", d: "Discover programs, specialisations and universities you may otherwise overlook." },
+      {
+        t: "Application prioritisation",
+        d: "Know where to invest your time, effort and application resources for the strongest potential return.",
+      },
+      { t: "Confident decisions", d: "Move from “Which university is best?” to “Which university is best for me—and why?”" },
     ],
     steps: [
       { n: "01", t: "Profile intelligence assessment", d: "Strengths, goals, preferences and academic background are assessed." },
@@ -247,13 +312,42 @@ export const PRODUCTS: Product[] = [
       { n: "04", t: "Strategic recommendation report", d: "Best-fit recommendations, alternatives and timelines are delivered." },
     ],
     receive: [
-      "Personalised University Intelligence Report",
-      "Best-fit countries, universities and programs",
-      "Admission feasibility analysis",
-      "Career alignment and employment opportunity insights",
-      "ROI evaluation",
-      "Strategic recommendations and timelines",
+      {
+        t: "Personalised University Intelligence Map™",
+        d: "a structured view of universities aligned with your academic profile, ambitions, preferences, and application potential.",
+      },
+      {
+        t: "University Fit & Compatibility Analysis",
+        d: "evaluates academic, career, cultural, geographic, and personal fit beyond rankings alone.",
+      },
+      {
+        t: "Reach · Target · Foundation Portfolio",
+        d: "creates a balanced university portfolio based on opportunity, competitiveness, and realistic admission potential.",
+      },
+      {
+        t: "Program & Curriculum Comparison",
+        d: "compares relevant programs, specialisations, curriculum structures, flexibility, and academic opportunities.",
+      },
+      {
+        t: "Admissions Intelligence Profile",
+        d: "examines what shortlisted universities value and how your profile aligns with their expectations.",
+      },
+      {
+        t: "Career & Outcome Mapping",
+        d: "evaluates internships, industry exposure, employability, graduate outcomes, and pathways connected with each university.",
+      },
+      {
+        t: "Cost · Scholarship · Value Analysis",
+        d: "compares tuition, scholarships, overall financial commitment, and potential value of different options.",
+      },
+      {
+        t: "Final University Priority Matrix™",
+        d: "a clear, evidence-based framework showing where to apply, why to apply, and how each university fits into your overall strategy.",
+      },
     ],
+    receiveNote:
+      "Not just a list of highly ranked universities. A strategically mapped portfolio of universities where your profile, ambitions, opportunities, and probability of success come together.",
+    faqHeading: "Frequently Asked Questions About University Intelligence Mapping™",
     faqs: [
       {
         q: "What exactly is University Intelligence Mapping™?",
@@ -398,30 +492,59 @@ export const PRODUCTS: Product[] = [
     cardText:
       "Transform achievements, experiences, aspirations and future direction into one coherent application narrative. Not simply better documents. A better-positioned applicant.",
     summary: "Your application isn't a collection of documents. It's one story.",
-    tagline: "Your story, strategically connected. Powerfully remembered.",
+    eyebrow: "Your journey. A clearer story.",
+    tagline:
+      "Turn your experiences, strengths and aspirations into one compelling story — a clear, consistent narrative that brings your applications to life.",
+    seo: {
+      title: "Story Mapping — SOP, Essays & Application Narrative",
+      description:
+        "Story Mapping™ turns your experiences, strengths and aspirations into one compelling story across your SOP, essays, CV and recommendations.",
+    },
     bg: "#0B0B0B",
     fg: "#fff",
     btnBg: "#F2C230",
     btnFg: "#0B0B0B",
     what: [
-      "Connects academics, experiences, strengths, motivation and future intent",
-      "Builds one narrative across CV, SOP, LORs and applications",
-      "Positions the profile for the evaluator's decision process",
-      "Answers: what should the university understand about me?",
-      "Reviews every document for clarity, logic, flow and consistency",
+      "Connects academics, experiences, achievements, strengths, motivation and future intent into one coherent story",
+      "Identifies the experiences and evidence that best demonstrate your potential",
+      "Builds one consistent narrative across your CV, SOP, essays, LOR strategy and applications",
+      "Positions your profile around what admissions evaluators need to understand and remember",
+      "Turns disconnected achievements into a clear progression of growth, purpose and direction",
+      "Answers the critical question: What should the university understand and remember about me?",
     ],
     who: [
-      "Undergraduate, Master's and MBA applicants",
-      "Scholarship applicants",
-      "Career changers",
-      "Students with strong profiles but weak narratives",
-      "Applicants whose materials read as a list of achievements",
+      "Undergraduate, Master’s and MBA applicants",
+      "Scholarship and competitive-program applicants",
+      "Students with strong profiles but weak or fragmented narratives",
+      "Applicants whose materials read like a list of achievements rather than one connected story",
+      "Career changers who need to explain their transition with clarity and credibility",
+      "Applicants who want every part of their application to work together and make a stronger case for admission",
     ],
     benefits: [
-      { t: "Coherence", d: "One consistent narrative instead of documents written in isolation." },
-      { t: "Evaluator focus", d: "Positioning built around what admissions teams are assessing." },
-      { t: "Differentiation", d: "A strong profile gets attention; a coherent story creates differentiation." },
-      { t: "Confidence", d: "Clearer answers to Why you, Why this course, Why this university." },
+      {
+        t: "Narrative clarity",
+        d: "Turn academics, experiences, achievements and ambitions into one clear and compelling story.",
+      },
+      {
+        t: "Strategic positioning",
+        d: "Present your profile around the strengths, potential and qualities you want admissions teams to recognise.",
+      },
+      {
+        t: "Application coherence",
+        d: "Ensure your SOP, essays, CV and recommendations reinforce one another instead of telling disconnected stories.",
+      },
+      {
+        t: "Meaningful differentiation",
+        d: "Go beyond listing achievements to show the experiences, choices and thinking that make your journey distinctive.",
+      },
+      {
+        t: "Stronger university connection",
+        d: "Clearly communicate Why you, Why this course, Why this university and Why now.",
+      },
+      {
+        t: "Evaluator impact",
+        d: "Make it easier for admissions teams to understand, remember and advocate for your application.",
+      },
     ],
     steps: [
       { n: "01", t: "Discovery", d: "Academic journey, professional experience, achievements and motivations are uncovered." },
@@ -430,13 +553,42 @@ export const PRODUCTS: Product[] = [
       { n: "04", t: "Document design & review", d: "SOP, essays, CV and recommendation strategy are developed and reviewed." },
     ],
     receive: [
-      "Application Narrative Blueprint",
-      "Statement of Purpose",
-      "Personal statements and essays",
-      "Academic CV / resume",
-      "Recommendation strategy framework",
-      "University-specific application versions",
+      {
+        t: "Application Narrative Blueprint™",
+        d: "the strategic story connecting your academics, experiences, achievements, motivations and future direction.",
+      },
+      {
+        t: "Core Positioning Framework",
+        d: "defines the central message admissions evaluators should understand and remember about you.",
+      },
+      {
+        t: "Statement of Purpose",
+        d: "a focused narrative connecting your past, present ambitions and future goals.",
+      },
+      {
+        t: "Personal Statements & Essays",
+        d: "authentic, differentiated responses built around your experiences, strengths and university fit.",
+      },
+      {
+        t: "Academic CV / Résumé",
+        d: "structured to communicate achievements, leadership, experience and impact with clarity.",
+      },
+      {
+        t: "Recommendation Strategy Framework",
+        d: "aligns recommender perspectives with the strengths and qualities your overall application needs to reinforce.",
+      },
+      {
+        t: "University-Specific Narrative Versions",
+        d: "adapts your core story to the expectations, programs and opportunities of each target university.",
+      },
+      {
+        t: "Application Consistency Review",
+        d: "ensures your SOP, essays, CV, recommendations and application answers communicate one coherent story.",
+      },
     ],
+    receiveNote:
+      "Not separate documents telling separate stories. One strategically connected narrative that helps the evaluator understand who you are, why you belong, and where you are going.",
+    faqHeading: "Frequently Asked Questions About Story Mapping™",
     faqs: [
       {
         q: "What exactly is Story Mapping™?",
@@ -576,34 +728,66 @@ export const PRODUCTS: Product[] = [
     slug: "execution-mapping",
     name: "Execution Mapping",
     question: "How should I execute?",
-    price: "From Rs. 2,500 (institution-supported)",
+    price: "₹0 – ₹32,000",
     cardText:
       "Once the decision is made, execute it professionally. Applications, documents, deadlines, submissions, communication and critical milestones — systematically managed.",
     summary: "A good decision still needs good execution: Plan → Prepare → Verify → Submit → Track → Respond → Progress.",
-    tagline: "Strategy creates opportunity. Execution protects it.",
+    eyebrow: "From university decision to application, visa & beyond",
+    tagline:
+      "Choosing your universities is only the beginning. Execution Mapping™ turns your final university shortlist into a clear, cost-visible and professionally managed application journey.",
+    seo: {
+      title: "Execution Mapping — University Application & Visa Support",
+      description:
+        "Execution Mapping™ turns your final university list into a managed application journey: cost report, documents, deadlines, filing and visa support.",
+    },
     bg: "#F2C230",
     fg: "#0B0B0B",
     btnBg: "#0B0B0B",
     btnFg: "#fff",
     what: [
-      "Manages applications, documents, deadlines and submissions",
-      "Verifies documentation before submission",
-      "Tracks university responses and pending actions",
-      "Coordinates interviews, offers and visa documentation",
-      "Answers: is my entire admission journey being managed correctly?",
+      "Converts your final university list into a structured application plan.",
+      "Maps university-specific procedures, documents, requirements and deadlines.",
+      "Provides a personalised Cost & Procedure Report (CPR) before execution.",
+      "Identifies expected third-party costs such as application fees, reporting fees, transcript evaluation and translation charges.",
+      "Connects your application requirements with Story Mapping™ and document preparation, where selected.",
+      "Coordinates application preparation and filing.",
+      "Tracks deadlines, pending requirements and university responses.",
+      "Provides dedicated executive support through the application journey.",
+      "Coordinates post-application requirements and next steps.",
+      "Provides visa-process and filing support within the applicable service scope.",
+      "Answers the critical question: Now that I know where I want to apply, how do I execute everything correctly?",
     ],
     who: [
-      "Students who have decided to study abroad and want professional execution",
-      "Applicants applying to multiple universities",
-      "Students who want support with applications, SOPs, resumes, LORs and visa preparation",
-      "Families seeking a transparent, accountable admission journey",
-      "Applicants who prefer one execution partner over several agencies",
+      "Students who have finalised the universities where they want to apply.",
+      "Applicants managing several university applications simultaneously.",
+      "Families who want to understand expected application costs before proceeding.",
+      "Students worried about documents, procedures or deadlines.",
+      "Applicants who want professional coordination rather than managing every application independently.",
+      "Families who want one structured process from university selection through application and subsequent stages.",
     ],
     benefits: [
-      { t: "Nothing missed", d: "Deadlines, requirements and document requests are tracked centrally." },
-      { t: "Multi-layer verification", d: "Independent review designed to improve accuracy and consistency." },
-      { t: "Full visibility", d: "Milestones, dependencies and responsibilities are visible throughout." },
-      { t: "One accountable partner", d: "A dedicated admission executive rather than coordination across vendors." },
+      { t: "Cost clarity", d: "Know the expected application-related expenses before execution begins." },
+      { t: "Structured execution", d: "Turn different university procedures into one organised application roadmap." },
+      {
+        t: "Fewer avoidable errors",
+        d: "Structured preparation and review help reduce missed requirements and incomplete submissions.",
+      },
+      {
+        t: "Deadline control",
+        d: "Track university deadlines, documents, submissions and pending actions in one coordinated process.",
+      },
+      {
+        t: "Application consistency",
+        d: "Keep your documents, information and application narrative aligned across universities.",
+      },
+      {
+        t: "Dedicated coordination",
+        d: "Have a DEWSMENTORA executive coordinating the process and helping you understand what comes next.",
+      },
+      {
+        t: "End-to-end continuity",
+        d: "Move more smoothly from application preparation to filing, follow-ups, decisions and applicable visa-stage support.",
+      },
     ],
     steps: [
       { n: "01", t: "Register & onboard", d: "Registration, membership activation and onboarding — self-guided or guided sessions." },
@@ -612,26 +796,161 @@ export const PRODUCTS: Product[] = [
       { n: "04", t: "Visa & pre-departure", d: "Offer evaluation, financial documentation, visa guidance and departure readiness." },
     ],
     receive: [
-      "End-to-end execution oversight",
-      "Expert-led intervention at critical stages",
-      "Structured risk management",
-      "Timeline governance with clear milestones",
-      "Continuous monitoring and multi-layer verification",
-      "Complete transparency on progress and status",
+      {
+        t: "Cost & Procedure Report (CPR)",
+        d: "a personalised view of the procedures, requirements and expected application-related external expenses for your selected universities.",
+      },
+      {
+        t: "Application Execution Roadmap",
+        d: "a structured plan showing what needs to happen across your university applications.",
+      },
+      {
+        t: "University Requirement Mapping",
+        d: "university- and programme-specific requirements organised for easier execution.",
+      },
+      {
+        t: "Application Cost Visibility",
+        d: "expected external costs identified wherever applicable, including application fees, reporting charges, evaluation and translation requirements.",
+      },
+      {
+        t: "Story Mapping™ & Document Support",
+        d: "where included in your selected service, strategic preparation and coordination of SOPs, essays, CV/resume and recommendation strategy.",
+      },
+      {
+        t: "Application Filing & Tracking",
+        d: "structured preparation, submission coordination, deadline tracking and follow-up.",
+      },
+      { t: "Dedicated Executive", d: "a designated point of coordination for your application journey." },
+      {
+        t: "Post-Application Support",
+        d: "coordination of subsequent university requirements and application-stage next steps within your service scope.",
+      },
+      {
+        t: "Visa Process & Filing Support",
+        d: "applicable documentation and filing support according to destination, service scope and regulatory requirements.",
+      },
     ],
+    receiveNote:
+      "Most importantly: You don’t simply receive help filling forms. You receive a structured execution system designed to turn a complicated multi-university application journey into a process you can understand, track and manage with greater confidence.",
+    costNote: {
+      label: "One important distinction",
+      heading: "DEWSMENTORA service fee ≠ total application cost",
+      intro:
+        "Your ₹0–₹32,000 Execution Mapping™ fee is the fee for the applicable DEWSMENTORA services included in your personalised coupon. It does not include third-party or external charges, such as:",
+      items: [
+        "University application fees",
+        "Test/reporting fees",
+        "Transcript charges",
+        "Credential evaluation charges",
+        "Certified translation charges",
+        "Courier charges",
+        "Visa/government fees",
+        "Biometrics or medical examination charges",
+        "University deposits or tuition",
+        "Any other amount payable directly to universities, government authorities or third-party service providers",
+      ],
+      outro: [
+        "These costs remain payable separately by the candidate wherever applicable.",
+        "Your Cost & Procedure Report (CPR) helps identify the expected application-related expenses applicable to your selected universities before execution begins.",
+      ],
+    },
+    faqHeading: "Frequently Asked Questions About Execution Mapping™",
     faqs: [
       {
-        q: "Why are there two fee levels?",
-        a: "The Execution Mapping fee has two parts: a membership fee and a professional and administrative fee. Institution-supported execution carries the membership fee; independent-supported execution includes the professional and administrative component.",
+        q: "What exactly is Execution Mapping™?",
+        a: [
+          "Execution Mapping™ is DEWSMENTORA's structured application-management service designed to take you from your final university selection through application execution and applicable post-application stages.",
+          "Instead of treating every application as a separate collection of forms, documents and deadlines, we organise the journey into one coordinated process.",
+        ],
       },
       {
-        q: "Do you guarantee a visa or an admission?",
-        a: "No. Execution Mapping manages process quality — planning, verification, tracking and communication — not institutional or government decisions.",
+        q: "When does Execution Mapping™ begin?",
+        a: [
+          "Execution Mapping™ begins after you have completed University Intelligence Mapping™ and finalised the universities and programmes where you want to apply.",
+          "UIM helps answer:",
+          "“Where should I apply?”",
+          "Execution Mapping™ then addresses:",
+          "“How do I execute those applications?”",
+        ],
       },
-      { q: "Can I use it for universities outside your partner network?", a: "Yes. It applies to partner-network and independent universities alike." },
       {
-        q: "Who manages my journey?",
-        a: "A dedicated admission executive, supported by specialists at critical stages, with progress visible in your dashboard.",
+        q: "What is the Cost & Procedure Report (CPR)?",
+        a: [
+          "CPR is prepared using your final university list.",
+          "It identifies relevant application procedures, requirements, deadlines and expected third-party costs wherever applicable.",
+          "These may include application fees, test/reporting charges, transcript evaluation, credential evaluation, translation and other university-specific requirements.",
+          "It allows you to understand more of the financial and procedural commitment before execution begins.",
+        ],
+      },
+      {
+        q: "Is the Execution Mapping™ fee the total cost of applying?",
+        a: [
+          "No.",
+          "The DEWSMENTORA Execution Mapping™ fee covers only the DEWSMENTORA services included in your applicable service package/coupon.",
+          "It does not include amounts payable to universities, testing organisations, evaluators, translators, government authorities or other third parties.",
+          "That distinction should be clearly understood before proceeding.",
+        ],
+      },
+      {
+        q: "Why does the Execution Mapping™ fee range from ₹0 to ₹32,000?",
+        a: [
+          "The applicable DEWSMENTORA fee depends on the service structure available for the candidate and the scope of execution support involved.",
+          "After your final university list is received and the applicable pathway is determined, you receive your personalised service offer/coupon showing the DEWSMENTORA services available to you and the applicable fee.",
+          "The fee is disclosed before you commit to execution.",
+        ],
+      },
+      {
+        q: "Does Execution Mapping™ include SOPs, essays, CV and LOR support?",
+        a: [
+          "Where included in your selected service, Story Mapping™ supports the strategic development and coordination of application materials such as SOPs, essays, CV/resume and recommendation strategy.",
+          "The objective is not merely to produce separate documents.",
+          "It is to ensure that the application communicates a clear, credible and consistent story.",
+        ],
+      },
+      {
+        q: "Will someone actually manage my applications?",
+        a: [
+          "Where included in your Execution Mapping™ service, a dedicated executive acts as your primary coordination point.",
+          "The executive helps coordinate requirements, deadlines, application stages, follow-ups and subsequent actions.",
+          "You remain involved in important decisions and approvals; DEWSMENTORA helps organise and coordinate the execution.",
+        ],
+      },
+      {
+        q: "Does Execution Mapping™ guarantee admission?",
+        a: [
+          "No.",
+          "No responsible service should guarantee admission because the final decision belongs to the university.",
+          "Execution Mapping™ is designed to improve the quality, organisation, completeness and management of the application process—not manufacture an admission guarantee.",
+        ],
+      },
+      {
+        q: "Does Execution Mapping™ continue after applications are submitted?",
+        a: [
+          "Yes, where included in your service scope.",
+          "Application submission is not necessarily the end of the process.",
+          "Universities may request additional information, documents, interviews, clarification or subsequent actions.",
+          "Execution Mapping™ can continue through applicable post-application coordination and next steps.",
+        ],
+      },
+      {
+        q: "What is the biggest advantage of Execution Mapping™?",
+        a: [
+          "A university application can appear simple until several universities, deadlines, documents, costs and procedures begin running simultaneously.",
+          "The biggest advantage is therefore not simply convenience.",
+          "It is control.",
+          "You understand:",
+          {
+            list: [
+              "What needs to be done.",
+              "What it may cost.",
+              "Who needs to do it.",
+              "When it needs to happen.",
+              "What has already been completed.",
+              "And what comes next.",
+            ],
+          },
+          "Execution Mapping™ turns application complexity into a structured journey—from your university decision toward your destination.",
+        ],
       },
     ],
   },
