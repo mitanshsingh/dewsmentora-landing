@@ -49,7 +49,7 @@ export const PRODUCTS: Product[] = [
     seo: {
       title: "Identity Mapping — Career Clarity for Students",
       description:
-        "Identity Mapping™ helps students understand their strengths, interests and motivations before choosing a course, university or career. Decide with clarity.",
+        "Identity Mapping helps students understand their strengths, interests and motivations before choosing a course, university or career. Decide with clarity.",
     },
     bg: "#fff",
     fg: "#0B0B0B",
@@ -85,7 +85,7 @@ export const PRODUCTS: Product[] = [
     ],
     receive: [
       {
-        t: "Personal Identity Blueprint™",
+        t: "Personal Identity Blueprint",
         d: "a structured picture of who you are beyond marks, degrees, and conventional labels.",
       },
       {
@@ -109,36 +109,36 @@ export const PRODUCTS: Product[] = [
         d: "a practical lens for evaluating future choices based on personal fit rather than pressure, trends, or assumptions.",
       },
       {
-        t: "Personalised Identity Mapping™ Report",
+        t: "Personalised Identity Mapping Report",
         d: "brings the insights together into one clear, actionable reference for future academic and career decisions.",
       },
     ],
     receiveNote:
       "You don’t receive a label telling you what to become. You receive a clearer understanding of who you are—and a framework for deciding where you can go next.",
-    faqHeading: "Frequently Asked Questions About Identity Mapping™",
+    faqHeading: "Frequently Asked Questions About Identity Mapping",
     faqs: [
       {
-        q: "What exactly is Identity Mapping™ — and why does it matter?",
+        q: "What exactly is Identity Mapping — and why does it matter?",
         a: [
-          "Identity Mapping™ is a structured process designed to help an aspirant understand who they are before deciding where they should go.",
+          "Identity Mapping is a structured process designed to help an aspirant understand who they are before deciding where they should go.",
           "It brings together strengths, interests, motivations, behavioural patterns, natural abilities, aspirations and future possibilities to create a clearer picture of the individual behind the marks and qualifications.",
           "Because choosing a future without understanding yourself can turn even a good opportunity into the wrong direction.",
-          "Identity Mapping™ helps replace “What should I become?” with a more powerful question: “What kind of future actually fits me?”",
+          "Identity Mapping helps replace “What should I become?” with a more powerful question: “What kind of future actually fits me?”",
         ],
       },
       {
-        q: "How is Identity Mapping™ different from an aptitude, personality or psychometric test?",
+        q: "How is Identity Mapping different from an aptitude, personality or psychometric test?",
         a: [
           "A test gives you a result.",
-          "Identity Mapping™ builds an understanding.",
+          "Identity Mapping builds an understanding.",
           "Traditional assessments can provide useful indicators—aptitude, personality type, interests or preferences—but an aspirant is more complex than a score or category.",
-          "Identity Mapping™ connects multiple dimensions of the individual to understand not simply what they may be good at, but what combination of strengths, motivation, personality and ambition could shape a fulfilling direction.",
+          "Identity Mapping connects multiple dimensions of the individual to understand not simply what they may be good at, but what combination of strengths, motivation, personality and ambition could shape a fulfilling direction.",
           "The objective is not to put an aspirant into a box.",
           "It is to help them see possibilities they may not yet have been able to see in themselves.",
         ],
       },
       {
-        q: "My child is academically strong. Why would we still need Identity Mapping™?",
+        q: "My child is academically strong. Why would we still need Identity Mapping?",
         a: [
           "Good marks answer an important question:",
           "“Can the student perform?”",
@@ -146,16 +146,16 @@ export const PRODUCTS: Product[] = [
           "“Where should that ability be directed?”",
           "High-performing students often face more possibilities, not fewer. Engineering, economics, medicine, design, technology, research, entrepreneurship, management and emerging careers may all appear possible.",
           "That creates a different problem—the fear of using strong potential in the wrong direction.",
-          "Identity Mapping™ helps transform academic ability into purposeful direction, so achievement is not only impressive on paper but connected to a future the aspirant genuinely wants to build.",
+          "Identity Mapping helps transform academic ability into purposeful direction, so achievement is not only impressive on paper but connected to a future the aspirant genuinely wants to build.",
         ],
       },
       {
         q: "What if I have absolutely no idea what I want to do?",
         a: [
-          "That is precisely when Identity Mapping™ can be most valuable.",
+          "That is precisely when Identity Mapping can be most valuable.",
           "You do not need to arrive with a career already chosen.",
           "Confusion often does not mean that an aspirant lacks ability. It may simply mean that they have never had a structured way to connect who they are with what they could become.",
-          "Identity Mapping™ begins with the individual—not with a predetermined career list.",
+          "Identity Mapping begins with the individual—not with a predetermined career list.",
           "The goal is to move from:",
           "“I don't know what I want.”",
           "to",
@@ -165,21 +165,21 @@ export const PRODUCTS: Product[] = [
       {
         q: "What if my child has already decided on a career?",
         a: [
-          "Then Identity Mapping™ can help answer an equally important question:",
+          "Then Identity Mapping can help answer an equally important question:",
           "“Is this genuinely their choice—and does it fit them?”",
           "A career preference can come from real conviction. But it can also be influenced by friends, family expectations, social prestige, trends, salary expectations or limited exposure to alternatives.",
-          "Identity Mapping™ is not designed to talk an aspirant out of a dream.",
+          "Identity Mapping is not designed to talk an aspirant out of a dream.",
           "It helps examine whether that dream is supported by their strengths, motivations, personality, interests and longer-term aspirations.",
           "If the direction fits, the aspirant moves forward with greater confidence.",
           "If something does not align, it is better to discover that before years of education, money and effort have been committed.",
         ],
       },
       {
-        q: "As a parent, how does Identity Mapping™ help me feel more confident about my child's future?",
+        q: "As a parent, how does Identity Mapping help me feel more confident about my child's future?",
         a: [
           "Parents often face a difficult balance.",
           "You want to guide your child—but you do not want to impose your own choices. You want to give them freedom—but you also worry that an important decision could be made without enough maturity, information or self-understanding.",
-          "Identity Mapping™ creates a more objective foundation for that conversation.",
+          "Identity Mapping creates a more objective foundation for that conversation.",
           "Instead of:",
           "Parent: “I think this is better for you.”",
           "Student: “But this is what I want.”",
@@ -190,12 +190,12 @@ export const PRODUCTS: Product[] = [
         ],
       },
       {
-        q: "Can Identity Mapping™ tell me the one perfect career for me?",
+        q: "Can Identity Mapping tell me the one perfect career for me?",
         a: [
           "No—and that is intentional.",
           "There is rarely one magical career that guarantees happiness or success.",
           "A strong identity may fit several pathways.",
-          "Identity Mapping™ therefore focuses on identifying patterns of fit and promising directions, rather than declaring that an aspirant must become one particular thing.",
+          "Identity Mapping therefore focuses on identifying patterns of fit and promising directions, rather than declaring that an aspirant must become one particular thing.",
           "That matters because careers change, industries evolve and opportunities that exist ten years from now may not even exist today.",
           "The strongest career security is not knowing one job title. It is understanding yourself well enough to make better decisions as the world changes.",
         ],
@@ -207,13 +207,13 @@ export const PRODUCTS: Product[] = [
           "Parents usually think about security, stability and long-term prospects.",
           "Aspirants often think about interest, independence, ambition and the life they want to create.",
           "Both perspectives matter.",
-          "Identity Mapping™ provides a common reference point so the conversation becomes less about who is right and more about what actually fits the aspirant and what can realistically lead to a strong future.",
+          "Identity Mapping provides a common reference point so the conversation becomes less about who is right and more about what actually fits the aspirant and what can realistically lead to a strong future.",
           "The objective is not for the parent to win or the student to win.",
           "The objective is to make a better decision together.",
         ],
       },
       {
-        q: "What will I actually understand after completing Identity Mapping™?",
+        q: "What will I actually understand after completing Identity Mapping?",
         a: [
           "You should come away with a clearer understanding of the aspirant's:",
           {
@@ -242,7 +242,7 @@ export const PRODUCTS: Product[] = [
           "Everyone around you may approve.",
           "The problem often appears later—when the aspirant discovers that the path does not match who they are.",
           "Changing direction is always possible, but it can cost time, money, confidence and years of effort.",
-          "Identity Mapping™ cannot predict every turn in someone's future.",
+          "Identity Mapping cannot predict every turn in someone's future.",
           "What it can do is make one of life's biggest decisions less dependent on guesswork, pressure and assumption.",
           "Because the goal is not simply to help an aspirant choose a course.",
           "It is to help them begin building a future that feels like their own.",
@@ -263,7 +263,7 @@ export const PRODUCTS: Product[] = [
     seo: {
       title: "University Intelligence Mapping — Choose the Right University",
       description:
-        "University Intelligence Mapping™ compares universities on program fit, admission chances, career outcomes and cost, so you know where to apply and why.",
+        "University Intelligence Mapping compares universities on program fit, admission chances, career outcomes and cost, so you know where to apply and why.",
     },
     bg: "#D9D9D9",
     fg: "#0B0B0B",
@@ -313,7 +313,7 @@ export const PRODUCTS: Product[] = [
     ],
     receive: [
       {
-        t: "Personalised University Intelligence Map™",
+        t: "Personalised University Intelligence Map",
         d: "a structured view of universities aligned with your academic profile, ambitions, preferences, and application potential.",
       },
       {
@@ -341,18 +341,18 @@ export const PRODUCTS: Product[] = [
         d: "compares tuition, scholarships, overall financial commitment, and potential value of different options.",
       },
       {
-        t: "Final University Priority Matrix™",
+        t: "Final University Priority Matrix",
         d: "a clear, evidence-based framework showing where to apply, why to apply, and how each university fits into your overall strategy.",
       },
     ],
     receiveNote:
       "Not just a list of highly ranked universities. A strategically mapped portfolio of universities where your profile, ambitions, opportunities, and probability of success come together.",
-    faqHeading: "Frequently Asked Questions About University Intelligence Mapping™",
+    faqHeading: "Frequently Asked Questions About University Intelligence Mapping",
     faqs: [
       {
-        q: "What exactly is University Intelligence Mapping™?",
+        q: "What exactly is University Intelligence Mapping?",
         a: [
-          "University Intelligence Mapping™ is a structured process for identifying and evaluating universities based on how well they fit the individual aspirant—not simply where they rank.",
+          "University Intelligence Mapping is a structured process for identifying and evaluating universities based on how well they fit the individual aspirant—not simply where they rank.",
           "It looks beyond university names and league tables to examine factors such as academic fit, program strength, admission probability, career outcomes, location, cost, opportunities, student environment and long-term relevance.",
           "The objective is not to create a long list of universities.",
           "It is to understand where your profile, ambitions and future have the strongest alignment.",
@@ -366,7 +366,7 @@ export const PRODUCTS: Product[] = [
           "They do not necessarily answer:",
           "“How good is this university for me?”",
           "A highly ranked university may be exceptional overall while another university may offer stronger opportunities for your specific program, career goal, industry, research interest or geographic preference.",
-          "University Intelligence Mapping™ puts the aspirant at the centre of the comparison.",
+          "University Intelligence Mapping puts the aspirant at the centre of the comparison.",
           "Because the best university on a ranking table and the best university for your future are not always the same university.",
         ],
       },
@@ -389,7 +389,7 @@ export const PRODUCTS: Product[] = [
           "Ambition should not be reduced.",
           "It should be made more intelligent.",
           "Prestigious universities can absolutely be part of the strategy when the profile and objectives justify them. But choosing purely by reputation can create an application list filled with impressive names without enough consideration of admission probability, program fit or career outcomes.",
-          "University Intelligence Mapping™ helps distinguish between:",
+          "University Intelligence Mapping helps distinguish between:",
           "Dream universities worth pursuing, strong opportunities worth prioritising, and famous names that may not actually be the best strategic choice.",
           "The goal is not to tell an aspirant to aim lower.",
           "It is to help them aim better.",
@@ -404,13 +404,13 @@ export const PRODUCTS: Product[] = [
           "“Can we afford this university?”",
           "It should also be:",
           "“Does the opportunity justify the investment?”",
-          "University Intelligence Mapping™ considers the wider decision—program quality, career opportunities, location, industry access, employability environment, cost and the aspirant's longer-term goals.",
+          "University Intelligence Mapping considers the wider decision—program quality, career opportunities, location, industry access, employability environment, cost and the aspirant's longer-term goals.",
           "No university can guarantee a financial return.",
           "But a major investment should be made with far more intelligence than a ranking, brochure or reputation alone.",
         ],
       },
       {
-        q: "Can University Intelligence Mapping™ tell us where I have the best chance of admission?",
+        q: "Can University Intelligence Mapping tell us where I have the best chance of admission?",
         a: [
           "It helps create a more realistic view of the application landscape.",
           "Universities can be considered according to the strength of the aspirant's profile and the competitiveness of the opportunity, helping build a balanced application strategy rather than depending entirely on either extremely ambitious or overly safe choices.",
@@ -427,18 +427,18 @@ export const PRODUCTS: Product[] = [
           "On the surface, two universities may have similar rankings and comparable programs.",
           "But underneath, the experience and opportunity can be very different.",
           "Program structure, faculty strengths, research opportunities, internships, industry ecosystem, location, alumni network, cost, class environment and career pathways can change the decision significantly.",
-          "University Intelligence Mapping™ helps move the family from:",
+          "University Intelligence Mapping helps move the family from:",
           "“Both look good.”",
           "to:",
           "“This one makes more sense for the future we are trying to build.”",
         ],
       },
       {
-        q: "As a parent, how does University Intelligence Mapping™ reduce the risk of making the wrong decision?",
+        q: "As a parent, how does University Intelligence Mapping reduce the risk of making the wrong decision?",
         a: [
           "Parents are often being asked to support one of the largest educational investments the family will ever make.",
           "Yet the decision may sometimes be based on a ranking, an education fair, advice from friends, social media or the reputation of a university name.",
-          "University Intelligence Mapping™ introduces a more structured decision process.",
+          "University Intelligence Mapping introduces a more structured decision process.",
           "It helps families examine why a university fits, what opportunity it offers, what compromises are involved and whether the overall decision makes sense for the aspirant.",
           "It cannot remove every uncertainty.",
           "But it can replace a large amount of guesswork with informed comparison.",
@@ -468,7 +468,7 @@ export const PRODUCTS: Product[] = [
         ],
       },
       {
-        q: "What is the real risk of choosing universities without University Intelligence Mapping™?",
+        q: "What is the real risk of choosing universities without University Intelligence Mapping?",
         a: [
           "The biggest risk is not necessarily rejection.",
           "Sometimes it is acceptance at the wrong university.",
@@ -477,7 +477,7 @@ export const PRODUCTS: Product[] = [
           "“Which university can I get into?”",
           "It should begin with:",
           "“Which universities can take me where I want to go?”",
-          "University Intelligence Mapping™ is designed to bring that question into the decision before applications are submitted and major commitments are made.",
+          "University Intelligence Mapping is designed to bring that question into the decision before applications are submitted and major commitments are made.",
           "Because admission is an achievement.",
           "But the right admission can become an advantage.",
         ],
@@ -498,7 +498,7 @@ export const PRODUCTS: Product[] = [
     seo: {
       title: "Story Mapping — SOP, Essays & Application Narrative",
       description:
-        "Story Mapping™ turns your experiences, strengths and aspirations into one compelling story across your SOP, essays, CV and recommendations.",
+        "Story Mapping turns your experiences, strengths and aspirations into one compelling story across your SOP, essays, CV and recommendations.",
     },
     bg: "#0B0B0B",
     fg: "#fff",
@@ -554,7 +554,7 @@ export const PRODUCTS: Product[] = [
     ],
     receive: [
       {
-        t: "Application Narrative Blueprint™",
+        t: "Application Narrative Blueprint",
         d: "the strategic story connecting your academics, experiences, achievements, motivations and future direction.",
       },
       {
@@ -588,27 +588,27 @@ export const PRODUCTS: Product[] = [
     ],
     receiveNote:
       "Not separate documents telling separate stories. One strategically connected narrative that helps the evaluator understand who you are, why you belong, and where you are going.",
-    faqHeading: "Frequently Asked Questions About Story Mapping™",
+    faqHeading: "Frequently Asked Questions About Story Mapping",
     faqs: [
       {
-        q: "What exactly is Story Mapping™?",
+        q: "What exactly is Story Mapping?",
         a: [
-          "Story Mapping™ is the process of transforming an aspirant's academics, experiences, achievements, motivations and ambitions into one coherent admissions narrative.",
+          "Story Mapping is the process of transforming an aspirant's academics, experiences, achievements, motivations and ambitions into one coherent admissions narrative.",
           "Most applicants have information.",
           "Marks. Internships. Projects. Activities. Awards. Work experience. Goals.",
           "The challenge is making all of those pieces tell the admissions committee something meaningful about the person behind them.",
-          "Story Mapping™ connects those pieces so the application answers four critical questions:",
+          "Story Mapping connects those pieces so the application answers four critical questions:",
           "Why you? Why this field? Why this university? Why now?",
           "Because an application should not simply document what you have done.",
           "It should help the evaluator understand who you are becoming.",
         ],
       },
       {
-        q: "My profile is already strong. Why do I need Story Mapping™?",
+        q: "My profile is already strong. Why do I need Story Mapping?",
         a: [
           "Because a strong profile and a strong application are not the same thing.",
           "An applicant may have excellent grades, impressive internships, leadership experience and meaningful achievements—but if those elements appear disconnected, the evaluator is left to interpret their significance.",
-          "Story Mapping™ helps turn individual accomplishments into a clear pattern of growth, motivation and future direction.",
+          "Story Mapping helps turn individual accomplishments into a clear pattern of growth, motivation and future direction.",
           "Think of it this way:",
           "Achievements create evidence.",
           "Your story gives that evidence meaning.",
@@ -616,15 +616,15 @@ export const PRODUCTS: Product[] = [
         ],
       },
       {
-        q: "Isn't Story Mapping™ basically writing my SOP or essays?",
+        q: "Isn't Story Mapping basically writing my SOP or essays?",
         a: [
           "No.",
           "Writing is only the final expression of the strategy.",
-          "Story Mapping™ begins before the SOP, personal statement or essay is written.",
+          "Story Mapping begins before the SOP, personal statement or essay is written.",
           "It identifies the strongest experiences, differentiators, motivations, turning points and future ambitions—and determines how they should connect across the entire application.",
           "The SOP, essays, CV and recommendation strategy can then reinforce the same central positioning without simply repeating one another.",
           "Good writing makes an application sound better.",
-          "Good Story Mapping™ makes the applicant easier to understand and remember.",
+          "Good Story Mapping makes the applicant easier to understand and remember.",
         ],
       },
       {
@@ -638,7 +638,7 @@ export const PRODUCTS: Product[] = [
           "An internship may clarify ambition.",
           "A responsibility may reveal leadership.",
           "A change in direction may demonstrate self-awareness.",
-          "Story Mapping™ looks for the significance behind the experience.",
+          "Story Mapping looks for the significance behind the experience.",
           "You do not need to manufacture an extraordinary life. You need to communicate what your experiences genuinely reveal about you.",
         ],
       },
@@ -648,19 +648,19 @@ export const PRODUCTS: Product[] = [
           "A setback does not automatically make an application weak.",
           "What matters is what happened, how you responded and what the experience says about your development.",
           "Academic dips, career changes, gaps or unsuccessful attempts may need context—but they should never be hidden behind artificial storytelling.",
-          "Story Mapping™ helps determine what requires explanation, what should remain secondary and what may demonstrate maturity, resilience or clearer direction.",
+          "Story Mapping helps determine what requires explanation, what should remain secondary and what may demonstrate maturity, resilience or clearer direction.",
           "The objective is not to disguise weakness.",
           "It is to prevent one difficult chapter from becoming the definition of the entire story.",
         ],
       },
       {
-        q: "As a parent, how does Story Mapping™ protect the value of everything my child has already achieved?",
+        q: "As a parent, how does Story Mapping protect the value of everything my child has already achieved?",
         a: [
           "Families may spend years building opportunities around a student—education, activities, competitions, internships, test preparation and exposure.",
           "But an admissions committee does not experience those years.",
           "It experiences an application.",
           "If that application is fragmented, generic or poorly positioned, much of the significance behind those achievements can be lost.",
-          "Story Mapping™ helps ensure that the student's experiences are presented with context, connection and purpose.",
+          "Story Mapping helps ensure that the student's experiences are presented with context, connection and purpose.",
           "It cannot guarantee how an admissions committee will decide.",
           "But it helps reduce a very real risk:",
           "A capable student being underestimated because the application failed to communicate the full strength of the person behind it.",
@@ -675,7 +675,7 @@ export const PRODUCTS: Product[] = [
           "“I am passionate.”",
           "“I want to make an impact.”",
           "“I have always been interested in this field.”",
-          "Story Mapping™ asks a harder question:",
+          "Story Mapping asks a harder question:",
           "What in your life makes those statements believable?",
           "Instead of relying on adjectives, the application uses experiences, decisions, behaviour and evidence to reveal character.",
           "Because differentiation does not come from claiming that you are different.",
@@ -691,23 +691,23 @@ export const PRODUCTS: Product[] = [
           "Essays may reveal character, choices and experiences.",
           "Recommendations may validate qualities through another person's perspective.",
           "Together, they should feel like different windows into the same person, not four versions of the same document.",
-          "Story Mapping™ creates that architecture.",
+          "Story Mapping creates that architecture.",
           "The goal is consistency without repetition—and depth without contradiction.",
         ],
       },
       {
-        q: "Can Story Mapping™ improve my chances of admission?",
+        q: "Can Story Mapping improve my chances of admission?",
         a: [
           "No ethical admissions service can promise admission.",
           "University decisions depend on many factors, including academic strength, competition, institutional priorities, program capacity and the overall applicant pool.",
-          "What Story Mapping™ can do is help ensure that the application presents the aspirant with greater clarity, coherence, differentiation and credibility.",
+          "What Story Mapping can do is help ensure that the application presents the aspirant with greater clarity, coherence, differentiation and credibility.",
           "That matters because the evaluator cannot consider qualities they never clearly see.",
-          "Story Mapping™ therefore focuses on something you can influence:",
+          "Story Mapping therefore focuses on something you can influence:",
           "Making sure the strongest, most authentic version of your profile reaches the admissions committee.",
         ],
       },
       {
-        q: "What is the real risk of applying without Story Mapping™?",
+        q: "What is the real risk of applying without Story Mapping?",
         a: [
           "The greatest risk is not having nothing to say.",
           "It is having a great deal to say—and failing to connect it.",
@@ -717,7 +717,7 @@ export const PRODUCTS: Product[] = [
           "Recommendations provide validation.",
           "Essays reveal experiences.",
           "But unless those pieces work together, the admissions committee may see several documents without seeing one compelling person behind them.",
-          "Story Mapping™ connects the evidence into a narrative the evaluator can understand.",
+          "Story Mapping connects the evidence into a narrative the evaluator can understand.",
           "Because admission decisions are not made on documents alone.",
           "They are made on the person those documents allow the evaluator to see.",
         ],
@@ -734,11 +734,11 @@ export const PRODUCTS: Product[] = [
     summary: "A good decision still needs good execution: Plan → Prepare → Verify → Submit → Track → Respond → Progress.",
     eyebrow: "From university decision to application, visa & beyond",
     tagline:
-      "Choosing your universities is only the beginning. Execution Mapping™ turns your final university shortlist into a clear, cost-visible and professionally managed application journey.",
+      "Choosing your universities is only the beginning. Execution Mapping turns your final university shortlist into a clear, cost-visible and professionally managed application journey.",
     seo: {
       title: "Execution Mapping — University Application & Visa Support",
       description:
-        "Execution Mapping™ turns your final university list into a managed application journey: cost report, documents, deadlines, filing and visa support.",
+        "Execution Mapping turns your final university list into a managed application journey: cost report, documents, deadlines, filing and visa support.",
     },
     bg: "#F2C230",
     fg: "#0B0B0B",
@@ -749,7 +749,7 @@ export const PRODUCTS: Product[] = [
       "Maps university-specific procedures, documents, requirements and deadlines.",
       "Provides a personalised Cost & Procedure Report (CPR) before execution.",
       "Identifies expected third-party costs such as application fees, reporting fees, transcript evaluation and translation charges.",
-      "Connects your application requirements with Story Mapping™ and document preparation, where selected.",
+      "Connects your application requirements with Story Mapping and document preparation, where selected.",
       "Coordinates application preparation and filing.",
       "Tracks deadlines, pending requirements and university responses.",
       "Provides dedicated executive support through the application journey.",
@@ -813,7 +813,7 @@ export const PRODUCTS: Product[] = [
         d: "expected external costs identified wherever applicable, including application fees, reporting charges, evaluation and translation requirements.",
       },
       {
-        t: "Story Mapping™ & Document Support",
+        t: "Story Mapping & Document Support",
         d: "where included in your selected service, strategic preparation and coordination of SOPs, essays, CV/resume and recommendation strategy.",
       },
       {
@@ -836,7 +836,7 @@ export const PRODUCTS: Product[] = [
       label: "One important distinction",
       heading: "DEWSMENTORA service fee ≠ total application cost",
       intro:
-        "Your ₹0–₹32,000 Execution Mapping™ fee is the fee for the applicable DEWSMENTORA services included in your personalised coupon. It does not include third-party or external charges, such as:",
+        "Your ₹0–₹32,000 Execution Mapping fee is the fee for the applicable DEWSMENTORA services included in your personalised coupon. It does not include third-party or external charges, such as:",
       items: [
         "University application fees",
         "Test/reporting fees",
@@ -854,22 +854,22 @@ export const PRODUCTS: Product[] = [
         "Your Cost & Procedure Report (CPR) helps identify the expected application-related expenses applicable to your selected universities before execution begins.",
       ],
     },
-    faqHeading: "Frequently Asked Questions About Execution Mapping™",
+    faqHeading: "Frequently Asked Questions About Execution Mapping",
     faqs: [
       {
-        q: "What exactly is Execution Mapping™?",
+        q: "What exactly is Execution Mapping?",
         a: [
-          "Execution Mapping™ is DEWSMENTORA's structured application-management service designed to take you from your final university selection through application execution and applicable post-application stages.",
+          "Execution Mapping is DEWSMENTORA's structured application-management service designed to take you from your final university selection through application execution and applicable post-application stages.",
           "Instead of treating every application as a separate collection of forms, documents and deadlines, we organise the journey into one coordinated process.",
         ],
       },
       {
-        q: "When does Execution Mapping™ begin?",
+        q: "When does Execution Mapping begin?",
         a: [
-          "Execution Mapping™ begins after you have completed University Intelligence Mapping™ and finalised the universities and programmes where you want to apply.",
+          "Execution Mapping begins after you have completed University Intelligence Mapping and finalised the universities and programmes where you want to apply.",
           "UIM helps answer:",
           "“Where should I apply?”",
-          "Execution Mapping™ then addresses:",
+          "Execution Mapping then addresses:",
           "“How do I execute those applications?”",
         ],
       },
@@ -883,16 +883,16 @@ export const PRODUCTS: Product[] = [
         ],
       },
       {
-        q: "Is the Execution Mapping™ fee the total cost of applying?",
+        q: "Is the Execution Mapping fee the total cost of applying?",
         a: [
           "No.",
-          "The DEWSMENTORA Execution Mapping™ fee covers only the DEWSMENTORA services included in your applicable service package/coupon.",
+          "The DEWSMENTORA Execution Mapping fee covers only the DEWSMENTORA services included in your applicable service package/coupon.",
           "It does not include amounts payable to universities, testing organisations, evaluators, translators, government authorities or other third parties.",
           "That distinction should be clearly understood before proceeding.",
         ],
       },
       {
-        q: "Why does the Execution Mapping™ fee range from ₹0 to ₹32,000?",
+        q: "Why does the Execution Mapping fee range from ₹0 to ₹32,000?",
         a: [
           "The applicable DEWSMENTORA fee depends on the service structure available for the candidate and the scope of execution support involved.",
           "After your final university list is received and the applicable pathway is determined, you receive your personalised service offer/coupon showing the DEWSMENTORA services available to you and the applicable fee.",
@@ -900,9 +900,9 @@ export const PRODUCTS: Product[] = [
         ],
       },
       {
-        q: "Does Execution Mapping™ include SOPs, essays, CV and LOR support?",
+        q: "Does Execution Mapping include SOPs, essays, CV and LOR support?",
         a: [
-          "Where included in your selected service, Story Mapping™ supports the strategic development and coordination of application materials such as SOPs, essays, CV/resume and recommendation strategy.",
+          "Where included in your selected service, Story Mapping supports the strategic development and coordination of application materials such as SOPs, essays, CV/resume and recommendation strategy.",
           "The objective is not merely to produce separate documents.",
           "It is to ensure that the application communicates a clear, credible and consistent story.",
         ],
@@ -910,30 +910,30 @@ export const PRODUCTS: Product[] = [
       {
         q: "Will someone actually manage my applications?",
         a: [
-          "Where included in your Execution Mapping™ service, a dedicated executive acts as your primary coordination point.",
+          "Where included in your Execution Mapping service, a dedicated executive acts as your primary coordination point.",
           "The executive helps coordinate requirements, deadlines, application stages, follow-ups and subsequent actions.",
           "You remain involved in important decisions and approvals; DEWSMENTORA helps organise and coordinate the execution.",
         ],
       },
       {
-        q: "Does Execution Mapping™ guarantee admission?",
+        q: "Does Execution Mapping guarantee admission?",
         a: [
           "No.",
           "No responsible service should guarantee admission because the final decision belongs to the university.",
-          "Execution Mapping™ is designed to improve the quality, organisation, completeness and management of the application process—not manufacture an admission guarantee.",
+          "Execution Mapping is designed to improve the quality, organisation, completeness and management of the application process—not manufacture an admission guarantee.",
         ],
       },
       {
-        q: "Does Execution Mapping™ continue after applications are submitted?",
+        q: "Does Execution Mapping continue after applications are submitted?",
         a: [
           "Yes, where included in your service scope.",
           "Application submission is not necessarily the end of the process.",
           "Universities may request additional information, documents, interviews, clarification or subsequent actions.",
-          "Execution Mapping™ can continue through applicable post-application coordination and next steps.",
+          "Execution Mapping can continue through applicable post-application coordination and next steps.",
         ],
       },
       {
-        q: "What is the biggest advantage of Execution Mapping™?",
+        q: "What is the biggest advantage of Execution Mapping?",
         a: [
           "A university application can appear simple until several universities, deadlines, documents, costs and procedures begin running simultaneously.",
           "The biggest advantage is therefore not simply convenience.",
@@ -949,7 +949,7 @@ export const PRODUCTS: Product[] = [
               "And what comes next.",
             ],
           },
-          "Execution Mapping™ turns application complexity into a structured journey—from your university decision toward your destination.",
+          "Execution Mapping turns application complexity into a structured journey—from your university decision toward your destination.",
         ],
       },
     ],

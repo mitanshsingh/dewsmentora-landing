@@ -52,7 +52,7 @@ export default function AboutPage() {
           <Reveal>
             <h2 className="m-0 mb-3 font-display text-[clamp(28px,2.8vw,42px)] uppercase leading-none">Our journey</h2>
             <p className="m-0 mb-12 max-w-[60ch] font-serif text-[18px] leading-[1.55] text-muted-2">
-              Nearly three decades of mentoring students, from DMC in 1998 to DEWSMENTORA™ in 2025.
+              Nearly three decades of mentoring students, from DMC in 1998 to DEWSMENTORA in 2025.
             </p>
           </Reveal>
           <HistoryTimeline milestones={HISTORY} />
