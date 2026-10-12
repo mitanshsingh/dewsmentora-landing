@@ -377,33 +377,33 @@ export const HISTORY: HistoryMilestone[] = [
   },
   {
     year: "2025",
-    title: "The Birth of DEWSMENTORA™",
+    title: "The Birth of DEWSMENTORA",
     body: [
-      "After nearly three decades of mentoring students and supporting international admissions, we transformed our accumulated knowledge into DEWSMENTORA™.",
-      "Rather than functioning as a traditional consultancy, DEWSMENTORA™ is designed as a needs-based, AI-enabled international education platform that combines human expertise with structured decision-making frameworks.",
+      "After nearly three decades of mentoring students and supporting international admissions, we transformed our accumulated knowledge into DEWSMENTORA.",
+      "Rather than functioning as a traditional consultancy, DEWSMENTORA is designed as a needs-based, AI-enabled international education platform that combines human expertise with structured decision-making frameworks.",
     ],
-    listIntro: "Built upon decades of practical experience, DEWSMENTORA™ introduces proprietary systems including:",
+    listIntro: "Built upon decades of practical experience, DEWSMENTORA introduces proprietary systems including:",
     items: [
       {
-        t: "Identity Mapping™",
+        t: "Identity Mapping",
         d: "Discover who you are, what drives you, and where you truly belong.",
         icon: "profile",
         href: "/products/identity-mapping",
       },
       {
-        t: "University Intelligence Mapping™",
+        t: "University Intelligence Mapping",
         d: "Find the right universities based on data, outcomes, and opportunities.",
         icon: "university",
         href: "/products/university-intelligence-mapping",
       },
       {
-        t: "Story Mapping™",
+        t: "Story Mapping",
         d: "Craft a compelling, authentic story that strengthens every application.",
         icon: "edit",
         href: "/products/story-mapping",
       },
       {
-        t: "Execution Mapping™",
+        t: "Execution Mapping",
         d: "Plan, track, and manage every step of your study abroad journey with precision.",
         icon: "roadmap",
         href: "/products/execution-mapping",

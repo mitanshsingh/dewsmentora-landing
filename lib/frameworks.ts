@@ -222,7 +222,7 @@ export const ADMISSION_JOURNEY: Framework = {
       icon: "register",
       items: [
         "Complete your registration",
-        "Activate your DEWS Membership™",
+        "Activate your DEWS Membership",
         "Access your dashboard",
         "Receive onboarding information",
         "Begin your admission journey",
@@ -655,7 +655,7 @@ export const PRODUCT_VISUALS: Record<string, ProductVisual> = {
       fade: false,
     },
     signals: {
-      label: "Identity Mapping™",
+      label: "Identity Mapping",
       kicker: "Understand yourself. Choose your direction.",
       heading: ["Good at something doesn't automatically mean", "built for it."],
       pairs: [
@@ -675,12 +675,12 @@ export const PRODUCT_VISUALS: Record<string, ProductVisual> = {
           "The aspirant experiences something.",
         ],
       },
-      summary: "Identity Mapping™ brings these signals together before direction is chosen.",
+      summary: "Identity Mapping brings these signals together before direction is chosen.",
       summaryIcon: "fingerprint",
       quote: "Marks tell a story. Identity writes the future.",
     },
     pillars: {
-      heading: "What Identity Mapping™ changes",
+      heading: "What Identity Mapping changes",
       maxColumns: 3,
       items: [
         {
@@ -717,7 +717,7 @@ export const PRODUCT_VISUALS: Record<string, ProductVisual> = {
     },
     process: IDENTITY_PROCESS,
     contrast: {
-      heading: "Why Identity Mapping™ matters",
+      heading: "Why Identity Mapping matters",
       intro:
         "The challenge is not having more career options. The challenge is knowing which opportunities genuinely fit who you are—and which only look attractive from the outside.",
       left: {
@@ -734,7 +734,7 @@ export const PRODUCT_VISUALS: Record<string, ProductVisual> = {
         note: "These factors tell you what options are available.",
       },
       right: {
-        caption: "Identity Mapping™ looks deeper",
+        caption: "Identity Mapping looks deeper",
         items: [
           "Natural strengths",
           "Thinking and problem-solving style",
@@ -758,7 +758,7 @@ export const PRODUCT_VISUALS: Record<string, ProductVisual> = {
         { label: "Confidence", icon: "confidence" },
       ],
       limits: [
-        "Identity Mapping™ cannot eliminate uncertainty.",
+        "Identity Mapping cannot eliminate uncertainty.",
         "It cannot predict the future.",
         "It cannot make the decision for you.",
       ],
@@ -776,7 +776,7 @@ export const PRODUCT_VISUALS: Record<string, ProductVisual> = {
       fade: false,
     },
     signals: {
-      label: "University Intelligence Mapping™",
+      label: "University Intelligence Mapping",
       kicker: "The right university. A brighter future.",
       heading: ["Not just universities. Complete intelligence for the", "right decision."],
       pairs: [
@@ -798,12 +798,12 @@ export const PRODUCT_VISUALS: Record<string, ProductVisual> = {
         ],
       },
       summary:
-        "University Intelligence Mapping™ converts complex global information into a clear, personalised roadmap — so you choose with confidence.",
+        "University Intelligence Mapping converts complex global information into a clear, personalised roadmap — so you choose with confidence.",
       summaryIcon: "graduation",
       quote: "The right information doesn't just open doors — it opens a bigger world.",
     },
     pillars: {
-      heading: "What University Intelligence Mapping™ changes",
+      heading: "What University Intelligence Mapping changes",
       maxColumns: 3,
       items: [
         {
@@ -840,7 +840,7 @@ export const PRODUCT_VISUALS: Record<string, ProductVisual> = {
     },
     process: UIM_PROCESS,
     contrast: {
-      heading: "Why University Intelligence Mapping™ matters",
+      heading: "Why University Intelligence Mapping matters",
       intro:
         "The challenge is not finding universities. The challenge is identifying which universities, programmes and opportunities make the most strategic sense for you.",
       left: {
@@ -859,7 +859,7 @@ export const PRODUCT_VISUALS: Record<string, ProductVisual> = {
         note: "These factors tell you where you could apply.",
       },
       right: {
-        caption: "University Intelligence Mapping™ looks deeper",
+        caption: "University Intelligence Mapping looks deeper",
         items: [
           "Academic and profile fit",
           "Programme curriculum alignment",
@@ -875,7 +875,7 @@ export const PRODUCT_VISUALS: Record<string, ProductVisual> = {
       },
     },
     flow: {
-      label: "University Intelligence Mapping™",
+      label: "University Intelligence Mapping",
       heading: ["From a complex world to a", "clear decision."],
       inputs: {
         heading: "What goes in",
@@ -923,7 +923,7 @@ export const PRODUCT_VISUALS: Record<string, ProductVisual> = {
       fade: false,
     },
     signals: {
-      label: "Story Mapping™",
+      label: "Story Mapping",
       kicker: "Your journey. A clearer story. A stronger future.",
       heading: ["More than a list of achievements. A story that", "works for you."],
       pairs: [
@@ -944,12 +944,12 @@ export const PRODUCT_VISUALS: Record<string, ProductVisual> = {
         ],
       },
       summary:
-        "Story Mapping™ brings your academic journey, experiences and aspirations together into one compelling story — before your applications are sent.",
+        "Story Mapping brings your academic journey, experiences and aspirations together into one compelling story — before your applications are sent.",
       summaryIcon: "map",
       quote: "Stories don't just tell your past — they open your future.",
     },
     pillars: {
-      heading: "What Story Mapping™ changes",
+      heading: "What Story Mapping changes",
       maxColumns: 3,
       items: [
         {
@@ -986,7 +986,7 @@ export const PRODUCT_VISUALS: Record<string, ProductVisual> = {
     },
     process: STORY_PROCESS,
     contrast: {
-      heading: "Why Story Mapping™ matters",
+      heading: "Why Story Mapping matters",
       intro:
         "The challenge is not having achievements. The challenge is presenting them in a way that helps an evaluator understand who you are, what drives you and why you belong in the programme.",
       left: {
@@ -1005,7 +1005,7 @@ export const PRODUCT_VISUALS: Record<string, ProductVisual> = {
         note: "These documents tell the university what you have done.",
       },
       right: {
-        caption: "Story Mapping™ looks deeper",
+        caption: "Story Mapping looks deeper",
         items: [
           "Academic and intellectual progression",
           "Defining experiences and decisions",
@@ -1030,7 +1030,7 @@ export const PRODUCT_VISUALS: Record<string, ProductVisual> = {
       fade: false,
     },
     signals: {
-      label: "Execution Mapping™",
+      label: "Execution Mapping",
       kicker: "From your university decision to a successful application journey.",
       heading: ["Your journey. Our execution. From planning to filing.", "Simple and seamless."],
       steps: [
@@ -1076,12 +1076,12 @@ export const PRODUCT_VISUALS: Record<string, ProductVisual> = {
         ],
       },
       summary:
-        "DEWSMENTORA Execution Mapping™ turns a complex application process into a simple, structured and expertly managed journey — so you can focus on your future.",
+        "DEWSMENTORA Execution Mapping turns a complex application process into a simple, structured and expertly managed journey — so you can focus on your future.",
       summaryIcon: "graduation",
       quote: "A well-executed application turns opportunity into reality.",
     },
     pillars: {
-      heading: "What Execution Mapping™ changes",
+      heading: "What Execution Mapping changes",
       maxColumns: 4,
       items: [
         {
@@ -1123,7 +1123,7 @@ export const PRODUCT_VISUALS: Record<string, ProductVisual> = {
     },
     framework: ADMISSION_JOURNEY,
     contrast: {
-      heading: "Why Execution Mapping™ matters",
+      heading: "Why Execution Mapping matters",
       intro:
         "The challenge isn't simply submitting an application. The challenge is managing everything that must happen correctly before, during and after submission.",
       left: {
@@ -1165,7 +1165,7 @@ export const PRODUCT_VISUALS: Record<string, ProductVisual> = {
           "One university may be manageable.",
           "Multiple universities create multiple processes running simultaneously.",
         ],
-        flowLabel: "Execution Mapping™ brings them together",
+        flowLabel: "Execution Mapping brings them together",
         flow: ["Plan", "Prepare", "Check", "File", "Track", "Respond", "Progress"],
         close: "You shouldn't have to become an application-process expert just to apply to university.",
       },
@@ -1180,14 +1180,14 @@ export const PRODUCT_VISUALS: Record<string, ProductVisual> = {
 export const MAP_FIT = {
   heading: "You don't need everything, and we don't believe in selling everything",
   rows: [
-    { text: "An aspirant who knows their direction may not require", product: "Identity Mapping™" },
+    { text: "An aspirant who knows their direction may not require", product: "Identity Mapping" },
     {
       text: "An aspirant who has already validated their universities may not require",
-      product: "University Intelligence Mapping™",
+      product: "University Intelligence Mapping",
     },
     {
       text: "Someone capable of independently executing their applications may not require",
-      product: "Execution Mapping™",
+      product: "Execution Mapping",
     },
   ],
   principles: [

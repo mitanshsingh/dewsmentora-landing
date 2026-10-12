@@ -62,7 +62,7 @@ export default function HomePage() {
           <Reveal className="nav:col-start-1 nav:row-start-3">
             <p className="m-0 mt-[22px] max-nav:text-pretty font-text text-[15.5px] leading-[1.62] text-[#2A2A2A] nav:mb-[34px] nav:mt-0 nav:max-w-[56ch] nav:font-serif nav:text-[clamp(18px,2vw,22px)] nav:leading-[1.55]">
               Before choosing a direction, university, or application strategy — understand what you&apos;re
-              committing to. DEWSMENTORA™ helps aspirants and families independently evaluate, compare and
+              committing to. DEWSMENTORA helps aspirants and families independently evaluate, compare and
               validate high-stakes education and career decisions before commitment.
             </p>
             <div className="mt-6 flex flex-col gap-2.5 nav:mt-0 nav:flex-row nav:flex-wrap nav:gap-3.5">
