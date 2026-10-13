@@ -60,6 +60,11 @@ export default async function ProductPage({
 
   const otherProducts = PRODUCTS.filter((p) => p.slug !== product.slug);
   const visual = getProductVisual(product.slug);
+  // Every block sits in its own band, alternating white and cream, so no two
+  // neighbours run together. Below the dark steps block the order is counted
+  // back from the cream FAQ: What you receive is white, and when a Map adds a
+  // stakes or flow block (cream) the contrast above it moves to white.
+  const extraBlock = Boolean(visual?.stakes || visual?.flow);
 
   return (
     <article>
@@ -108,7 +113,7 @@ export default async function ProductPage({
       </section>
 
       {visual?.signals && (
-        <section aria-labelledby="signals-banner" className="px-6 pt-[88px]">
+        <section aria-labelledby="signals-banner" className="px-6 py-[88px]">
           <div className="mx-auto max-w-[1280px]">
             <Reveal>
               <SignalsBanner banner={visual.signals} />
@@ -118,7 +123,7 @@ export default async function ProductPage({
       )}
 
       {visual?.pillars && (
-        <section aria-labelledby="pillars" className="px-6 pt-[72px]">
+        <section aria-labelledby="pillars" className="bg-cream px-6 py-[88px]">
           <div className="mx-auto max-w-[1280px]">
             <Reveal>
               {visual.pillars.heading && (
@@ -160,7 +165,7 @@ export default async function ProductPage({
         </div>
       </section>
 
-      <section className="px-6 pb-[88px]">
+      <section className="bg-cream px-6 py-[88px]">
         <div className="mx-auto max-w-[1280px]">
           <Reveal>
             <h2 className="m-0 mb-[34px] font-display text-[clamp(28px,2.8vw,40px)] uppercase leading-none">Key benefits</h2>
@@ -177,7 +182,7 @@ export default async function ProductPage({
             }}
           >
             {product.benefits.map((b) => (
-              <StaggerItem key={b.t} className="bg-cream p-[30px_26px]">
+              <StaggerItem key={b.t} className="bg-white p-[30px_26px]">
                 <h3 className="m-0 mb-2.5 font-sans text-[18px] font-semibold leading-[1.25]">{b.t}</h3>
                 <p className="m-0 font-serif text-[17px] leading-[1.5] text-muted-2">{b.d}</p>
               </StaggerItem>
@@ -214,7 +219,7 @@ export default async function ProductPage({
       </section>
 
       {visual?.contrast && (
-        <section aria-labelledby="why-it-matters" className="bg-cream px-6 py-[88px]">
+        <section aria-labelledby="why-it-matters" className={`px-6 py-[88px] ${extraBlock ? "" : "bg-cream"}`}>
           <div className="mx-auto max-w-[1280px]">
             <Reveal>
               <ContrastPanels contrast={visual.contrast} headingId="why-it-matters" />
@@ -224,7 +229,7 @@ export default async function ProductPage({
       )}
 
       {visual?.stakes && (
-        <section aria-labelledby="direction-stakes" className="px-6 pt-[88px]">
+        <section aria-labelledby="direction-stakes" className="bg-cream px-6 py-[88px]">
           <div className="mx-auto max-w-[1000px]">
             <Reveal>
               <DirectionStakes stakes={visual.stakes} />
@@ -234,7 +239,7 @@ export default async function ProductPage({
       )}
 
       {visual?.flow && (
-        <section aria-labelledby="decision-flow" className="px-6 pt-[88px]">
+        <section aria-labelledby="decision-flow" className="bg-cream px-6 py-[88px]">
           <div className="mx-auto max-w-[1280px]">
             <Reveal>
               <DecisionFlow flow={visual.flow} />
@@ -305,7 +310,7 @@ export default async function ProductPage({
         </Reveal>
       </section>
 
-      <section className="px-6 pb-24">
+      <section className="bg-[#EFEFEF] px-6 py-24">
         <div className="mx-auto max-w-[1280px]">
           <h2 className="m-0 mb-6 font-sans text-[15px] font-semibold uppercase tracking-[0.16em] text-muted">Other Maps</h2>
           <StaggerGrid className="grid gap-5" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))" }}>

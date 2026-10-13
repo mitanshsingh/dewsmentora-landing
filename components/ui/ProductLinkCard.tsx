@@ -7,7 +7,7 @@ export function ProductPickerCard({ product }: { product: Product }) {
   return (
     <Link
       href={productHref(product)}
-      className="grid gap-2 border border-line-card p-[26px_22px] transition-colors hover:bg-cream"
+      className="grid gap-2 border border-line-card bg-white p-[26px_22px] transition-colors hover:bg-cream"
     >
       <span className="font-display text-xs uppercase tracking-[0.14em] text-ochre">{product.question}</span>
       <span className="font-display text-[22px] uppercase leading-[1.05]">{product.name}</span>
