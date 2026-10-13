@@ -86,42 +86,44 @@ export default function SignalsBanner({ banner: b }: { banner: Banner }) {
         </ol>
       )}
 
-      <div className="mt-14 grid gap-x-12 gap-y-7 border-t border-line pt-12 nav:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)]">
-        <h3 className="m-0 border-l-4 border-yellow pl-5 font-display text-[clamp(22px,2.2vw,30px)] uppercase leading-[1.18]">
-          <span className="block">{firstLine}</span>{" "}
-          <span className={MARKER}>{markedLine}</span>
-        </h3>
-        <ul className="m-0 grid list-none gap-x-8 gap-y-3 p-0 sm:grid-flow-col sm:grid-rows-3">
-          {b.signals.items.map((item) => (
-            <li key={item} className="flex items-start gap-2 font-serif text-[17px] leading-[1.45] text-muted-2">
-              <ChevronRight aria-hidden="true" className="mt-[3px] h-4 w-4 shrink-0 text-ochre" strokeWidth={2.25} />
-              {item}
-            </li>
-          ))}
-        </ul>
-      </div>
+      <div className="mt-14 bg-[#EFEFEF] p-[28px_22px] sm:p-[40px_44px]">
+        <div className="grid gap-x-12 gap-y-7 nav:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)]">
+          <h3 className="m-0 border-l-4 border-yellow pl-5 font-display text-[clamp(22px,2.2vw,30px)] uppercase leading-[1.18]">
+            <span className="block">{firstLine}</span>{" "}
+            <span className={MARKER}>{markedLine}</span>
+          </h3>
+          <ul className="m-0 grid list-none gap-x-8 gap-y-3 p-0 sm:grid-flow-col sm:grid-rows-3">
+            {b.signals.items.map((item) => (
+              <li key={item} className="flex items-start gap-2 font-serif text-[17px] leading-[1.45] text-muted-2">
+                <ChevronRight aria-hidden="true" className="mt-[3px] h-4 w-4 shrink-0 text-ochre" strokeWidth={2.25} />
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
 
-      <div className="mt-12 flex flex-wrap items-center justify-between gap-x-12 gap-y-8">
-        <p className="m-0 flex max-w-[780px] items-center gap-4 rounded-[36px] border border-line-strong bg-white p-2 pr-7 font-sans text-[16px] leading-[1.4] text-ink sm:text-[18px]">
-          <span
-            aria-hidden="true"
-            className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-yellow text-ink sm:h-14 sm:w-14"
-          >
-            <FrameworkIcon name={b.summaryIcon} className="h-6 w-6 sm:h-7 sm:w-7" />
-          </span>
-          {b.summary}
-        </p>
-        <figure className="m-0">
-          <blockquote className="m-0 flex gap-3 font-serif text-[clamp(20px,1.9vw,24px)] leading-[1.3] text-ink">
-            <span aria-hidden="true" className="font-display text-[44px] leading-[0.8] text-yellow">
-              “
+        <div className="mt-12 flex flex-wrap items-center justify-between gap-x-12 gap-y-8">
+          <p className="m-0 flex max-w-[780px] items-center gap-4 rounded-[36px] border border-line-strong bg-white p-2 pr-7 font-sans text-[16px] leading-[1.4] text-ink sm:text-[18px]">
+            <span
+              aria-hidden="true"
+              className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-yellow text-ink sm:h-14 sm:w-14"
+            >
+              <FrameworkIcon name={b.summaryIcon} className="h-6 w-6 sm:h-7 sm:w-7" />
             </span>
-            <p className="m-0 max-w-[26ch]">{b.quote}</p>
-          </blockquote>
-          <figcaption className="mt-2 pl-[34px] font-sans text-[12px] font-bold uppercase tracking-[0.16em] text-muted">
-            DEWS Mentora
-          </figcaption>
-        </figure>
+            {b.summary}
+          </p>
+          <figure className="m-0">
+            <blockquote className="m-0 flex gap-3 font-serif text-[clamp(20px,1.9vw,24px)] leading-[1.3] text-ink">
+              <span aria-hidden="true" className="font-display text-[44px] leading-[0.8] text-yellow">
+                “
+              </span>
+              <p className="m-0 max-w-[26ch]">{b.quote}</p>
+            </blockquote>
+            <figcaption className="mt-2 pl-[34px] font-sans text-[12px] font-bold uppercase tracking-[0.16em] text-muted">
+              DEWS Mentora
+            </figcaption>
+          </figure>
+        </div>
       </div>
     </div>
   );
