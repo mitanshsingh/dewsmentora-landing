@@ -14,8 +14,9 @@ export const metadata: Metadata = {
   alternates: { canonical: "/resources/guides" },
 };
 
-// Picks up newly uploaded PDF guides hourly; keep in step with
-// GUIDES_REVALIDATE_SECONDS (this has to be a literal for Next to read it).
+// Refreshed on demand when a guide changes (see app/api/revalidate/guides), and
+// hourly as a fallback; keep in step with GUIDES_REVALIDATE_SECONDS (this has
+// to be a literal for Next to read it).
 export const revalidate = 3600;
 
 export default async function GuidesPage() {
