@@ -13,9 +13,11 @@ import type { ProcessItem, ReportProcess as Process } from "@/lib/frameworks";
  * is pinned to the first column and the rest flow down the second, as in the
  * portrait original. From `sm` the output card moves to a third column.
  *
- * The yellow matches AdmissionJourneyMap, which sits beside these in the
- * Execution Mapping block. The highlighted phrase in the heading is a marker
- * stroke behind ink rather than yellow text, which would be unreadable on white.
+ * Execution Mapping's artwork adds a band of services between the stages and
+ * the final deliverables; it uses the same node/title/bullets subgrid.
+ *
+ * The highlighted phrase in the heading is a marker stroke behind ink rather
+ * than yellow text, which would be unreadable on white.
  */
 
 const YELLOW = "bg-[#FEDD02]";
@@ -31,7 +33,7 @@ function Item({ item }: { item: ProcessItem }) {
 
 export default function ReportProcess({ process }: { process: Process }) {
   const [lead, highlight, tail] = process.heading;
-  const { stages, final, commitment } = process;
+  const { stages, services, final, commitment } = process;
   const tiles = final.items.every((d) => d.icon);
 
   return (
@@ -40,8 +42,8 @@ export default function ReportProcess({ process }: { process: Process }) {
         {lead}{" "}
         <span className="box-decoration-clone bg-[linear-gradient(transparent_58%,#FEDD02_58%)] px-[0.08em]">
           {highlight}
-        </span>{" "}
-        {tail}
+        </span>
+        {tail && ` ${tail}`}
       </h4>
       <p className="m-0 mt-3 mb-10 max-w-[60ch] font-sans text-[clamp(16px,1.4vw,21px)] leading-[1.4] text-muted-2 nav:mb-12">
         {process.tagline}
@@ -135,11 +137,68 @@ export default function ReportProcess({ process }: { process: Process }) {
                 <p className="m-0 mt-0.5 font-sans text-[15px] font-medium leading-[1.3] text-ink nav:text-[clamp(13px,1vw,15px)]">
                   {stage.output}
                 </p>
+                {stage.outputNote && (
+                  <p className="m-0 mt-0.5 font-sans text-[13px] leading-[1.3] text-muted-2 nav:text-[clamp(11.5px,0.9vw,13px)]">
+                    {stage.outputNote}
+                  </p>
+                )}
               </div>
             </li>
           );
         })}
       </ol>
+
+      {services && (
+        // The pill sits on the panel's top edge from `sm`; on a phone it would
+        // wrap there, so it stays inside.
+        <section className="mt-12 rounded-[16px] border-2 border-[#FEDD02] p-[22px_18px_26px] sm:relative sm:mt-16 sm:p-[42px_28px_30px] nav:rounded-[18px] nav:p-[44px_10px_32px]">
+          <div className="text-center">
+            <h5
+              className={`m-0 mx-auto w-fit rounded-full px-5 py-2 font-sans text-[16px] font-bold uppercase leading-[1.2] ${YELLOW} sm:absolute sm:top-0 sm:left-1/2 sm:-translate-x-1/2 sm:-translate-y-1/2 sm:whitespace-nowrap sm:px-7 nav:text-[clamp(16px,1.35vw,20px)]`}
+            >
+              {services.heading}
+            </h5>
+            <p className="m-0 mt-3 font-sans text-[12px] font-bold uppercase tracking-[0.22em] text-muted-2 sm:mt-0">
+              {services.kicker}
+            </p>
+          </div>
+
+          <ul
+            className="m-0 mt-7 grid list-none gap-y-8 p-0 sm:max-nav:grid-cols-2 sm:max-nav:gap-x-8 nav:mt-8 nav:grid-cols-[repeat(var(--services),minmax(0,1fr))] nav:grid-rows-[auto_auto_1fr] nav:gap-y-0"
+            style={{ "--services": services.items.length } as CSSProperties}
+          >
+            {services.items.map((service) => (
+              <li
+                key={service.title}
+                className="grid grid-cols-[48px_minmax(0,1fr)] content-start gap-x-4 nav:row-span-3 nav:grid-cols-1 nav:grid-rows-subgrid nav:border-l nav:border-[#EFE6BF] nav:px-[clamp(12px,1.2vw,20px)] nav:first:border-l-0"
+              >
+                <span
+                  className={`row-span-2 flex h-12 w-12 items-center justify-center rounded-full ${YELLOW} nav:row-span-1 nav:mx-auto nav:mb-3.5 nav:h-16 nav:w-16`}
+                >
+                  <FrameworkIcon name={service.icon} className="h-6 w-6 text-ink nav:h-7 nav:w-7" />
+                </span>
+                <p className="m-0 self-center font-sans text-[15px] font-bold uppercase leading-[1.2] text-ink nav:self-end nav:text-center nav:text-[clamp(13px,1.05vw,15px)]">
+                  {service.title}
+                </p>
+                <ul className="col-start-2 m-0 mt-2.5 grid list-none content-start gap-1.5 p-0 nav:col-start-auto nav:mt-3">
+                  {service.items.map((item) => (
+                    <li
+                      key={item}
+                      className="flex gap-2.5 font-sans text-[15px] leading-[1.4] text-muted-2 nav:gap-2 nav:text-[clamp(12.5px,0.98vw,15px)]"
+                    >
+                      <span
+                        aria-hidden="true"
+                        className={`mt-[0.45em] h-[7px] w-[7px] shrink-0 rounded-full ${YELLOW}`}
+                      />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
 
       {/* Below `nav`: two stacked panels, as in the portrait original. At
           `nav`: one panel split by a hairline, as in the landscape one. */}

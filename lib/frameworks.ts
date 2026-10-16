@@ -66,25 +66,11 @@ export type FrameworkIcon =
   | "fingerprint"
   | "confidence"
   | "pin"
-  | "map";
-
-export type FrameworkStage = {
-  n: string;
-  title: string;
-  icon: FrameworkIcon;
-  items: string[];
-  /** Mutually exclusive routes through this stage, e.g. self-guided vs guided. */
-  options?: { label: string; title: string; body: string }[];
-};
-
-export type Framework = {
-  heading: string;
-  intro: string;
-  stages: FrameworkStage[];
-  /** Guarantees that hold across every stage rather than at one of them. */
-  throughout?: { heading: string; items: string[] };
-  commitment?: { heading: string; body: string[] };
-};
+  | "map"
+  | "coins"
+  | "settings"
+  | "laptop"
+  | "submitted";
 
 export type Pillar = { title: string; body: string; icon: FrameworkIcon };
 
@@ -117,9 +103,13 @@ export type ProcessStage = {
   items: ProcessItem[];
   /** What the stage hands to the next one. */
   output: string;
+  /** A small line under the output, e.g. "Process + expected costs". */
+  outputNote?: string;
 };
 
 export type ProcessDeliverable = { title: string; body?: string; icon?: FrameworkIcon };
+
+export type ProcessService = { title: string; icon: FrameworkIcon; items: string[] };
 
 /**
  * "How your … report is created": the owner's per-Map process infographics.
@@ -128,9 +118,11 @@ export type ProcessDeliverable = { title: string; body?: string; icon?: Framewor
  */
 export type ReportProcess = {
   /** Split so the middle phrase can be highlighted, as in the artwork. */
-  heading: [lead: string, highlight: string, tail: string];
+  heading: [lead: string, highlight: string, tail?: string];
   tagline: string;
   stages: ProcessStage[];
+  /** What the stages unlock, set between them and the final deliverables. */
+  services?: { heading: string; kicker: string; items: ProcessService[] };
   /** Deliverables with icons render as tiles; without, as a bullet list. */
   final: { heading: string; items: ProcessDeliverable[] };
   commitment: string;
@@ -198,7 +190,6 @@ export type ProductVisual = {
   signals?: SignalsBanner;
   pillars?: PillarSet;
   /** Shown in the Map's block on /how-it-works, not on the product page. */
-  framework?: Framework;
   process?: ReportProcess;
   /** Set after the How It Works block. */
   contrast?: Contrast;
@@ -206,129 +197,6 @@ export type ProductVisual = {
   stakes?: DirectionStakes;
   /** Set just before What you receive. */
   flow?: DecisionFlow;
-};
-
-/* ------------------------------------------------------------------ */
-/* Execution Mapping — the managed admission journey                   */
-/* ------------------------------------------------------------------ */
-
-export const ADMISSION_JOURNEY: Framework = {
-  heading: "Your admission journey",
-  intro: "A structured process, professionally managed from registration to arrival.",
-  stages: [
-    {
-      n: "01",
-      title: "Register with the DEWS",
-      icon: "register",
-      items: [
-        "Complete your registration",
-        "Activate your DEWS Membership",
-        "Access your dashboard",
-        "Receive onboarding information",
-        "Begin your admission journey",
-      ],
-      options: [
-        {
-          label: "Option A",
-          title: "Self-guided dashboard",
-          body: "Complete everything through your online dashboard.",
-        },
-        {
-          label: "Option B",
-          title: "Guided information sessions",
-          body: "Complete information with your Admission Executive in sessions.",
-        },
-      ],
-    },
-    {
-      n: "02",
-      title: "Personal onboarding & admission planning",
-      icon: "dashboard",
-      items: [
-        "Meet your dedicated Admission Executive",
-        "Understand the roadmap, timelines & documents",
-        "Choose your preferred onboarding method",
-      ],
-    },
-    {
-      n: "03",
-      title: "Application preparation & submission",
-      icon: "edit",
-      items: [
-        "University application preparation",
-        "SOP development & review",
-        "Resume preparation",
-        "LOR design & review",
-        "Documentation verification",
-        "Quality review",
-        "Application submission",
-        "Submission confirmation",
-      ],
-    },
-    {
-      n: "04",
-      title: "Application management & offer tracking",
-      icon: "inbox",
-      items: [
-        "Application status updates",
-        "University communication support",
-        "Additional document requests",
-        "Interview coordination, if required",
-        "Offer letter tracking",
-        "Scholarship updates, where applicable",
-        "Post-application task management",
-      ],
-    },
-    {
-      n: "05",
-      title: "University selection & visa preparation",
-      icon: "shield",
-      items: [
-        "Offer evaluation support",
-        "Acceptance process",
-        "Tuition deposit guidance",
-        "CAS / COE / admission document support",
-        "Financial documentation guidance",
-        "Visa documentation checklist",
-        "Visa application guidance",
-        "Pre-visa readiness review",
-      ],
-    },
-    {
-      n: "06",
-      title: "Pre-departure & beyond",
-      icon: "plane",
-      items: [
-        "Pre-departure guidance",
-        "Travel preparation",
-        "Accommodation planning guidance",
-        "Essential documentation checklist",
-        "Arrival preparation",
-        "Student readiness resources",
-        "Final departure checklist",
-      ],
-    },
-  ],
-  throughout: {
-    heading: "Throughout your journey you always receive",
-    items: [
-      "Dedicated Admission Executive",
-      "Transparent communication",
-      "Professional admission execution",
-      "Secure member dashboard",
-      "Structured document management",
-      "Timely updates & reminders",
-      "Complete progress tracking",
-      "Clearly defined milestones",
-    ],
-  },
-  commitment: {
-    heading: "Our commitment",
-    body: [
-      "From your first registration to your first day at university, every stage of your admission journey is planned, tracked and professionally managed.",
-      "Because successful international admissions are not built on last-minute efforts — they are built on organised execution, transparent communication, and consistent support every step of the way.",
-    ],
-  },
 };
 
 /* ------------------------------------------------------------------ */
@@ -539,6 +407,16 @@ const UIM_PROCESS: ReportProcess = {
     "A structured, evidence-based and expert-led process to help every candidate identify the right universities and programs, with clarity, confidence and a clear path forward.",
 };
 
+/** Story Mapping's deliverables, which Execution Mapping carries through to submission. */
+const APPLICATION_PORTFOLIO: ProcessDeliverable[] = [
+  { title: "Application narrative blueprint", body: "One clear story across all documents", icon: "report" },
+  { title: "Statement of purpose", body: "Compelling and authentic", icon: "edit" },
+  { title: "Personal statements and essays", body: "Tailored to each university", icon: "write" },
+  { title: "Academic CV / resume", body: "Strong and consistent with your story", icon: "resume" },
+  { title: "Recommendation strategy framework", body: "Guidance for impactful recommendations", icon: "mail" },
+  { title: "University-specific application versions", body: "Customised for each target university", icon: "files" },
+];
+
 const STORY_PROCESS: ReportProcess = {
   heading: ["How your", "Story Mapping application portfolio", "is created"],
   tagline: "Your profile may be strong. But can the evaluator see why?",
@@ -626,19 +504,131 @@ const STORY_PROCESS: ReportProcess = {
       output: "Multi-Perspective Candidate Review",
     },
   ],
-  final: {
-    heading: "Final application portfolio",
-    items: [
-      { title: "Application narrative blueprint", body: "One clear story across all documents", icon: "report" },
-      { title: "Statement of purpose", body: "Compelling and authentic", icon: "edit" },
-      { title: "Personal statements and essays", body: "Tailored to each university", icon: "write" },
-      { title: "Academic CV / resume", body: "Strong and consistent with your story", icon: "resume" },
-      { title: "Recommendation strategy framework", body: "Guidance for impactful recommendations", icon: "mail" },
-      { title: "University-specific application versions", body: "Customised for each target university", icon: "files" },
-    ],
-  },
+  final: { heading: "Final application portfolio", items: APPLICATION_PORTFOLIO },
   commitment:
     "A structured, expert-led process to help every candidate present their story with clarity, authenticity and impact — and stand out in a competitive admissions process.",
+};
+
+const EXECUTION_PROCESS: ReportProcess = {
+  heading: ["From university decision to", "application, visa & beyond"],
+  tagline:
+    "Your chosen universities. Our structured execution. A clear, cost-visible and professionally managed journey.",
+  stages: [
+    {
+      n: "01",
+      title: "Complete University Intelligence Mapping",
+      icon: "candidate",
+      items: [
+        "Register and share required information",
+        "Help us understand your profile, goals and preferences",
+        "We analyse universities through course fit, career alignment, cost, location, outcomes and profile fit",
+      ],
+      output: "University Intelligence Mapping (UIM)",
+    },
+    {
+      n: "02",
+      title: "Receive your UIM report",
+      icon: "report",
+      items: [
+        "Get an evidence-based report with comparisons, opportunities, risks and considerations",
+        "Understand your options before committing application money",
+      ],
+      output: "UIM Report",
+      outputNote: "Your university options",
+    },
+    {
+      n: "03",
+      title: "Finalise your university list",
+      icon: "shortlist",
+      items: [
+        "Review the UIM report and select the universities and programmes where you want to apply",
+        "Submit your Final Application List to DEWSMENTORA",
+        "The final decision remains yours",
+      ],
+      output: "Your Confirmed Application Portfolio",
+    },
+    {
+      n: "04",
+      title: "Receive your Cost & Procedure Report (CPR)",
+      icon: "coins",
+      items: [
+        "Personalised CPR based on your selected universities",
+        "Complete visibility of expected application-related costs",
+        "Documents, procedures, deadlines and important stages",
+        "Know the process before execution begins",
+      ],
+      output: "Cost & Procedure Report (CPR)",
+      outputNote: "Process + expected costs",
+    },
+    {
+      n: "05",
+      title: "Receive your personalised execution coupon",
+      icon: "settings",
+      items: [
+        "Based on your selected universities and application pathway",
+        "Shows applicable Execution Mapping services and fee",
+        "DEWSMENTORA Execution Mapping fee: ₹0 – ₹32,000",
+        "Final external costs (university fees, test fees, visa fees etc.) remain separate and payable by you",
+      ],
+      output: "Personalised Execution Coupon",
+      outputNote: "Services + applicable fee",
+    },
+  ],
+  services: {
+    heading: "Your Execution Mapping services",
+    kicker: "What your coupon can include",
+    items: [
+      {
+        title: "Story Mapping & document design",
+        icon: "write",
+        items: [
+          "SOPs, essays and application narratives",
+          "CV / resume strategy",
+          "Recommendation guidance",
+          "Document review and refinement",
+        ],
+      },
+      {
+        title: "Application execution",
+        icon: "laptop",
+        items: [
+          "Application preparation",
+          "Document coordination",
+          "Submission management",
+          "Deadline tracking",
+          "Application follow-up",
+        ],
+      },
+      {
+        title: "Dedicated executive",
+        icon: "profile",
+        items: ["Single point of contact", "Process coordination", "Regular updates", "Keep your journey organised"],
+      },
+      {
+        title: "Post-application support",
+        icon: "submitted",
+        items: [
+          "Application updates",
+          "Additional university requirements",
+          "Offer guidance",
+          "Support with subsequent application-stage procedures",
+        ],
+      },
+      {
+        title: "Visa process & filing support",
+        icon: "plane",
+        items: [
+          "Guidance on visa documentation",
+          "Application preparation support",
+          "Filing process coordination",
+          "Subject to destination-specific requirements and applicable regulations",
+        ],
+      },
+    ],
+  },
+  final: { heading: "Your final application portfolio", items: APPLICATION_PORTFOLIO },
+  commitment:
+    "A structured, expert-led process to help every candidate present their story with clarity, authenticity and impact — and complete their application, visa and beyond with confidence.",
 };
 
 /* ------------------------------------------------------------------ */
@@ -1121,7 +1111,7 @@ export const PRODUCT_VISUALS: Record<string, ProductVisual> = {
         },
       ],
     },
-    framework: ADMISSION_JOURNEY,
+    process: EXECUTION_PROCESS,
     contrast: {
       heading: "Why Execution Mapping matters",
       intro:
@@ -1236,10 +1226,6 @@ export const WHY_DEWS_PILLARS: Pillar[] = [
 
 export function getProductVisual(slug: string): ProductVisual | undefined {
   return PRODUCT_VISUALS[slug];
-}
-
-export function getFramework(slug: string): Framework | undefined {
-  return PRODUCT_VISUALS[slug]?.framework;
 }
 
 export function getProcess(slug: string): ReportProcess | undefined {
