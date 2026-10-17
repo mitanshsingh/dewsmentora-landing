@@ -414,23 +414,24 @@ export const HISTORY: HistoryMilestone[] = [
   },
 ];
 
-// Resources → Preparation. Material is added per test; until then each card
-// reads "Material coming soon".
+// Resources → Preparation. The tests and their PDFs are managed in the app
+// (lib/prep-material.ts); this is only the fallback for a build that can't
+// reach the API, matching what the app started with.
 export const PREP_TEST_GROUPS = [
   {
     title: "English proficiency",
     tests: [
-      { name: "IELTS", d: "International English Language Testing System." },
-      { name: "TOEFL", d: "Test of English as a Foreign Language." },
-      { name: "PTE Academic", d: "Pearson Test of English Academic." },
+      { slug: "ielts", name: "IELTS", d: "International English Language Testing System." },
+      { slug: "toefl", name: "TOEFL", d: "Test of English as a Foreign Language." },
+      { slug: "pte-academic", name: "PTE Academic", d: "Pearson Test of English Academic." },
     ],
   },
   {
     title: "Admissions tests",
     tests: [
-      { name: "GRE", d: "Graduate Record Examinations, for master's and doctoral programs." },
-      { name: "GMAT", d: "Graduate Management Admission Test, for business school programs." },
-      { name: "SAT", d: "For undergraduate admission, mainly in the USA." },
+      { slug: "gre", name: "GRE", d: "Graduate Record Examinations, for master's and doctoral programs." },
+      { slug: "gmat", name: "GMAT", d: "Graduate Management Admission Test, for business school programs." },
+      { slug: "sat", name: "SAT", d: "For undergraduate admission, mainly in the USA." },
     ],
   },
 ];
