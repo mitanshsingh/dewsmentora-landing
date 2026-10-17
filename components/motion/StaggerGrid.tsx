@@ -40,13 +40,15 @@ export function StaggerItem({
   children,
   className,
   style,
+  id,
 }: {
   children: ReactNode;
   className?: string;
   style?: React.CSSProperties;
+  id?: string;
 }) {
   return (
-    <motion.div className={className} style={style} variants={item}>
+    <motion.div id={id} className={className} style={style} variants={item}>
       {children}
     </motion.div>
   );

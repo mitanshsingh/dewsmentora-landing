@@ -1,8 +1,19 @@
 // PDF guides that admins upload through the DEWS Mentora app. The landing site
 // only reads the public listing; the files themselves are served by the API.
 // DEWS_API_URL points the site at another backend (e.g. a local one).
-const API_URL = process.env.DEWS_API_URL || "https://backend-production-d39a.up.railway.app";
+export const API_URL = process.env.DEWS_API_URL || "https://backend-production-d39a.up.railway.app";
 const API_ORIGIN = new URL(API_URL).origin;
+
+// Turns a file_path from the API (relative, e.g. "/guides/x/file") into links
+// to open and to save the file. Null for anything that resolves off the API.
+export function apiFileLinks(filePath: unknown): { viewHref: string; downloadHref: string } | null {
+  if (typeof filePath !== "string" || !URL.canParse(filePath, API_URL)) return null;
+  const view = new URL(filePath, API_URL);
+  if (view.origin !== API_ORIGIN) return null;
+  const download = new URL(view);
+  download.searchParams.set("download", "1");
+  return { viewHref: view.toString(), downloadHref: download.toString() };
+}
 
 // How often /resources/guides picks up newly uploaded or hidden guides. Each
 // refresh is an ISR write, and the team's Hobby plan has run out of those
@@ -31,15 +42,9 @@ type GuideOut = {
 };
 
 function toGuideDownload(g: GuideOut): GuideDownload | null {
-  if (!g || typeof g.slug !== "string" || typeof g.title !== "string" || typeof g.file_path !== "string") {
-    return null;
-  }
-  if (!URL.canParse(g.file_path, API_URL)) return null;
-  // file_path is relative to the API; refuse anything that resolves elsewhere.
-  const view = new URL(g.file_path, API_URL);
-  if (view.origin !== API_ORIGIN) return null;
-  const download = new URL(view);
-  download.searchParams.set("download", "1");
+  if (!g || typeof g.slug !== "string" || typeof g.title !== "string") return null;
+  const links = apiFileLinks(g.file_path);
+  if (!links) return null;
   return {
     slug: g.slug,
     title: g.title,
@@ -47,8 +52,7 @@ function toGuideDownload(g: GuideOut): GuideDownload | null {
     category: g.category ?? null,
     sizeBytes: g.size_bytes ?? null,
     updatedISO: g.updated_at,
-    viewHref: view.toString(),
-    downloadHref: download.toString(),
+    ...links,
   };
 }
 
